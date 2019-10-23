@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import styles from './App.module.css';
 
 
 const App = () => {
-  const [inc, setInc] = useState(129);
+  const [inc, setInc] = useState(1691);
 
   return <div className={styles.container}>
     <div className={styles.card}>
