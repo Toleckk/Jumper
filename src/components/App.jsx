@@ -1,10 +1,11 @@
 import React from 'react';
-import Friend from "./Friend";
-import Friends from "./Friends";
-import friends from "../data/friends";
+import Container from "./Container";
+import Picture from "./Picture";
+import Info from "./Info";
 
-const App = () => <Friends>
-    {friends.map(friend => <Friend name={friend.name} avatar={friend.avatar}/>)}
-</Friends>;
+const App = () => <Container>
+    <Picture/>
+    <Info/>
+</Container>;
 
 export default App;
