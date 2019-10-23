@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import styles from './App.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const App = () => {
+  const [inc, setInc] = useState(129);
+
+  return <div className={styles.container}>
+    <div className={styles.card}>
+      <div className={styles.text}>{inc}</div>
+      <button onClick={() => setInc(inc + 1)} className={styles.increment}>Прибавить</button>
     </div>
-  );
-}
+  </div>;
+};
 
 export default App;
