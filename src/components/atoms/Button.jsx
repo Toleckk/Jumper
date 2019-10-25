@@ -10,6 +10,7 @@ export default styled.button`
     cursor: pointer;
     font-size: medium;
     user-select: none;
+    text-decoration: none;
     
     transition: all 100ms;
     
