@@ -6,7 +6,9 @@ import Link from "./Link";
 
 const Registration = () => <Container>
     <span>{local.info.signUp}</span>
-    <Button>{local.info.signUpButton}</Button>
+    <Link to={'/registration'}>
+        <Button>{local.info.signUpButton}</Button>
+    </Link>
 </Container>;
 
 export default Registration;

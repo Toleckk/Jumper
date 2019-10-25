@@ -1,10 +1,10 @@
 import React from 'react';
 import Landing from "./Landing";
+import {BrowserRouter} from "react-router-dom";
 
 
-const App = () => <Container>
-    <Picture/>
-    <Info/>
-</Container>;
+const App = () => <BrowserRouter>
+    <Landing/>
+</BrowserRouter>;
 
 export default App;
