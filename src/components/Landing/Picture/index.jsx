@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from "./Container";
-import Triangle from "../atoms/Triangle";
+import Triangle from "../../atoms/Triangle";
 import SVG from "./SVG";
 
 const Picture = ({size = 24}) => <Container>

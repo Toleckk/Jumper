@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from "../../atoms/Input";
+import Input from "../../../atoms/Input";
 import Container from "./Container";
-import Button from "../../atoms/Button";
-import local from "../../../local";
+import Button from "../../../atoms/Button";
+import local from "../../../../local";
 
 const Authorization = () => <Container>
     <Input id="login" placeholder={local.info.loginInputPlaceholder}/>

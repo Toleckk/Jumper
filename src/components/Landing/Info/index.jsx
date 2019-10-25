@@ -1,10 +1,9 @@
 import React from 'react';
-import Container from "./Container";
 import Logo from "./Logo";
 import Header from "./Header";
 import Authorization from "./Authorization/Authorization";
 import Registration from "./Registration";
-import local from "../../local";
+import local from "../../../local";
 
 const Info = () => <Container>
     <Logo src="" alt=""/>

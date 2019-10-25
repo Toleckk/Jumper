@@ -1,7 +1,6 @@
 import React from 'react';
-import Container from "./Container";
-import Picture from "./Picture";
-import Info from "./Info";
+import Landing from "./Landing";
+
 
 const App = () => <Container>
     <Picture/>
