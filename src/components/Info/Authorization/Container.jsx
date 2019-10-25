@@ -6,9 +6,14 @@ export default styled.form`
     
     display: flex;
     flex-direction: column;
+    align-items: center;
     
     & > button {
         margin-top: 30px;
         width: 50%;
+    }
+    
+    & > input {
+        min-width: 100px;
     }
 `;
