@@ -8,4 +8,8 @@ export default styled.div`
     align-items: flex-start;
 
     padding-top: 11%;
+    
+    @media (min-device-aspect-ratio: 16/9) {
+        padding-top: 5%;
+    }
 `;

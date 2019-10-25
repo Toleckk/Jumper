@@ -10,4 +10,5 @@ export default styled.div`
     height: -webkit-fill-available;
     background-image: url('/images/landing.jpg');
     background-position-x: -130px;
+    overflow: hidden;
 `;
