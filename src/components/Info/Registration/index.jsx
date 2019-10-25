@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from "./Container";
-import Button from "../Authorization/Button";
+import Button from "../../atoms/Button";
 
 const Registration = () => <Container>
     <span>Присоединяйтесь к Твиттеру прямо сейчас!</span>
