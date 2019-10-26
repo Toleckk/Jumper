@@ -4,9 +4,9 @@ export default styled.button`
     align-self: center;
     padding: 10px 12px;
     border-radius: 10px;
-    border: 1.5px solid rgb(2, 132, 132);
+    border: 1.5px solid rgb(${props => props.theme.primary});
     background: transparent;
-    color: rgb(202, 202, 220);
+    color: rgb(${props => props.theme.secondaryText});
     cursor: pointer;
     font-size: medium;
     user-select: none;
@@ -15,9 +15,9 @@ export default styled.button`
     transition: all 100ms;
     
     &:hover {
-        border-color: rgb(2, 132, 132);
-        box-shadow: rgba(2,132,132, 0.6) 0 0 1.5rem;
-        background: radial-gradient(transparent, rgba(163, 67, 81, 0.35));
+        border-color: rgb(${props => props.theme.primary});
+        box-shadow: rgba(${props => props.theme.primary}, 0.6) 0 0 1.5rem;
+        background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.35));
     }
     
     &:focus {

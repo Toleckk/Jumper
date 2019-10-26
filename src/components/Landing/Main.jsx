@@ -8,7 +8,7 @@ export default styled.div`
     align-items: center;
     
     background: rgba(0, 0, 0, 0.2);
-    color: #babac7;
+    color: rgb(${props => props.theme.primaryText});
     
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     
