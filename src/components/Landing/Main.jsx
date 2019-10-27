@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default styled.div`
+export default styled.main`
     flex: 1;
 
     display: flex;
