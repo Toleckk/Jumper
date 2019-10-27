@@ -8,4 +8,8 @@ export default styled(Link)`
     & > * {
         width: 100%;
     }
+    
+    &:focus {
+        outline: none;
+    }
 `;
