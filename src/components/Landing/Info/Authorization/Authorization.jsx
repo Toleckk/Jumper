@@ -7,7 +7,7 @@ import local from "../../../../local";
 const Authorization = () => <Container>
     <Input id="login" placeholder={local.info.loginInputPlaceholder}/>
     <Input id="password" type="password" placeholder={local.info.passwordInputPlaceholder}/>
-    <Button id="submit">Войти</Button>
+    <Button id="submit">{local.info.signInButton}</Button>
 </Container>;
 
 export default Authorization;
