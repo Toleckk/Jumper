@@ -17,14 +17,16 @@ const form = withFormik({
     })
 });
 
+const loginPattern = /^[-_0-9A-Za-z.]*$/;
+
 const Authorization = ({handleChange, handleSubmit}) => {
     const {passwordInputPlaceholder, loginInputPlaceholder} = local.info;
 
     return <Container onSubmit={handleSubmit}>
-        <Input name="login" placeholder={loginInputPlaceholder} onChange={handleChange}/>
+        <Input name="login" placeholder={loginInputPlaceholder} onChange={handleChange} pattern={loginPattern}/>
         <Input name="password" type="password" placeholder={passwordInputPlaceholder} onChange={handleChange}/>
         <Button type="submit">{local.info.signInButton}</Button>
-    </Container>
+    </Container>;
 };
 
 export default form(Authorization);
