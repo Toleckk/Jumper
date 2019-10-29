@@ -6,7 +6,7 @@ import Main from "./Main";
 const AuthorizationPage = React.lazy(() => import('./AuthorizationPage'));
 const RegistrationPage = React.lazy(() => import('./RegistrationPage'));
 
-const Landing = () => <Container>
+const MainPage = () => <Container>
     <Picture/>
     <Main>
         <Suspense fallback={<div>Loading...</div>}>
@@ -20,4 +20,4 @@ const Landing = () => <Container>
     </Main>
 </Container>;
 
-export default Landing;
+export default MainPage;
