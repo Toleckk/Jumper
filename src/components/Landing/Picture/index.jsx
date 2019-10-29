@@ -3,6 +3,7 @@ import Container from "./Container";
 import Triangle from "../../atoms/Triangle";
 import SVG from "./SVG";
 import {ThemeContext} from "styled-components";
+import Type from 'prop-types';
 
 const Picture = ({size = 24}) => {
     const {accents} = useContext(ThemeContext);
@@ -14,6 +15,10 @@ const Picture = ({size = 24}) => {
             <Triangle x={3.4} y={2.4} stroke={`rgba(${accents}, 0.3)`} {...triangleProps}/>
         </SVG>
     </Container>;
+};
+
+Picture.propTypes = {
+    size: Type.number
 };
 
 export default Picture;

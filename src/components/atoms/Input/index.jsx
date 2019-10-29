@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import StyledInput from "./StyledInput";
+import Type from 'prop-types';
 
 
 const Input = ({pattern, onChange, ...props}) => {
@@ -8,16 +9,18 @@ const Input = ({pattern, onChange, ...props}) => {
     const checkPattern = event => {
         const {value} = event.target;
 
-        if(typeof pattern === 'object' && pattern instanceof RegExp) {
-            if(pattern.test(value))
-                setValue(value);
-        } else
+        if(!pattern || pattern.test(value))
             setValue(value);
 
-        return typeof onChange === 'function' && onChange(event);
+        return onChange && onChange(event);
     };
 
     return <StyledInput value={value} onChange={checkPattern} pattern={pattern} {...props}/>;
+};
+
+Input.propTypes = {
+    pattern: Type.instanceOf(RegExp),
+    onChange: Type.func
 };
 
 export default Input;

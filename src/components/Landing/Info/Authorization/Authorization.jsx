@@ -5,6 +5,7 @@ import Button from "../../../atoms/Button";
 import local from "../../../../local";
 import {withFormik} from "formik";
 import * as Yup from "yup";
+import Type from 'prop-types';
 
 const form = withFormik({
     validateOnChange: false,
@@ -27,6 +28,11 @@ const Authorization = ({handleChange, handleSubmit}) => {
         <Input name="password" type="password" placeholder={passwordInputPlaceholder} onChange={handleChange}/>
         <Button type="submit">{local.info.signInButton}</Button>
     </Container>;
+};
+
+Authorization.propTypes = {
+    handleChange: Type.func,
+    handleSubmit: Type.func
 };
 
 export default form(Authorization);
