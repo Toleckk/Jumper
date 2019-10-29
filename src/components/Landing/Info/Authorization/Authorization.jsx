@@ -17,7 +17,7 @@ const form = withFormik({
     })
 });
 
-const loginPattern = /^[-_0-9A-Za-z.]*$/;
+const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
 const Authorization = ({handleChange, handleSubmit}) => {
     const {passwordInputPlaceholder, loginInputPlaceholder} = local.info;
