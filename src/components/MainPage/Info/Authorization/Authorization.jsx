@@ -6,17 +6,7 @@ import local from "../../../../local";
 import {withFormik} from "formik";
 import * as Yup from "yup";
 import Type from 'prop-types';
-
-const form = withFormik({
-    validateOnChange: false,
-    validateOnBlur: false,
-    validateOnMount: false,
-    handleSubmit: console.log,
-    validationSchema: Yup.object().shape({
-        login: Yup.string().required(true),
-        password: Yup.string().required(true),
-    })
-});
+import validate from "./validation";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -35,4 +25,4 @@ Authorization.propTypes = {
     handleSubmit: Type.func
 };
 
-export default form(Authorization);
+export default validate(Authorization);
