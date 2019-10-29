@@ -5,7 +5,7 @@ import Authorization from "./Authorization/Authorization";
 import Registration from "./Registration";
 import local from "../../../local";
 
-const Info = () => <>
+const AuthorizationPage = () => <>
     <Logo src="" alt=""/>
     <Header>{local.info.header}</Header>
     <span>{local.info.login}</span>
@@ -13,4 +13,4 @@ const Info = () => <>
     <Registration/>
 </>;
 
-export default Info;
+export default AuthorizationPage;
