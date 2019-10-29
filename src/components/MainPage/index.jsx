@@ -6,6 +6,7 @@ import Main from "./Main";
 const AuthorizationPage = React.lazy(() => import('./AuthorizationPage'));
 const RegistrationPage = React.lazy(() => import('./RegistrationPage'));
 
+//todo: make loader
 const MainPage = () => <Container>
     <Picture/>
     <Main>
