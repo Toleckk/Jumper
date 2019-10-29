@@ -15,7 +15,7 @@ const Input = ({pattern, onChange, ...props}) => {
         return onChange && onChange(event);
     };
 
-    return <StyledInput value={value} onChange={checkPattern} pattern={pattern} {...props}/>;
+    return <StyledInput value={value} onChange={checkPattern} {...props}/>;
 };
 
 Input.propTypes = {
