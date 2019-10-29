@@ -8,28 +8,30 @@ import validate from "./validation";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
+const createOnChange = (errors, setErrors, handleChange) => event => {
+    const {value, name} = event.target;
+
+    if (value)
+        setErrors({...errors, [name]: false});
+
+    return handleChange(event);
+};
+
 const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) => {
-    const {passwordInputPlaceholder, loginInputPlaceholder} = local.info;
+    const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
 
-    const onChange = event => {
-        const {value, name} = event.target;
-
-        if(value)
-            setErrors({...errors, [name]: false});
-
-        return handleChange(event);
-    };
+    const onChange = createOnChange(errors, setErrors, handleChange);
 
     return <Container onSubmit={handleSubmit}>
         <Input name="login"
-               placeholder={loginInputPlaceholder}
+               placeholder={login}
                onChange={onChange}
                pattern={loginPattern}
                error={errors.login && !values.login}
         />
         <Input name="password"
                type="password"
-               placeholder={passwordInputPlaceholder}
+               placeholder={password}
                onChange={onChange}
                error={errors.password && !values.password}
         />
