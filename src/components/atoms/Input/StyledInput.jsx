@@ -1,8 +1,6 @@
 import styled, {css} from "styled-components";
 
 export default styled.input`
-    margin-top: 15px;
-    
     border-radius: 4px;
     padding: 10px 12px;
     border: 2px solid rgba(${props => props.error ? '193, 27, 27' : props.theme.primaryText}, 0.9);

@@ -13,7 +13,8 @@ export default styled.form`
         width: 50%;
     }
     
-    & > input {
+    & > input, div {
         min-width: 100px;
+        margin-top: 15px;
     }
 `;
