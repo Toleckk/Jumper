@@ -15,3 +15,7 @@ code {
 button {
   font-family: inherit;
 }
+
+*:focus {
+  outline: none;
+}
