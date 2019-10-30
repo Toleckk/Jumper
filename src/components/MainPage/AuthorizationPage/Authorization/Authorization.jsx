@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from "../../../atoms/Input";
+import {Input, Password} from "../../../atoms/Input";
 import Container from "./Container";
 import Button from "../../../atoms/Button";
 import local from "../../../../local";
@@ -29,8 +29,7 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
                pattern={loginPattern}
                error={errors.login && !values.login}
         />
-        <Input name="password"
-               type="password"
+        <Password name="password"
                placeholder={password}
                onChange={onChange}
                error={errors.password && !values.password}
