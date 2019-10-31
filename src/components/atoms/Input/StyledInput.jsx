@@ -2,9 +2,9 @@ import styled, {css} from "styled-components";
 
 export default styled.input`
     border-radius: 4px;
-    padding: 10px 12px;
+    padding: 7px 12px 7px 11px;
     border: 2px solid rgba(${props => props.error ? '193, 27, 27' : props.theme.primaryText}, 0.9);
-    font-size: medium;
+    font-size: large;
     background: transparent;
     transition: all 300ms;
     color: rgb(${props => props.theme.primaryText});
