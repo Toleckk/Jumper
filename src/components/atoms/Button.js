@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 export default styled.button`
-    align-self: center;
     padding: 10px 12px;
+    
     border-radius: 10px;
     border: 1.5px solid rgb(${props => props.theme.primary});
+    
     background: transparent;
+    
     color: rgb(${props => props.theme.secondaryText});
     font-size: medium;
-    user-select: none;
     text-decoration: none;
+    
+    user-select: none;
     
     transition: all 100ms;
     
