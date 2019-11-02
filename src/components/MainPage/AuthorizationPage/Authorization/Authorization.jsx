@@ -1,7 +1,6 @@
 import React from 'react';
 import {Input, Password} from "../../../atoms/Input";
 import Container from "./Container";
-import Button from "../../../atoms/Button";
 import local from "../../../../local";
 import Type from 'prop-types';
 import validate from "./validation";
