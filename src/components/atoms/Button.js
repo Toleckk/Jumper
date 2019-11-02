@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export default styled.button`
     padding: 10px 12px;
+    min-height: 33px;
+    
+    flex-shrink: 0;
     
     border-radius: 10px;
     border: 1.5px solid rgb(${props => props.theme.primary});
