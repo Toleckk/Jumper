@@ -4,4 +4,5 @@ export default styled.header`
     font-size: x-large;
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 20px;
 `;

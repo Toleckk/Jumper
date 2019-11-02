@@ -2,15 +2,14 @@ import styled from "styled-components";
 
 export default styled.form`
     margin-top: 28px;
-    width: 40%;
+    min-width: 100px;
     
     display: flex;
     flex-direction: column;
     
     align-items: center;
     
-    & > input, div {
-        min-width: 100px;
+    & > * {
         margin-top: 15px;
     }
 `;
