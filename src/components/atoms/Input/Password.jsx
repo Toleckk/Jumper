@@ -14,7 +14,7 @@ const Password = ({pattern, onChange, ...props}) => {
 
     const invert = () => setEye(!eye);
 
-    return <Flex>
+    return <Flex align="center">
         <Input pattern={pattern} onChange={onChange} {...props} type={eye ? 'text' : 'password'}/>
         <Eye onMouseDown={preventFocusChange} onClick={invert} type="button"/>
     </Flex>;

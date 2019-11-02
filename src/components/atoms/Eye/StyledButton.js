@@ -4,7 +4,6 @@ export default styled.button`
     height: 25px;
     width: 25px;
     
-    margin: 0 10px 0 -35px;
-    
-    align-self: center;
+    margin-right: 10px;
+    margin-left: -35px;
 `;
