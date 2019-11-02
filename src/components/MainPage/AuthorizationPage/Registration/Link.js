@@ -2,10 +2,10 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 export default styled(Link)`
-    width: 30%;
+    width: 55%;
     margin-top: 20px;
     
-    & > * {
-        width: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
