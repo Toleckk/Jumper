@@ -6,13 +6,8 @@ export default styled.button`
     border-radius: 10px;
     border: 1.5px solid rgb(${props => props.theme.primary});
     
-    background: transparent;
-    
     color: rgb(${props => props.theme.secondaryText});
     font-size: medium;
-    text-decoration: none;
-    
-    user-select: none;
     
     transition: all 100ms;
     

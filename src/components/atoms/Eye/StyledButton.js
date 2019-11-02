@@ -7,6 +7,4 @@ export default styled.button`
     margin: 0 10px 0 -35px;
     
     align-self: center;
-    
-    background-color: transparent;
 `;
