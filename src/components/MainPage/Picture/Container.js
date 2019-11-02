@@ -1,11 +1,8 @@
 import styled from "styled-components";
+import Flex from "../../atoms/Flex";
 
-export default styled.aside`
+export default styled(Flex).attrs({as: 'aside', column: true, align: 'start'})`
     flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
     padding-top: 11%;
     

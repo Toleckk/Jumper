@@ -1,11 +1,8 @@
 import styled from "styled-components";
+import Flex from "../atoms/Flex";
 
-export default styled.main`
+export default styled(Flex).attrs({as: 'main', column: true, align: 'center'})`
     flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     
     background: rgba(0, 0, 0, 0.2);
     color: rgb(${props => props.theme.primaryText});

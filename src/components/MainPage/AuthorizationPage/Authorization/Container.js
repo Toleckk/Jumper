@@ -1,13 +1,9 @@
 import styled from "styled-components";
+import Flex from "../../../atoms/Flex";
 
-export default styled.form`
+export default styled(Flex).attrs({as: 'form', column: true, align: 'center'})`
     margin-top: 28px;
     min-width: 100px;
-    
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
     
     & > * {
         margin-top: 15px;

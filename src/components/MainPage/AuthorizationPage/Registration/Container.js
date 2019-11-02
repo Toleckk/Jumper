@@ -1,10 +1,7 @@
 import styled from "styled-components";
+import Flex from "../../../atoms/Flex";
 
-export default styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    padding-top: 30px;  
+export default styled(Flex).attrs({column: true, align: 'center'})`
+    padding-top: 30px;
+    min-width: 100px;
 `;

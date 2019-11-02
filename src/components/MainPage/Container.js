@@ -1,9 +1,8 @@
 import styled from "styled-components";
+import Flex from "../atoms/Flex";
 
-export default styled.div`
+export default styled(Flex)`
     min-height: 100vh;
-    display: flex;
-    flex-direction: row;
     
     @media(max-width: 768px){
         flex-direction: column;

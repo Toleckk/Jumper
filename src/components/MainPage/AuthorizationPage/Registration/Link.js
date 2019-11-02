@@ -1,11 +1,9 @@
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import Flex from "../../../atoms/Flex";
 
-export default styled(Link)`
+export default styled(Flex).attrs({as: Link, column: true})`
     width: 55%;
     margin-top: 20px;
-    
-    display: flex;
-    flex-direction: column;
     text-decoration: none;
 `;
