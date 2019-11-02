@@ -5,6 +5,7 @@ import Button from "../../../atoms/Button";
 import local from "../../../../local";
 import Type from 'prop-types';
 import validate from "./validation";
+import StyledButton from "./StyledButton";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -34,7 +35,7 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
                onChange={onChange}
                error={errors.password && !values.password}
         />
-        <Button type="submit">{local.info.signInButton}</Button>
+        <StyledButton type="submit">{local.info.signInButton}</StyledButton>
     </Container>;
 };
 

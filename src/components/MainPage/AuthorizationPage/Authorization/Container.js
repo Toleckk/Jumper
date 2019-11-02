@@ -9,11 +9,6 @@ export default styled.form`
     
     align-items: center;
     
-    & > button {
-        margin-top: 30px;
-        width: 50%;
-    }
-    
     & > input, div {
         min-width: 100px;
         margin-top: 15px;
