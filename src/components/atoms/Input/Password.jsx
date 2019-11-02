@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Input} from './index';
 import Eye from "../Eye";
-import Row from "../Row";
+import Flex from "../Flex";
 
 const preventFocusChange = event => {
     event.stopPropagation();
@@ -14,10 +14,10 @@ const Password = ({pattern, onChange, ...props}) => {
 
     const invert = () => setEye(!eye);
 
-    return <Row>
+    return <Flex>
         <Input pattern={pattern} onChange={onChange} {...props} type={eye ? 'text' : 'password'}/>
         <Eye onMouseDown={preventFocusChange} onClick={invert} type="button"/>
-    </Row>;
+    </Flex>;
 };
 
 Password.propTypes = Input.propTypes;
