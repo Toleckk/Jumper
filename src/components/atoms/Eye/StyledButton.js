@@ -4,6 +4,5 @@ export default styled.button`
     height: 25px;
     width: 25px;
     
-    margin-right: 10px;
-    margin-left: -35px;
+    margin-left: -25px;
 `;
