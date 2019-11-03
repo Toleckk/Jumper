@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "./Form";
-import {Input} from "../../../atoms/Input";
 import StyledButton from "./StyledButton";
+import Input from "../../../atoms/Input";
 
 const Registration = () => <Form>
     <Input placeholder="Ник..."/>

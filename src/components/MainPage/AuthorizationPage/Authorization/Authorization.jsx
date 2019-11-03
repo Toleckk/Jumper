@@ -1,10 +1,10 @@
 import React from 'react';
-import {Input, Password} from "../../../atoms/Input";
 import Container from "./Container";
 import local from "../../../../local";
 import Type from 'prop-types';
 import validate from "./validation";
 import StyledButton from "./StyledButton";
+import Input from "../../../atoms/Input";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -29,7 +29,8 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
                pattern={loginPattern}
                error={errors.login && !values.login}
         />
-        <Password name="password"
+        <Input name="password"
+               password
                placeholder={password}
                onChange={onChange}
                error={errors.password && !values.password}
