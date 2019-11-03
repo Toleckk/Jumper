@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from "./Container";
+import Form from "./Form";
 import local from "../../../../local";
 import Type from 'prop-types';
 import validate from "./validation";
@@ -22,7 +22,7 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
 
     const onChange = createOnChange(errors, setErrors, handleChange);
 
-    return <Container onSubmit={handleSubmit}>
+    return <Form onSubmit={handleSubmit}>
         <Input name="login"
                placeholder={login}
                onChange={onChange}
@@ -36,7 +36,7 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
                error={errors.password && !values.password}
         />
         <StyledButton type="submit">{local.info.signInButton}</StyledButton>
-    </Container>;
+    </Form>;
 };
 
 Authorization.propTypes = {
