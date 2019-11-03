@@ -4,4 +4,5 @@ export default {
     accents: '166, 69, 86',
     primaryText: '186, 186, 199',
     secondaryText: '202, 202, 220',
+    error: '193, 27, 27'
 };
