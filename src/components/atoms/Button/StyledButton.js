@@ -19,4 +19,15 @@ export default styled.button`
         box-shadow: rgba(${props => props.theme.primary}, 0.6) 0 0 1.5rem;
         background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.35));
     }
+    
+    &:focus {
+        border-color: rgb(${props => props.theme.primary});
+        box-shadow: rgba(${props => props.theme.primary}, 0.99) 0 0 2rem;
+        background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.6));
+    }
+    
+    &:active {
+        box-shadow: rgba(${props => props.theme.primary}, 0.9) 0 0 20rem;
+        background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.5));
+    }
 `;
