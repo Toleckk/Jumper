@@ -9,7 +9,7 @@ const Flex = styled.div`
 
 Flex.propTypes = {
     column: Type.bool,
-    align: Type.oneOf(['center', 'start', 'end'])
+    align: Type.oneOf(['center', 'flex-start', 'flex-end'])
 };
 
 export default Flex;
