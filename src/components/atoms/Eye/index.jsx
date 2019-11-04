@@ -1,6 +1,7 @@
 import React from "react";
 import StyledButton from "./StyledButton";
 import Icon from "./Icon";
+import Type from "prop-types";
 
 const preventFocusChange = event => {
     event.stopPropagation();
@@ -25,6 +26,11 @@ const Eye = ({onMouseDown, onMouseUp, ...props}) => {
     return <StyledButton type="button" {...props} onMouseDown={onMousePressed} onMouseUp={onMouseReleased}>
         <Icon/>
     </StyledButton>;
+};
+
+Eye.propTypes = {
+    onMouseDown: Type.func,
+    onMouseUp: Type.func
 };
 
 

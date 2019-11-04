@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import StyledButton from "./StyledButton";
+import Type from "prop-types";
 
 const Button = ({onClick, ...props}) => {
     const ref = useRef(null);
@@ -10,6 +11,10 @@ const Button = ({onClick, ...props}) => {
     };
 
     return <StyledButton onClick={blur} {...props} ref={ref}/>;
+};
+
+Button.propTypes = {
+    onClick: Type.func
 };
 
 export default Button;

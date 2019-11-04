@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Type from "prop-types";
 import StyledFieldset from "./StyledFieldset";
 import StyledLegend from "./StyledLegend";
 import StyledInput from "./StyledInput";
@@ -34,6 +35,15 @@ const Input = ({placeholder, onFocus, onBlur, password, onMouseDown, onMouseUp, 
             {password ? <Eye onMouseDown={setPressed} onMouseUp={setUnpressed}/> : ''}
         </Flex>
     </StyledFieldset>;
+};
+
+Input.propTypes = {
+    placeholder: Type.string,
+    password: Type.bool,
+    onFocus: Type.func,
+    onBlur: Type.func,
+    onMouseDown: Type.func,
+    onMouseUp: Type.func
 };
 
 export default withValidation(Input);

@@ -44,7 +44,7 @@ Authorization.propTypes = {
     handleSubmit: Type.func,
     setErrors: Type.func,
     errors: Type.object,
-    touched: Type.object
+    values: Type.object
 };
 
 export default validate(Authorization);

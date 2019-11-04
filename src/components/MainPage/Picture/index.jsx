@@ -5,7 +5,7 @@ import SVG from "./SVG";
 import {ThemeContext} from "styled-components";
 import Type from 'prop-types';
 
-const Picture = ({size = 24}) => {
+const Picture = ({size}) => {
     const {accents} = useContext(ThemeContext);
     const triangleProps = {size, fill: "transparent", strokeWidth: 0.8};
 
@@ -15,6 +15,10 @@ const Picture = ({size = 24}) => {
             <Triangle x={3.4} y={2.4} stroke={`rgba(${accents}, 0.3)`} {...triangleProps}/>
         </SVG>
     </Container>;
+};
+
+Picture.defaultProps = {
+    size: 24
 };
 
 Picture.propTypes = {

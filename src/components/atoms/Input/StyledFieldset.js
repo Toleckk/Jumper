@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Type from "prop-types";
 
-export default styled.fieldset`
+const StyledFieldset = styled.fieldset`
     border-radius: 4px;
     padding: 0 8px 7px 11px;
     border: 2px solid rgba(${({error, theme}) => error ? theme.error : theme.primaryText}, 0.9);
@@ -12,3 +13,9 @@ export default styled.fieldset`
         border-color: rgb(${theme.secondary});
     `}
 `;
+
+StyledFieldset.propTypes = {
+    focused: Type.bool
+};
+
+export default StyledFieldset;

@@ -1,6 +1,7 @@
 import styled, {css} from "styled-components";
+import Type from "prop-types";
 
-export default styled.div`
+const Ring = styled.div`
     ${({animation, bold, size, theme}) => css`
         width: ${size}vh;
         height: ${size}vh;
@@ -15,3 +16,11 @@ export default styled.div`
         animation: 2s linear -1s infinite normal none running ${animation};
     `}
 `;
+
+Ring.propTypes = {
+    animation: Type.object,
+    size: Type.number,
+    bold: Type.number
+};
+
+export default Ring;
