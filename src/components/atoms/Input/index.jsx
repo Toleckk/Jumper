@@ -6,7 +6,7 @@ import withValidation from "./withValidation";
 import Flex from "../Flex";
 import Eye from "../Eye";
 
-const TestInput = ({placeholder, onFocus, onBlur, password, onMouseDown, onMouseUp, ...props}) => {
+const Input = ({placeholder, onFocus, onBlur, password, onMouseDown, onMouseUp, ...props}) => {
     const [focus, setFocus] = useState(false);
     const setFocused = event => {
         setFocus(true);
@@ -36,4 +36,4 @@ const TestInput = ({placeholder, onFocus, onBlur, password, onMouseDown, onMouse
     </StyledFieldset>;
 };
 
-export default withValidation(TestInput);
+export default withValidation(Input);
