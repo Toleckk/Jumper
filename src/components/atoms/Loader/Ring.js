@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export default styled.div`
-    ${({animation, bold, size, theme}) => `
+    ${({animation, bold, size, theme}) => css`
         width: ${size}vh;
         height: ${size}vh;
         
