@@ -23,13 +23,15 @@ const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) 
     const onChange = createOnChange(errors, setErrors, handleChange);
 
     return <Form onSubmit={handleSubmit}>
-        <Input name="login"
+        <Input id="login"
+               name="login"
                placeholder={login}
                onChange={onChange}
                pattern={loginPattern}
                error={errors.login && !values.login}
         />
-        <Input name="password"
+        <Input id="password"
+               name="password"
                password
                placeholder={password}
                onChange={onChange}
