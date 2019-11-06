@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../Logo";
+import Logo from "./Logo";
 import Header from "../Header";
 import Authorization from "./Authorization/Authorization";
 import Registration from "./Registration";
