@@ -8,10 +8,14 @@ const StyledFieldset = styled.fieldset`
     transition: all 300ms;
     color: rgb(${props => props.theme.primaryText});
     
-    ${({focused, theme}) => focused && `
+    ${({focused, theme, error}) => focused && !error && `
         box-shadow: rgb(${theme.secondary}) 0 0 1.4rem;
         border-color: rgb(${theme.secondary});
     `}
+    
+    ${({error, theme}) => error ? `
+        box-shadow: inset rgba(${theme.error}, 0.9) 0 0 1.1rem;
+    ` : ''}
 `;
 
 StyledFieldset.propTypes = {
