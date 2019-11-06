@@ -1,12 +1,14 @@
 import React from 'react';
-import Logo from "../Logo";
-import Header from "../Header";
-import Registration from "./Registration";
+import Logo from "./Logo";
+import {Redirect, Route} from "react-router-dom";
+import Email from "./Email";
 
 const RegistrationPage = () => <>
     <Logo src="" alt=""/>
-    <Header>Создайте учётную запись</Header>
-    <Registration/>
+    <Redirect to="/registration/email"/>
+    <Route path="/registration/email">
+        <Email/>
+    </Route>
 </>;
 
 export default RegistrationPage;

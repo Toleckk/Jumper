@@ -16,7 +16,7 @@ const MainPage = () => <Container>
             <Route exact path="/">
                 <AuthorizationPage/>
             </Route>
-            <Route exact path="/registration">
+            <Route path="/registration">
                 <Title title="Registration">
                     <RegistrationPage/>
                 </Title>
