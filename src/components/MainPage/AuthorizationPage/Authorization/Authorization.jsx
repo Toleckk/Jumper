@@ -2,7 +2,6 @@ import React from 'react';
 import Form from "./Form";
 import local from "../../../../local";
 import Type from 'prop-types';
-import validate from "./validation";
 import StyledButton from "./StyledButton";
 import Input from "../../../atoms/Input";
 
@@ -17,28 +16,38 @@ const createOnChange = (errors, setErrors, handleChange) => event => {
     return handleChange(event);
 };
 
-const Authorization = ({handleChange, handleSubmit, errors, values, setErrors}) => {
+const validate = ({login, password}) => ({
+    login: !login || !login.length,
+    password: !password || !password.length
+});
+
+const Authorization = () => {
     const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
 
-    const onChange = createOnChange(errors, setErrors, handleChange);
-
-    return <Form onSubmit={handleSubmit}>
-        <Input id="login"
-               name="login"
-               placeholder={login}
-               onChange={onChange}
-               pattern={loginPattern}
-               error={errors.login && !values.login}
-        />
-        <Input id="password"
-               name="password"
-               password
-               placeholder={password}
-               onChange={onChange}
-               error={errors.password && !values.password}
-        />
-        <StyledButton type="submit">{local.info.signInButton}</StyledButton>
-    </Form>;
+    return <Form onSubmit={console.log} validate={validate}>{
+        ({updateState, errors, setErrors}) => {
+            const onChange = createOnChange(errors, setErrors, updateState);
+            return <>
+                <Input id="login"
+                       name="login"
+                       placeholder={login}
+                       pattern={loginPattern}
+                       onChange={onChange}
+                       onBlur={updateState}
+                       error={errors.login}
+                />
+                <Input id="password"
+                       name="password"
+                       password
+                       placeholder={password}
+                       onChange={onChange}
+                       onBlur={updateState}
+                       error={errors.password}
+                />
+                <StyledButton type="submit">{local.info.signInButton}</StyledButton>
+            </>;
+        }
+    }</Form>;
 };
 
 Authorization.propTypes = {
@@ -49,4 +58,4 @@ Authorization.propTypes = {
     values: Type.object
 };
 
-export default validate(Authorization);
+export default Authorization;
