@@ -30,7 +30,7 @@ const Input = ({id, placeholder, onFocus, onBlur, password, onMouseDown, onMouse
 
     return <StyledFieldset focused={focus} className={className} error={error}>
         <StyledLegend focused={focus}>
-            <label for={id}>{placeholder}</label>
+            <label htmlFor={id}>{placeholder}</label>
         </StyledLegend>
         <Flex>
             <StyledInput

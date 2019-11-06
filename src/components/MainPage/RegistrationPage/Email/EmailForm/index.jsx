@@ -8,12 +8,12 @@ import local from "../../../../../local";
 
 const Registration = () => <Form>
     <Row>
-        <label for="nickname">{local.registration.one.nickname}</label>
+        <label htmlFor="nickname">{local.registration.one.nickname}</label>
         <StyledInput id="nickname" placeholder={local.registration.one.nicknameLegend}/>
     </Row>
     <Divider/>
     <Row>
-        <label for="email">{local.registration.one.email}</label>
+        <label htmlFor="email">{local.registration.one.email}</label>
         <StyledInput id="email" placeholder={local.registration.one.emailLegend}/>
     </Row>
     <Divider/>
