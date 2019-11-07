@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import Flex from "../../../../atoms/Flex";
+import Form from "../../../../atoms/Form";
 
-export default styled(Flex).attrs({as: 'form', column: true, align: 'center'})`
-    width: 100%;
+export default styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
