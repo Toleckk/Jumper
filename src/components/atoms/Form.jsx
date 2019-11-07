@@ -14,21 +14,26 @@ const createOnSubmit = (onSubmit, validate, data, setErrors) => event => {
     return false;
 };
 
-const Form = ({children, onSubmit, validate, ...props}) => {
+const Form = ({children, onSubmit, validate, Component, ...props}) => {
     const [data, setData] = useState({});
     const [errors, setErrors] = useState({});
 
     const updateState = ({target: {name, value}}) => setData({...data, [name]: value});
 
-    return <form {...props} onSubmit={createOnSubmit(onSubmit, validate, data, setErrors)}>
+    return <Component {...props} onSubmit={createOnSubmit(onSubmit, validate, data, setErrors)}>
         {children({updateState, errors, setErrors}, data)}
-    </form>;
+    </Component>;
+};
+
+Form.defaultProps = {
+    Component: 'form'
 };
 
 Form.propTypes = {
-    children: Type.oneOfType([Type.array, Type.instanceOf(React.Component), Type.func]).isRequired,
+    children: Type.func.isRequired,
     onSubmit: Type.func.isRequired,
-    validate: Type.func
+    validate: Type.func,
+    Component: Type.element
 };
 
 export default Form;

@@ -1,9 +1,10 @@
 import React from 'react';
-import Form from "./Form";
+import StyledForm from "./StyledForm";
 import local from "../../../../local";
 import Type from 'prop-types';
 import StyledButton from "./StyledButton";
 import Input from "../../../atoms/Input";
+import Form from "../../../atoms/Form";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -24,7 +25,7 @@ const validate = ({login, password}) => ({
 const Authorization = () => {
     const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
 
-    return <Form onSubmit={console.log} validate={validate}>{
+    return <Form onSubmit={console.log} validate={validate} Component={StyledForm}>{
         ({updateState, errors, setErrors}) => {
             const onChange = createOnChange(errors, setErrors, updateState);
             return <>

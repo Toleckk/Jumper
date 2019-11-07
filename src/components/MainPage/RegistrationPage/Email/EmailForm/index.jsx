@@ -1,5 +1,6 @@
 import React from 'react';
-import Form from "./Form";
+import Form from '../../../../atoms/Form';
+import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
 import Divider from "../../../Divider";
 import Row from "./Row";
@@ -20,7 +21,7 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
-const Registration = () => <Form onSubmit={console.log} validate={validate}>{
+const Registration = () => <Form onSubmit={console.log} validate={validate} Component={StyledForm}>{
     ({updateState, errors, setErrors}) => {
         const onChange = createOnChange(errors, setErrors, updateState);
         return <>
