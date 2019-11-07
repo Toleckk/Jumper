@@ -7,29 +7,21 @@ import Row from "./Row";
 import StyledInput from "./StyledInput";
 import local from "../../../../../local";
 
-const createOnChange = (errors, setErrors, handleChange) => event => {
-    const {value, name} = event.target;
-
-    if (value)
-        setErrors({...errors, [name]: false});
-
-    return handleChange(event);
-};
-
 const validate = ({nickname, email}) => ({
     nickname: !nickname || !nickname.length,
     email: !email || !email.length
 });
 
-const Registration = () => <Form onSubmit={console.log} validate={validate} Component={StyledForm}>{
-    ({updateState, errors, setErrors}) => {
-        const onChange = createOnChange(errors, setErrors, updateState);
-        return <>
+const Registration = () => {
+    const {one, nextButton} = local.registration;
+
+    return <Form onSubmit={console.log} validate={validate} Component={StyledForm} resetFieldErrorOnChange>{
+        ({updateState, errors, onChange}) => <>
             <Row>
-                <label htmlFor="nickname">{local.registration.one.nickname}</label>
+                <label htmlFor="nickname">{one.nickname}</label>
                 <StyledInput id="nickname"
                              name="nickname"
-                             placeholder={local.registration.one.nicknameLegend}
+                             placeholder={one.nicknameLegend}
                              onBlur={updateState}
                              onChange={onChange}
                              error={errors.nickname}
@@ -37,19 +29,19 @@ const Registration = () => <Form onSubmit={console.log} validate={validate} Comp
             </Row>
             <Divider/>
             <Row>
-                <label htmlFor="email">{local.registration.one.email}</label>
+                <label htmlFor="email">{one.email}</label>
                 <StyledInput id="email"
                              name="email"
-                             placeholder={local.registration.one.emailLegend}
+                             placeholder={one.emailLegend}
                              onChange={onChange}
                              onBlur={updateState}
                              error={errors.email}
                 />
             </Row>
             <Divider/>
-            <StyledButton> {local.registration.nextButton}</StyledButton>
+            <StyledButton> {nextButton}</StyledButton>
         </>
-    }
-}</Form>;
+    }</Form>;
+};
 
 export default Registration;

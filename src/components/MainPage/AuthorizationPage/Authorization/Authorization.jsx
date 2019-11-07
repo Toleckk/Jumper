@@ -8,15 +8,6 @@ import Form from "../../../atoms/Form";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
-const createOnChange = (errors, setErrors, handleChange) => event => {
-    const {value, name} = event.target;
-
-    if (value)
-        setErrors({...errors, [name]: false});
-
-    return handleChange(event);
-};
-
 const validate = ({login, password}) => ({
     login: !login || !login.length,
     password: !password || !password.length
@@ -25,29 +16,26 @@ const validate = ({login, password}) => ({
 const Authorization = () => {
     const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
 
-    return <Form onSubmit={console.log} validate={validate} Component={StyledForm}>{
-        ({updateState, errors, setErrors}) => {
-            const onChange = createOnChange(errors, setErrors, updateState);
-            return <>
-                <Input id="login"
-                       name="login"
-                       placeholder={login}
-                       pattern={loginPattern}
-                       onChange={onChange}
-                       onBlur={updateState}
-                       error={errors.login}
-                />
-                <Input id="password"
-                       name="password"
-                       password
-                       placeholder={password}
-                       onChange={onChange}
-                       onBlur={updateState}
-                       error={errors.password}
-                />
-                <StyledButton type="submit">{local.info.signInButton}</StyledButton>
-            </>;
-        }
+    return <Form onSubmit={console.log} validate={validate} Component={StyledForm} resetFieldErrorOnChange>{
+        ({updateState, errors, onChange}) => <>
+            <Input id="login"
+                   name="login"
+                   placeholder={login}
+                   pattern={loginPattern}
+                   onChange={onChange}
+                   onBlur={updateState}
+                   error={errors.login}
+            />
+            <Input id="password"
+                   name="password"
+                   password
+                   placeholder={password}
+                   onChange={onChange}
+                   onBlur={updateState}
+                   error={errors.password}
+            />
+            <StyledButton type="submit">{local.info.signInButton}</StyledButton>
+        </>
     }</Form>;
 };
 
