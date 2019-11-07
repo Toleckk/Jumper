@@ -1,7 +1,6 @@
 import Type from "prop-types";
 import React, {useState} from "react";
-import createOnSubmit from "./createOnSubmit";
-import createOnChange from "./createOnChange";
+import {createOnSubmit, createOnChange} from "./helpers";
 
 const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, Component, validateOnChange, ...props}) => {
     const [data, setData] = useState({});
