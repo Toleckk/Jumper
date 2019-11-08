@@ -20,7 +20,7 @@ const Authorization = () => {
         ({updateState, errors, onChange}) => <>
             <Input id="login"
                    name="login"
-                   placeholder={login}
+                   legend={login}
                    pattern={loginPattern}
                    onChange={onChange}
                    onBlur={updateState}
@@ -29,7 +29,7 @@ const Authorization = () => {
             <Input id="password"
                    name="password"
                    password
-                   placeholder={password}
+                   legend={password}
                    onChange={onChange}
                    onBlur={updateState}
                    error={errors.password}

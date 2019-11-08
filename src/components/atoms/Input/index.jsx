@@ -7,7 +7,7 @@ import withValidation from "./withValidation";
 import Flex from "../Flex";
 import Eye from "../Eye";
 
-const Input = ({id, placeholder, onFocus, onBlur, password, onMouseDown, onMouseUp, className, error, ...props}) => {
+const Input = ({id, legend, onFocus, onBlur, password, onMouseDown, onMouseUp, className, error, ...props}) => {
     const [focus, setFocus] = useState(false);
     const setFocused = event => {
         setFocus(true);
@@ -30,7 +30,7 @@ const Input = ({id, placeholder, onFocus, onBlur, password, onMouseDown, onMouse
 
     return <StyledFieldset focused={focus} className={className} error={error}>
         <StyledLegend focused={focus}>
-            <label htmlFor={id}>{placeholder}</label>
+            <label htmlFor={id}>{legend}</label>
         </StyledLegend>
         <Flex>
             <StyledInput
@@ -47,7 +47,7 @@ const Input = ({id, placeholder, onFocus, onBlur, password, onMouseDown, onMouse
 
 Input.propTypes = {
     id: Type.string,
-    placeholder: Type.string,
+    legend: Type.string,
     password: Type.bool,
     onFocus: Type.func,
     onBlur: Type.func,

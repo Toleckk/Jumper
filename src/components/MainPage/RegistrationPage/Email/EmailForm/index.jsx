@@ -21,7 +21,7 @@ const Registration = () => {
                 <label htmlFor="nickname">{one.nickname}</label>
                 <StyledInput id="nickname"
                              name="nickname"
-                             placeholder={one.nicknameLegend}
+                             legend={one.nicknameLegend}
                              onBlur={updateState}
                              onChange={onChange}
                              error={errors.nickname}
@@ -32,7 +32,7 @@ const Registration = () => {
                 <label htmlFor="email">{one.email}</label>
                 <StyledInput id="email"
                              name="email"
-                             placeholder={one.emailLegend}
+                             legend={one.emailLegend}
                              onChange={onChange}
                              onBlur={updateState}
                              error={errors.email}
