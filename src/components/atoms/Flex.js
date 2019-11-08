@@ -11,7 +11,7 @@ const Flex = styled.div`
 Flex.propTypes = {
     column: Type.bool,
     align: Type.oneOf(['center', 'flex-start', 'flex-end']),
-    justify: Type.oneOf(['flex-start', 'flex-end', 'space-between', 'space-around'])
+    justify: Type.oneOf(['flex-start', 'flex-end', 'space-between', 'space-around']),
 };
 
 export default Flex;

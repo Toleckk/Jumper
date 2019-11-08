@@ -35,7 +35,7 @@ Eye.defaultProps = {
 
 Eye.propTypes = {
     onMouseDown: Type.func,
-    onMouseUp: Type.func
+    onMouseUp: Type.func,
 };
 
 

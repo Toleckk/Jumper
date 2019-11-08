@@ -6,7 +6,7 @@ export default {
         signUpButton: 'Регистрация',
         signInButton: 'Войти',
         loginInputPlaceholder: 'Логин',
-        passwordInputPlaceholder: 'Пароль'
+        passwordInputPlaceholder: 'Пароль',
     }, registration: {
         one: {
             header: 'Создайте учётную запись',
@@ -14,8 +14,8 @@ export default {
             nickname: 'Придумайте уникальное имя, по которому другие пользователи смогут вас найти',
             email: 'Введите ваш действительный адрес электронной почты',
             nicknameLegend: 'Ник',
-            emailLegend: 'Электронная почта'
+            emailLegend: 'Электронная почта',
         },
-        nextButton: 'Далее'
+        nextButton: 'Далее',
     }
 };

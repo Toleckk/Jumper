@@ -23,9 +23,9 @@ Ring.defaultProps = {
 };
 
 Ring.propTypes = {
-    animation: Type.object,
+    animation: Type.object.isRequired,
     size: Type.number,
-    bold: Type.number
+    bold: Type.number,
 };
 
 export default Ring;

@@ -20,7 +20,7 @@ Triangle.defaultProps = {
 Triangle.propTypes = {
     x: Type.number,
     y: Type.number,
-    size: Type.number
+    size: Type.number,
 };
 
 export default Triangle;

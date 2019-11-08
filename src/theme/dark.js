@@ -3,5 +3,5 @@ export default {
     secondary: '163, 67, 81',
     primaryText: '186, 186, 199',
     secondaryText: '202, 202, 220',
-    error: '193, 27, 27'
+    error: '193, 27, 27',
 };

@@ -11,12 +11,12 @@ const Loader = props => <Container>
 
 Loader.defaultProps = {
     size: 30,
-    bold: 15
+    bold: 15,
 };
 
 Loader.propTypes = {
     size: Type.number,
-    bold: Type.number
+    bold: Type.number,
 };
 
 export default Loader;

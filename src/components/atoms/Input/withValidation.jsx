@@ -21,7 +21,7 @@ const withValidation = Component => {
 
     ValidatedComponent.propTypes = {
         pattern: Type.instanceOf(RegExp),
-        onChange: Type.func
+        onChange: Type.func,
     };
 
     return ValidatedComponent;

@@ -18,11 +18,11 @@ const Picture = ({size}) => {
 };
 
 Picture.defaultProps = {
-    size: 24
+    size: 24,
 };
 
 Picture.propTypes = {
-    size: Type.number
+    size: Type.number,
 };
 
 export default Picture;
