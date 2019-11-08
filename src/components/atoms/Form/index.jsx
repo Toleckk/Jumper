@@ -26,7 +26,7 @@ Form.propTypes = {
     children: Type.func.isRequired,
     onSubmit: Type.func.isRequired,
     validate: Type.func,
-    Component: Type.node,
+    Component: Type.elementType,
     resetFieldErrorOnChange: Type.bool,
     validateOnChange: Type.bool,
 };
