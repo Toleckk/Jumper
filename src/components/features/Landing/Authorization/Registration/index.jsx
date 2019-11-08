@@ -11,4 +11,4 @@ const Registration = () => <Container>
     </Link>
 </Container>;
 
-export default Registration;
+export default React.memo(Registration);

@@ -19,4 +19,4 @@ Loader.propTypes = {
     bold: Type.number,
 };
 
-export default Loader;
+export default React.memo(Loader);

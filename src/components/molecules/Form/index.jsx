@@ -31,4 +31,4 @@ Form.propTypes = {
     validateOnChange: Type.bool,
 };
 
-export default Form;
+export default React.memo(Form);

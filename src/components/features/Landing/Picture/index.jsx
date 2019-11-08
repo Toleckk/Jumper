@@ -25,4 +25,4 @@ Picture.propTypes = {
     size: Type.number,
 };
 
-export default Picture;
+export default React.memo(Picture);

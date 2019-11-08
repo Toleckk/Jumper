@@ -39,4 +39,4 @@ Eye.propTypes = {
 };
 
 
-export default Eye;
+export default React.memo(Eye);

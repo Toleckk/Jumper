@@ -16,4 +16,4 @@ const AuthorizationPage = () => <>
     <Registration/>
 </>;
 
-export default AuthorizationPage;
+export default React.memo(AuthorizationPage);

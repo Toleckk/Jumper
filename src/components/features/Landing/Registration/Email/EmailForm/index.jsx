@@ -44,4 +44,4 @@ const Registration = () => {
     }</Form>;
 };
 
-export default Registration;
+export default React.memo(Registration);

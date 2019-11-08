@@ -9,4 +9,4 @@ const Icon = () => {
     </svg>;
 };
 
-export default Icon;
+export default React.memo(Icon);

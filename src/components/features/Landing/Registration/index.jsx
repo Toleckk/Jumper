@@ -11,4 +11,4 @@ const RegistrationPage = () => <>
     </Route>
 </>;
 
-export default RegistrationPage;
+export default React.memo(RegistrationPage);

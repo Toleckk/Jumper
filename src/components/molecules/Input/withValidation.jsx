@@ -24,7 +24,7 @@ const withValidation = Component => {
         onChange: Type.func,
     };
 
-    return ValidatedComponent;
+    return React.memo(ValidatedComponent);
 };
 
 

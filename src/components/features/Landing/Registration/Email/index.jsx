@@ -12,4 +12,4 @@ const Email = () => <>
     <Registration/>
 </>;
 
-export default Email;
+export default React.memo(Email);

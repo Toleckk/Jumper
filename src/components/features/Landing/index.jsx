@@ -25,4 +25,4 @@ const Landing = () => <Container>
     </Main>
 </Container>;
 
-export default Landing;
+export default React.memo(Landing);

@@ -23,4 +23,4 @@ Triangle.propTypes = {
     size: Type.number,
 };
 
-export default Triangle;
+export default React.memo(Triangle);

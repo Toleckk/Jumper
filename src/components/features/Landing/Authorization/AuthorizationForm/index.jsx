@@ -38,4 +38,4 @@ const Authorization = () => {
     }</Form>;
 };
 
-export default Authorization;
+export default React.memo(Authorization);
