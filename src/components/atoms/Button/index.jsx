@@ -13,6 +13,10 @@ const Button = ({onClick, ...props}) => {
     return <StyledButton onClick={blur} {...props} ref={ref}/>;
 };
 
+Button.defaultProps = {
+    onClick: null,
+};
+
 Button.propTypes = {
     onClick: Type.func
 };

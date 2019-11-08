@@ -17,6 +17,11 @@ const Ring = styled.div`
     `}
 `;
 
+Ring.defaultProps = {
+    size: 0,
+    bold: 0,
+};
+
 Ring.propTypes = {
     animation: Type.object,
     size: Type.number,

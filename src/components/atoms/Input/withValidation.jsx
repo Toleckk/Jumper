@@ -14,6 +14,11 @@ const withValidation = Component => {
         return <Component onChange={onChange} {...props}/>;
     };
 
+    ValidatedComponent.defaultProps = {
+        pattern: null,
+        onChange: null,
+    };
+
     ValidatedComponent.propTypes = {
         pattern: Type.instanceOf(RegExp),
         onChange: Type.func

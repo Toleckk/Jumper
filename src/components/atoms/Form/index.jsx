@@ -15,9 +15,11 @@ const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, Component,
 };
 
 Form.defaultProps = {
+    onSubmit: null,
+    validate: null,
+    resetFieldErrorOnChange: false,
     Component: 'form',
     validateOnChange: false,
-    resetFieldErrorOnChange: false
 };
 
 Form.propTypes = {

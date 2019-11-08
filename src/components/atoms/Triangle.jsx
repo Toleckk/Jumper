@@ -13,7 +13,8 @@ const Triangle = ({x, y, size, ...props}) => {
 
 Triangle.defaultProps = {
     x: 0,
-    y: 0
+    y: 0,
+    size: 0,
 };
 
 Triangle.propTypes = {

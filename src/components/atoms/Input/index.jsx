@@ -45,6 +45,17 @@ const Input = ({id, legend, onFocus, onBlur, password, onMouseDown, onMouseUp, c
     </StyledFieldset>;
 };
 
+Input.defaultProps = {
+    legend: '',
+    className: '',
+    password: false,
+    error: false,
+    onFocus: null,
+    onBlur: null,
+    onMouseDown: null,
+    onMouseUp: null,
+};
+
 Input.propTypes = {
     id: Type.string,
     legend: Type.string,

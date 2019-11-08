@@ -28,6 +28,11 @@ const Eye = ({onMouseDown, onMouseUp, ...props}) => {
     </StyledButton>;
 };
 
+Eye.defaultProps = {
+    onMouseDown: null,
+    onMouseUp: null,
+};
+
 Eye.propTypes = {
     onMouseDown: Type.func,
     onMouseUp: Type.func
