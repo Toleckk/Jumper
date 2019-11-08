@@ -9,7 +9,7 @@ const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, Component,
     const updateState = ({target: {name, value}}) => setData({...data, [name]: value});
     const onChange = createOnChange(updateState, resetFieldErrorOnChange, errors, setErrors, validateOnChange);
 
-    return <Component {...props} onSubmit={createOnSubmit(onSubmit, validate, data, setErrors)}>
+    return <Component onSubmit={createOnSubmit(onSubmit, validate, data, setErrors)} {...props}>
         {children({updateState, errors, setErrors, onChange}, data)}
     </Component>;
 };
