@@ -39,7 +39,7 @@ const Registration = () => {
                 />
             </Row>
             <Divider/>
-            <StyledButton> {nextButton}</StyledButton>
+            <StyledButton>{nextButton}</StyledButton>
         </>
     }</Form>;
 };
