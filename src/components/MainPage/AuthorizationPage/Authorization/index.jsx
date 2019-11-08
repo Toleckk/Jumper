@@ -1,7 +1,6 @@
 import React from 'react';
 import StyledForm from "./StyledForm";
 import local from "../../../../local";
-import Type from 'prop-types';
 import StyledButton from "./StyledButton";
 import Input from "../../../atoms/Input";
 import Form from "../../../atoms/Form";
@@ -37,14 +36,6 @@ const Authorization = () => {
             <StyledButton type="submit">{local.info.signInButton}</StyledButton>
         </>
     }</Form>;
-};
-
-Authorization.propTypes = {
-    handleChange: Type.func,
-    handleSubmit: Type.func,
-    setErrors: Type.func,
-    errors: Type.object,
-    values: Type.object
 };
 
 export default Authorization;
