@@ -9,7 +9,7 @@ import Loader from "../../molecules/Loader";
 const AuthorizationPage = React.lazy(() => import('./Authorization'));
 const RegistrationPage = React.lazy(() => import('./Registration'));
 
-const MainPage = () => <Container>
+const Landing = () => <Container>
     <Picture/>
     <Main>
         <Suspense fallback={<Loader/>}>
@@ -25,4 +25,4 @@ const MainPage = () => <Container>
     </Main>
 </Container>;
 
-export default MainPage;
+export default Landing;
