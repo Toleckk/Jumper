@@ -7,7 +7,7 @@ import withValidation from "./withValidation";
 import Flex from "../Flex";
 import Eye from "../Eye";
 
-const Input = ({id, legend, onFocus, onBlur, password, onMouseDown, onMouseUp, className, error, ...props}) => {
+const Input = ({id, legend, className, password, error, onFocus, onBlur, onMouseDown, onMouseUp, ...props}) => {
     const [focus, setFocus] = useState(false);
     const setFocused = event => {
         setFocus(true);
@@ -57,15 +57,15 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-    id: Type.string,
+    id: Type.string.isRequired,
     legend: Type.string,
+    className: Type.string,
     password: Type.bool,
+    error: Type.bool,
     onFocus: Type.func,
     onBlur: Type.func,
     onMouseDown: Type.func,
     onMouseUp: Type.func,
-    className: Type.string,
-    error: Type.bool
 };
 
 export default withValidation(Input);
