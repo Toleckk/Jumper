@@ -22,7 +22,7 @@ const StyledFieldset = styled.fieldset`
 `;
 
 StyledFieldset.propTypes = {
-    focused: Type.bool
+    focused: Type.bool,
 };
 
 export default StyledFieldset;
