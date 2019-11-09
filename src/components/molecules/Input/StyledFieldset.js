@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Type from "prop-types";
 
 const StyledFieldset = styled.fieldset`
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 100px;
     border-radius: 4px;
     padding: 0 8px 7px 11px;
     border: 2px solid rgba(${({error, theme}) => error ? theme.error : theme.primaryText}, 0.9);

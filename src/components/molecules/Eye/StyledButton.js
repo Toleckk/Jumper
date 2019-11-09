@@ -4,8 +4,6 @@ export default styled.button`
     height: 23px;
     width: 23px;
     
-    margin-left: -23px;
-    
     opacity: 0.5;
     
     transition: all 300ms;
