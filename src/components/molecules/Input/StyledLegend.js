@@ -10,7 +10,7 @@ const StyledLegend = styled.legend`
 `;
 
 StyledLegend.propTypes = {
-    focused: Type.bool
+    focused: Type.bool,
 };
 
 export default StyledLegend;
