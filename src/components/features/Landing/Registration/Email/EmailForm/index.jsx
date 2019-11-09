@@ -12,7 +12,7 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
-const Registration = () => {
+const EmailForm = () => {
     const {one, nextButton} = local.registration;
 
     return <Form onSubmit={console.log} validate={validate} Component={StyledForm} resetFieldErrorOnChange>{
@@ -44,4 +44,4 @@ const Registration = () => {
     }</Form>;
 };
 
-export default React.memo(Registration);
+export default React.memo(EmailForm);
