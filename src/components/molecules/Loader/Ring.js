@@ -23,7 +23,7 @@ Ring.defaultProps = {
 };
 
 Ring.propTypes = {
-    animation: Type.object.isRequired,
+    animation: Type.object,
     size: Type.number,
     bold: Type.number,
 };
