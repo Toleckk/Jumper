@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Flex from "../../../atoms/Flex";
 
-export default styled(Flex).attrs({as: 'main', column: true, align: 'center'})`
+export default styled(Flex).attrs({as: 'main', direction: 'column', align: 'center'})`
     flex: 1;
     
     background: rgba(0, 0, 0, 0.2);

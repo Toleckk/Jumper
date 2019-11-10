@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Container from "./Container";
-import Triangle from "../../../atoms/Triangle";
+import Triangle from "../atoms/Triangle";
 import SVG from "./SVG";
 import {ThemeContext} from "styled-components";
 import Type from 'prop-types';
