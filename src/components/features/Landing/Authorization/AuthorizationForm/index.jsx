@@ -15,7 +15,7 @@ const validate = ({login, password}) => ({
 const Authorization = () => {
     const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
 
-    return <Form onSubmit={console.log} validate={validate} Component={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Input id="login"
                    name="login"
