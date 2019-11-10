@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from '../../../../../molecules/Form';
-import StyledForm from "./StyledForm";
-import StyledButton from "./StyledButton";
-import Divider from "../../../atoms/Divider";
-import Row from "./Row";
-import StyledInput from "./StyledInput";
-import local from "../../../../../../local";
+import Form from '../../../../molecules/Form';
+import StyledForm from "../atoms/StyledForm";
+import StyledButton from "../atoms/StyledButton";
+import Divider from "../../atoms/Divider";
+import Row from "../atoms/Row";
+import StyledInput from "../atoms/StyledInput";
+import local from "../../../../../local";
 
 const validate = ({nickname, email}) => ({
     nickname: !nickname || !nickname.length,
@@ -15,7 +15,7 @@ const validate = ({nickname, email}) => ({
 const EmailForm = () => {
     const {one, nextButton} = local.registration;
 
-    return <Form onSubmit={console.log} validate={validate} Component={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Row>
                 <label htmlFor="nickname">{one.nickname}</label>
