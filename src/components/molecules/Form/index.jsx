@@ -1,13 +1,25 @@
 import Type from "prop-types";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {createOnSubmit, createOnChange} from "./helpers";
 
 const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, as: Component, validateOnChange, ...props}) => {
     const [data, setData] = useState({});
     const [errors, setErrors] = useState({});
 
+    useEffect(
+        () => {
+            if(validateOnChange) {
+                const newErrors = validateOnChange === true ? validate(data) : validateOnChange(data);
+                if (newErrors)
+                    setErrors({...errors, ...newErrors});
+            }
+        },
+        [data],
+    );
+
+
     const updateState = ({target: {name, value}}) => setData({...data, [name]: value});
-    const onChange = createOnChange(updateState, resetFieldErrorOnChange, errors, setErrors, validateOnChange);
+    const onChange = createOnChange(updateState, resetFieldErrorOnChange, errors, setErrors, validateOnChange, data);
 
     return <Component onSubmit={createOnSubmit(onSubmit, validate, data, setErrors)} {...props}>
         {children({updateState, errors, setErrors, onChange}, data)}
