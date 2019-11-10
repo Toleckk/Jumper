@@ -2,7 +2,7 @@ import Type from "prop-types";
 import React, {useState} from "react";
 import {createOnSubmit, createOnChange} from "./helpers";
 
-const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, Component, validateOnChange, ...props}) => {
+const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, as: Component, validateOnChange, ...props}) => {
     const [data, setData] = useState({});
     const [errors, setErrors] = useState({});
 
@@ -17,18 +17,18 @@ const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, Component,
 Form.defaultProps = {
     onSubmit: null,
     validate: null,
-    resetFieldErrorOnChange: false,
-    Component: 'form',
     validateOnChange: false,
+    resetFieldErrorOnChange: false,
+    as: 'form',
 };
 
 Form.propTypes = {
     children: Type.func.isRequired,
     onSubmit: Type.func.isRequired,
     validate: Type.func,
-    Component: Type.elementType,
+    validateOnChange: Type.oneOfType([Type.func, Type.bool]),
+    as: Type.elementType,
     resetFieldErrorOnChange: Type.bool,
-    validateOnChange: Type.bool,
 };
 
 export default React.memo(Form);
