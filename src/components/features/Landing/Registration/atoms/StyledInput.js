@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Input from "../../../../../molecules/Input"
+import Input from "../../../../molecules/Input"
 
 export default styled(Input)`
     margin-left: 10px;
