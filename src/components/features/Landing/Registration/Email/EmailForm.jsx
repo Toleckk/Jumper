@@ -7,6 +7,8 @@ import Row from "../atoms/Row";
 import StyledInput from "../atoms/StyledInput";
 import {useLocalizationContext} from "../../../../../contexts/Localization";
 
+const loginPattern = /^[-_0-9A-Za-z.@]*$/;
+
 const validate = ({nickname, email}) => ({
     nickname: !nickname || !nickname.length,
     email: !email || !email.length
@@ -22,6 +24,7 @@ const EmailForm = () => {
                 <label htmlFor="nickname">{one.nickname}</label>
                 <StyledInput id="nickname"
                              name="nickname"
+                             pattern={loginPattern}
                              legend={one.nicknameLegend}
                              onBlur={updateState}
                              onChange={onChange}
