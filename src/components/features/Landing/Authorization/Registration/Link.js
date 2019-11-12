@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Flex from "../../../../atoms/Flex";
 
 export default styled(Flex).attrs({as: Link, direction: 'column', tabIndex: -1})`
-    width: 55%;
     margin-top: 20px;
     text-decoration: none;
 `;
