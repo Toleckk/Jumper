@@ -5,7 +5,7 @@ import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
 import Row from "../atoms/Row";
 import StyledInput from "../atoms/StyledInput";
-import local from "../../../../../local";
+import {useLocalizationContext} from "../../../../../contexts/Localization";
 
 const validate = ({nickname, email}) => ({
     nickname: !nickname || !nickname.length,
@@ -13,7 +13,8 @@ const validate = ({nickname, email}) => ({
 });
 
 const EmailForm = () => {
-    const {one, nextButton} = local.registration;
+    const {registration} = useLocalizationContext();
+    const {one, nextButton} = registration;
 
     return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>

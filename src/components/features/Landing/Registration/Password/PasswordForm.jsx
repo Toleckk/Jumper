@@ -5,7 +5,7 @@ import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
 import Row from "../atoms/Row";
 import StyledInput from "../atoms/StyledInput";
-import local from "../../../../../local";
+import {useLocalizationContext} from "../../../../../contexts/Localization";
 
 const isValidPassword = text => (
     /[a-z]+/.test(text) && /[A-Z]+/.test(text) && /\d/.test(text) && text.length >= 8 && text.length <= 50
@@ -22,7 +22,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {third, nextButton} = local.registration;
+    const {registration: {third, nextButton}} = useLocalizationContext();
 
     return <Form as={StyledForm}
                  onSubmit={console.log}

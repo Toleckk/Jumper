@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledForm from "./StyledForm";
-import local from "../../../../../local";
+import {useLocalizationContext} from "../../../../../contexts/Localization";
 import StyledButton from "./StyledButton";
 import Input from "../../../../molecules/Input";
 import Form from "../../../../molecules/Form";
@@ -13,7 +13,8 @@ const validate = ({login, password}) => ({
 });
 
 const Authorization = () => {
-    const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = local.info;
+    const {info} = useLocalizationContext();
+    const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = info;
 
     return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
@@ -33,7 +34,7 @@ const Authorization = () => {
                    onBlur={updateState}
                    error={errors.password}
             />
-            <StyledButton type="submit">{local.info.signInButton}</StyledButton>
+            <StyledButton type="submit">{info.signInButton}</StyledButton>
         </>
     }</Form>;
 };
