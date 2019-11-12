@@ -4,6 +4,7 @@ import {useLocalizationContext} from "../../../../../contexts/Localization";
 import StyledButton from "./StyledButton";
 import Input from "../../../../molecules/Input";
 import Form from "../../../../molecules/Form";
+import Link from "./Link";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -35,6 +36,7 @@ const Authorization = () => {
                    error={errors.password}
             />
             <StyledButton type="submit">{info.signInButton}</StyledButton>
+            <Link to="/forget">Забыли пароль?</Link>
         </>
     }</Form>;
 };
