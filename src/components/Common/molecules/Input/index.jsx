@@ -1,5 +1,6 @@
 import React from "react";
 import Type from "prop-types";
+import nanoid from "nanoid";
 import {Flex} from "components/Common/atoms";
 import Eye from "../Eye";
 import StyledFieldset from "./StyledFieldset";
@@ -30,6 +31,7 @@ const Input = ({id, legend, className, password, error, onFocus, onBlur, ...prop
 };
 
 Input.defaultProps = {
+    id: 'id' + nanoid(10),
     legend: '',
     className: '',
     password: false,
@@ -41,7 +43,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-    id: Type.string.isRequired,
+    id: Type.string,
     legend: Type.string,
     className: Type.string,
     password: Type.bool,
