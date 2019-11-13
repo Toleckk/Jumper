@@ -22,7 +22,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {registration: {third, nextButton}} = useLocalizationContext();
+    const {registration: {third}, nextButton} = useLocalizationContext();
 
     return <Form as={StyledForm}
                  onSubmit={console.log}

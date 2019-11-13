@@ -15,7 +15,7 @@ const validate = ({nickname, email}) => ({
 });
 
 const EmailForm = () => {
-    const {registration: {one, nextButton}} = useLocalizationContext();
+    const {registration: {one}, nextButton} = useLocalizationContext();
 
     return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>

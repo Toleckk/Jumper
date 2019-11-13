@@ -15,7 +15,7 @@ const validate = ({login, password}) => ({
 
 const Authorization = () => {
     const {info} = useLocalizationContext();
-    const {passwordInputPlaceholder: password, loginInputPlaceholder: login} = info;
+    const {passwordInputPlaceholder: password, loginInputPlaceholder: login, forgot} = info;
 
     return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
