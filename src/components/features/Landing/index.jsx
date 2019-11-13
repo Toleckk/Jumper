@@ -8,6 +8,7 @@ import Loader from "../../molecules/Loader";
 
 const AuthorizationPage = React.lazy(() => import('./Authorization'));
 const RegistrationPage = React.lazy(() => import('./Registration'));
+const RestorePage = React.lazy(() => import('./Restore'));
 
 const Landing = () => <Container>
     <Picture/>
@@ -19,6 +20,11 @@ const Landing = () => <Container>
             <Route path="/registration">
                 <Title title="Registration">
                     <RegistrationPage/>
+                </Title>
+            </Route>
+            <Route path="/restore">
+                <Title title="Restore">
+                    <RestorePage/>
                 </Title>
             </Route>
         </Suspense>
