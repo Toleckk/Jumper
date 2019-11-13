@@ -4,6 +4,7 @@ import Type from "prop-types";
 const StyledFieldset = styled.fieldset`
     width: 100%;
     box-sizing: border-box;
+    text-align: left;
     min-width: 100px;
     border-radius: 4px;
     padding: 0 8px 7px 11px;
