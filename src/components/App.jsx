@@ -1,9 +1,9 @@
 import React from 'react';
-import Landing from "./features/Landing";
 import {BrowserRouter} from "react-router-dom";
 import {ThemeProvider} from "styled-components";
-import dark from "../theme/dark";
-import {LocalizationProvider} from "../contexts/Localization";
+import {LocalizationProvider} from "contexts/Localization";
+import dark from "theme/dark";
+import Landing from "./Landing";
 
 
 const App = () =>
