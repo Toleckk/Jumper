@@ -1,5 +1,6 @@
 export default {
     lang: 'ru',
+    nextButton: 'Далее',
     info: {
         header: 'Позвольте всем узнать о ваших мыслях',
         login: 'Войдите в свой аккаунт прямо сейчас!',
@@ -8,7 +9,9 @@ export default {
         signInButton: 'Войти',
         loginInputPlaceholder: 'Логин',
         passwordInputPlaceholder: 'Пароль',
-    }, registration: {
+        forgot: 'Забыли пароль?',
+    },
+    registration: {
         one: {
             header: 'Создайте учётную запись',
             info: 'Вы попали на страничку регистрации! Заполните пустые поля и нажмите "Далее", чтобы перейти к следующему этапу',

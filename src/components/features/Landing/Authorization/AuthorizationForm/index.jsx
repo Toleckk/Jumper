@@ -36,7 +36,7 @@ const Authorization = () => {
                    error={errors.password}
             />
             <StyledButton type="submit">{info.signInButton}</StyledButton>
-            <Link to="/forget">Забыли пароль?</Link>
+            <Link to="/restore">{forgot}</Link>
         </>
     }</Form>;
 };
