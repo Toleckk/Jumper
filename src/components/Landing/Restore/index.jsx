@@ -1,24 +1,21 @@
 import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
-import {Button, Input} from "components/Common/molecules";
 import Header from "../atoms/Header";
-import StyledForm from "./StyledForm";
 import Logo from "../Authorization/atoms/Logo";
 import StyledSpan from "./atoms/StyledSpan";
 import Divider from "../atoms/Divider";
-
+import RestoreForm from "./RestoreForm";
 
 const Restore = () => {
-    const {info, restore} = useLocalizationContext();
+    const {restore} = useLocalizationContext();
 
     return <>
         <Logo/>
         <Header>{restore.header}</Header>
+        <Divider/>
         <StyledSpan>{restore.info}</StyledSpan>
-        <StyledForm>
-            <Input id="login" legend={info.loginInputPlaceholder}/>
-            <Button>Далее</Button>
-        </StyledForm>
+        <RestoreForm/>
+        <Divider/>
     </>;
 };
 
