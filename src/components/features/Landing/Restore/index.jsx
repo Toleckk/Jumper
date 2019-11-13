@@ -1,11 +1,10 @@
 import React from 'react';
+import {useLocalizationContext} from "contexts/Localization";
+import {Button, Input} from "components/molecules";
 import Header from "../atoms/Header";
-import Input from "../../../molecules/Input";
 import StyledForm from "./StyledForm";
-import {useLocalizationContext} from "../../../../contexts/Localization";
 import Logo from "../Authorization/atoms/Logo";
 import StyledSpan from "./StyledSpan";
-import Button from "../../../molecules/Button";
 
 const Restore = () => {
     const {info, restore} = useLocalizationContext();

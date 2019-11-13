@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Divider from "../../../atoms/Divider";
 import Type from "prop-types";
+import Divider from "components/features/Landing/atoms/Divider";
 
 const StyledDivider = styled(Divider)`
     margin: 0;

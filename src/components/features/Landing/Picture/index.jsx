@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import Container from "./Container";
-import Triangle from "../atoms/Triangle";
-import SVG from "./SVG";
 import {ThemeContext} from "styled-components";
 import Type from 'prop-types';
+import Container from "./Container";
+import SVG from "./SVG";
+import Triangle from "../atoms/Triangle";
 
 const Picture = ({size}) => {
     const {secondary} = useContext(ThemeContext);

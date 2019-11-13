@@ -1,9 +1,9 @@
 import React from 'react';
+import {useLocalizationContext} from "contexts/Localization";
 import Header from "../../atoms/Header";
 import Text from "../atoms/Text";
 import Divider from "../../atoms/Divider";
 import PasswordForm from "./PasswordForm";
-import {useLocalizationContext} from "../../../../../contexts/Localization";
 
 const Password = () => {
     const {registration: {third}} = useLocalizationContext();

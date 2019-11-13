@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
-import StyledButton from "./StyledButton";
 import Type from "prop-types";
+import StyledButton from "./StyledButton";
 
 const Button = ({onClick, ...props}) => {
     const ref = useRef(null);

@@ -1,9 +1,8 @@
 import React from 'react';
+import {useLocalizationContext} from "contexts/Localization";
+import {Input, Form} from "components/molecules";
 import StyledForm from "./StyledForm";
-import {useLocalizationContext} from "../../../../../contexts/Localization";
 import StyledButton from "./StyledButton";
-import Input from "../../../../molecules/Input";
-import Form from "../../../../molecules/Form";
 import Link from "./Link";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;

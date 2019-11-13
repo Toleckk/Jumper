@@ -1,8 +1,8 @@
 import React from "react";
+import Type from "prop-types";
+import useKeyboardConfirmation from "hooks/useKeyboardConfirmation";
 import StyledButton from "./StyledButton";
 import Icon from "./Icon";
-import Type from "prop-types";
-import useKeyboardConfirmation from "../../../hooks/useKeyboardConfirmation";
 
 const preventFocusChange = event => {
     event.stopPropagation();

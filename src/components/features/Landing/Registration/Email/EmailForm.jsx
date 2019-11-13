@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from '../../../../molecules/Form';
+import {useLocalizationContext} from "contexts/Localization";
+import {Form} from 'components/molecules';
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
 import Row from "../atoms/Row";
 import StyledInput from "../atoms/StyledInput";
-import {useLocalizationContext} from "../../../../../contexts/Localization";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 

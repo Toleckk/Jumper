@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../../molecules/Button";
+import {Button} from "components/molecules";
 
 export default styled(Button)`
     margin-top: 30px;

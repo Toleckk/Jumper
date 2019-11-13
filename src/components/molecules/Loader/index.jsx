@@ -1,8 +1,8 @@
 import React from 'react';
+import Type from "prop-types";
 import Container from "./Container";
 import First from "./First";
 import Second from "./Second";
-import Type from "prop-types";
 
 const Loader = props => <Container>
     <First {...props}/>

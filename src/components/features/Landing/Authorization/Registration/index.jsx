@@ -1,8 +1,8 @@
 import React from 'react';
+import Flex from "components/atoms/Flex";
+import {useLocalizationContext} from "contexts/Localization";
 import Link from "./Link";
-import Flex from "../../../../atoms/Flex";
 import StyledButton from "./StyledButton";
-import {useLocalizationContext} from "../../../../../contexts/Localization";
 
 const Registration = () => {
     const {info} = useLocalizationContext();

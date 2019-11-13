@@ -1,10 +1,10 @@
 import React, {Suspense} from 'react';
 import Title from "react-document-title";
+import {Route} from "react-router-dom";
+import {Loader} from "components/molecules";
 import Container from "./atoms/Container";
 import Picture from "./Picture";
-import {Route} from "react-router-dom";
 import Main from "./atoms/Main";
-import Loader from "../../molecules/Loader";
 
 const AuthorizationPage = React.lazy(() => import('./Authorization'));
 const RegistrationPage = React.lazy(() => import('./Registration'));

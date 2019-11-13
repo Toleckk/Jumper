@@ -1,11 +1,11 @@
 import React from "react";
 import Type from "prop-types";
+import {Flex} from "components/atoms";
+import Eye from "../Eye";
 import StyledFieldset from "./StyledFieldset";
 import StyledLegend from "./StyledLegend";
 import StyledInput from "./StyledInput";
 import withValidation from "./withValidation";
-import Flex from "../../atoms/Flex";
-import Eye from "../Eye";
 import {useEye, useFocused} from "./hooks";
 
 const Input = ({id, legend, className, password, error, onFocus, onBlur, ...props}) => {

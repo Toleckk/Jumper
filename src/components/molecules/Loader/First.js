@@ -1,6 +1,6 @@
 import {keyframes} from "styled-components";
-import Ring from "./Ring";
 import React from "react";
+import Ring from "./Ring";
 
 const animation = keyframes`
     0% {

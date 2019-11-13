@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import Flex from "../../../../../atoms/Flex";
+import Type from "prop-types";
+import {Flex} from "components/atoms";
 import StyledLink from "./StyledLink";
 import StyledDivider from "./StyledDivider";
-import Type from "prop-types";
 
 const Link = ({children, to}) => {
     const [hovered, setHovered] = useState(false);
