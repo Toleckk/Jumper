@@ -4,7 +4,9 @@ import {Button, Input} from "components/Common/molecules";
 import Header from "../atoms/Header";
 import StyledForm from "./StyledForm";
 import Logo from "../Authorization/atoms/Logo";
-import StyledSpan from "./StyledSpan";
+import StyledSpan from "./atoms/StyledSpan";
+import Divider from "../atoms/Divider";
+
 
 const Restore = () => {
     const {info, restore} = useLocalizationContext();
