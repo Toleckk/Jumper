@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
 import Header from "../../atoms/Header";
-import Text from "../atoms/Text";
+import LargeSpan from "../../atoms/LargeSpan";
 import Divider from "../../atoms/Divider";
 import PasswordForm from "./PasswordForm";
 
@@ -9,7 +9,7 @@ const Password = () => {
     const {registration: {third}} = useLocalizationContext();
     return <>
         <Header>{third.header}</Header>
-        <Text>{third.info}</Text>
+        <LargeSpan>{third.info}</LargeSpan>
         <Divider/>
         <PasswordForm/>
     </>;
