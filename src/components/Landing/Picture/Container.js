@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import {Flex} from "components/Common/atoms";
 
-export default styled(Flex).attrs({as: 'aside', direction: 'column', align: 'start'})`
+export default styled.aside`
     flex: 1;
 
-    padding-top: 11%;
-    
+    margin-top: calc(11vh - 40vw * ${Math.sin(Math.PI / 18)} + 1.5rem);
+    min-height: calc(40vw * (${Math.sin(Math.PI / 18) + Math.cos(Math.PI / 18)}));
+
     @media (min-device-aspect-ratio: 16/9) {
-        padding-top: 5%;
-    }
+        margin-top: calc(5vh - 40vw * ${Math.sin(Math.PI / 18)} + 1.5rem);
+        min-height: calc(35vw * (${Math.sin(Math.PI / 18) + Math.cos(Math.PI / 18)}));
+    }    
 `;
