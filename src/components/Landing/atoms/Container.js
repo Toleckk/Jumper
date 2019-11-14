@@ -9,4 +9,5 @@ export default styled(Flex)`
     background-image: url('/images/landing.jpg');
     background-position-x: -130px;
     
+    min-height: 100vh;
 `;

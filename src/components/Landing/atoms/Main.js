@@ -7,5 +7,4 @@ export default styled(Flex).attrs({as: 'main', direction: 'column', align: 'cent
     
     background: rgba(0, 0, 0, 0.2);
     color: rgb(${props => props.theme.primaryText});
-    min-height: 100vh;
 `;
