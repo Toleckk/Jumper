@@ -2,15 +2,20 @@ import styled from "styled-components";
 import Type from "prop-types";
 
 const StyledFieldset = styled.fieldset`
-    width: 100%;
-    box-sizing: border-box;
     text-align: left;
-    min-width: 100px;
-    border-radius: 4px;
-    padding: 0 8px 7px 11px;
-    border: 2px solid rgba(${({error, theme}) => error ? theme.error : theme.primaryText}, 0.9);
-    transition: all 300ms;
     color: rgb(${props => props.theme.primaryText});
+    
+    box-sizing: border-box;
+    
+    width: 100%;    
+    min-width: 215px;
+    
+    padding: 0 8px 7px 11px;
+    
+    border-radius: 4px;
+    border: 2px solid rgba(${({error, theme}) => error ? theme.error : theme.primaryText}, 0.9);
+    
+    transition: all 300ms;
     
     ${({focused, theme, error}) => focused && !error && `
         box-shadow: rgb(${theme.secondary}) 0 0 1.4rem;
