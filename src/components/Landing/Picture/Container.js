@@ -5,4 +5,8 @@ export default styled.aside`
 
     margin-top: calc(26vh - 40vw * ${Math.sin(Math.PI / 18)} + 1.5rem);
     min-height: calc(40vw * (${Math.sin(Math.PI / 18) + Math.cos(Math.PI / 18)})); 
+    
+    @media (min-width: 320px) and (max-width: 480px) {
+      display: none;
+    }
 `;
