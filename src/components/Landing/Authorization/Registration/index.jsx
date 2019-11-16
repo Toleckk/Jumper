@@ -6,12 +6,12 @@ import StyledButton from "./StyledButton";
 import StyledSpan from "./StyledSpan";
 
 const Registration = () => {
-    const {info} = useLocalizationContext();
+    const {authorization} = useLocalizationContext();
 
     return <Flex direction="column" align="center">
-        <StyledSpan>{info.signUp}</StyledSpan>
+        <StyledSpan>{authorization.signUp}</StyledSpan>
         <Link to={'/registration'}>
-            <StyledButton>{info.signUpButton}</StyledButton>
+            <StyledButton>{authorization.signUpButton}</StyledButton>
         </Link>
     </Flex>;
 };

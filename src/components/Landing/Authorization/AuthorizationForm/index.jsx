@@ -13,8 +13,8 @@ const validate = ({login, password}) => ({
 });
 
 const Authorization = () => {
-    const {info} = useLocalizationContext();
-    const {passwordInputPlaceholder: password, loginInputPlaceholder: login, forgot} = info;
+    const {authorization} = useLocalizationContext();
+    const {passwordInputPlaceholder: password, loginInputPlaceholder: login, forgot} = authorization;
 
     return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
@@ -34,7 +34,7 @@ const Authorization = () => {
                    onBlur={updateState}
                    error={errors.password}
             />
-            <StyledButton type="submit">{info.signInButton}</StyledButton>
+            <StyledButton type="submit">{authorization.signInButton}</StyledButton>
             <Link to="/restore">{forgot}</Link>
         </>
     }</Form>;

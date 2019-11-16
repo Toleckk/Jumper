@@ -8,11 +8,11 @@ import Divider from "../atoms/Divider";
 import LargeSpan from "../atoms/LargeSpan";
 
 const AuthorizationPage = () => {
-    const {info} = useLocalizationContext();
+    const {authorization} = useLocalizationContext();
     return <>
         <Logo src="" alt=""/>
-        <Header>{info.header}</Header>
-        <LargeSpan>{info.login}</LargeSpan>
+        <Header>{authorization.header}</Header>
+        <LargeSpan>{authorization.login}</LargeSpan>
         <Divider/>
         <Authorization/>
         <Divider/>
