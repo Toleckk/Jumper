@@ -24,4 +24,4 @@ const RestoreForm = () => {
     }}</StyledForm>;
 };
 
-export default RestoreForm;
+export default React.memo(RestoreForm);
