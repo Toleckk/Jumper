@@ -21,4 +21,4 @@ const Restore = () => {
     </>;
 };
 
-export default Restore;
+export default React.memo(Restore);

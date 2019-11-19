@@ -15,4 +15,4 @@ const App = () =>
         </LocalizationProvider>
     </BrowserRouter>;
 
-export default App;
+export default React.memo(App);
