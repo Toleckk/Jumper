@@ -19,5 +19,5 @@ export function createOnSubmit(onSubmit, validate, data, setErrors) {
         event.stopPropagation();
         event.preventDefault();
         return false;
-    }
+    };
 }
