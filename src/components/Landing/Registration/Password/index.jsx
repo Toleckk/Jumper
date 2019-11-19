@@ -7,6 +7,7 @@ import PasswordForm from "./PasswordForm";
 
 const Password = () => {
     const {registration: {third}} = useLocalizationContext();
+
     return <>
         <Header>{third.header}</Header>
         <LargeSpan>{third.info}</LargeSpan>
