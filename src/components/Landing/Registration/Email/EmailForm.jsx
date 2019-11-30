@@ -14,10 +14,19 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
+const submit = data => fetch('/registration', {
+    method: "post",
+    body: JSON.stringify(data),
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+});
+
 const EmailForm = () => {
     const {registration: {one}, nextButton} = useLocalizationContext();
 
-    return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Row>
                 <label htmlFor="nickname">{one.nickname}</label>
