@@ -10,7 +10,7 @@ const RegistrationPage = () => <>
     <Route path="/registration/email">
         <Email/>
     </Route>
-    <Route path="/registration/password">
+    <Route path="/registration/password/:token">
         <Password/>
     </Route>
     <Route path="/registration/message">

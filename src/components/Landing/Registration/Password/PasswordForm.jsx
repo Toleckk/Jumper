@@ -1,4 +1,5 @@
 import React from 'react';
+import {useParams} from 'react-router-dom';
 import {useLocalizationContext} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
 import StyledForm from "../atoms/StyledForm";
@@ -13,7 +14,7 @@ const isValidPassword = text => (
 
 const validate = ({password, confirm}) => ({
     password: !password || !password.length || !isValidPassword(password),
-    confirm: !confirm || !confirm.length || confirm === password,
+    confirm: !confirm || !confirm.length || confirm !== password,
 });
 
 const validateOnChange = ({password, confirm}) => ({
@@ -24,8 +25,19 @@ const validateOnChange = ({password, confirm}) => ({
 const PasswordForm = () => {
     const {registration: {third}, nextButton} = useLocalizationContext();
 
+    const {token} = useParams();
+
+    const submit = ({password}) => fetch('/registration/confirm', {
+        method: "post",
+        body: JSON.stringify({password, token}),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
     return <Form as={StyledForm}
-                 onSubmit={console.log}
+                 onSubmit={submit}
                  validate={validate}
                  validateOnChange={validateOnChange}
                  resetFieldErrorOnChange
