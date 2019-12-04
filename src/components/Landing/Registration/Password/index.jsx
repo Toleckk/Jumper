@@ -4,9 +4,9 @@ import PasswordForm from "./PasswordForm";
 import {MainPageTemplate} from "../../templates"
 
 const Password = () => {
-    const {registration: {third}} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
-    return <MainPageTemplate header={third.header} description={third.info} content={PasswordForm}/>;
+    return <MainPageTemplate header={t('Create password')} description={t('Almost created')} content={PasswordForm}/>;
 };
 
 export default React.memo(Password);

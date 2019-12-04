@@ -5,11 +5,11 @@ import Registration from "./Registration";
 import {MainPageTemplate} from "../templates"
 
 const AuthorizationPage = () => {
-    const {authorization} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <MainPageTemplate
-            header={authorization.header}
-            description={authorization.login}
+            header={t('Let people know about your thoughts')}
+            description={t('Log in to account')}
             content={Authorization}
             footer={Registration}
         />

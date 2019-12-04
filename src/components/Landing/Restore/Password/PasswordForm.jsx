@@ -19,7 +19,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {registration: {third}, nextButton} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <StyledForm onSubmit={console.log}
                  validate={validate}
@@ -29,19 +29,19 @@ const PasswordForm = () => {
         <>
             <StyledInput name="password"
                          password
-                         legend={third.passwordLegend}
+                         legend={t('password')}
                          onBlur={updateState}
                          onChange={onChange}
                          error={errors.password}
             />
             <StyledInput name="confirm"
                          password
-                         legend={third.confirmLegend}
+                         legend={t('Confirm password')}
                          onChange={onChange}
                          onBlur={updateState}
                          error={errors.confirm}
             />
-            <StyledButton>{nextButton}</StyledButton>
+            <StyledButton>{t('next')}</StyledButton>
         </>
     )}</StyledForm>;
 };

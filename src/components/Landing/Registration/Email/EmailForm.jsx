@@ -24,16 +24,16 @@ const submit = data => fetch('/registration', {
 });
 
 const EmailForm = () => {
-    const {registration: {one}, nextButton} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Row>
-                <label htmlFor="nickname">{one.nickname}</label>
+                <label htmlFor="nickname">{t('Create nickname')}</label>
                 <StyledInput id="nickname"
                              name="nickname"
                              pattern={loginPattern}
-                             legend={one.nicknameLegend}
+                             legend={t('nickname')}
                              onBlur={updateState}
                              onChange={onChange}
                              error={errors.nickname}
@@ -41,17 +41,17 @@ const EmailForm = () => {
             </Row>
             <Divider/>
             <Row>
-                <label htmlFor="email">{one.email}</label>
+                <label htmlFor="email">{t('Enter email')}</label>
                 <StyledInput id="email"
                              name="email"
-                             legend={one.emailLegend}
+                             legend={t('email')}
                              onChange={onChange}
                              onBlur={updateState}
                              error={errors.email}
                 />
             </Row>
             <Divider/>
-            <StyledButton>{nextButton}</StyledButton>
+            <StyledButton>{t('next')}</StyledButton>
         </>
     }</Form>;
 };

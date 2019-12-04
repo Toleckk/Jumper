@@ -23,7 +23,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {registration: {third}, nextButton} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     const {token} = useParams();
 
@@ -44,11 +44,11 @@ const PasswordForm = () => {
     >{({updateState, errors, onChange}) => (
         <>
             <Row>
-                <label htmlFor="password">{third.password}</label>
+                <label htmlFor="password">{t('Password format')}</label>
                 <StyledInput id="password"
                              name="password"
                              password
-                             legend={third.passwordLegend}
+                             legend={t('password')}
                              onBlur={updateState}
                              onChange={onChange}
                              error={errors.password}
@@ -56,18 +56,18 @@ const PasswordForm = () => {
             </Row>
             <Divider/>
             <Row>
-                <label htmlFor="confirm">{third.confirm}</label>
+                <label htmlFor="confirm">{t('Enter password again')}</label>
                 <StyledInput id="confirm"
                              name="confirm"
                              password
-                             legend={third.confirmLegend}
+                             legend={t('Confirm password')}
                              onChange={onChange}
                              onBlur={updateState}
                              error={errors.confirm}
                 />
             </Row>
             <Divider/>
-            <StyledButton>{nextButton}</StyledButton>
+            <StyledButton>{t('next')}</StyledButton>
         </>
     )}</Form>;
 };

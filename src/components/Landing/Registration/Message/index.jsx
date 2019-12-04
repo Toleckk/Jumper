@@ -8,19 +8,19 @@ import {MainPageTemplate} from "../../templates";
 
 // TODO: email
 const Message = () => {
-    const {registration} = useLocalizationContext();
+    const {t} = useLocalizationContext();
     const emailDomain = useEmail('anton1337@gmail.com');
 
     return <MainPageTemplate
         withLastDivider
-        header={registration.second.header}
-        description={registration.second.info}
+        header={t('Check your email')}
+        description={t('Link will be sent')}
         content={
             () => <>
                 <br/>
-                <CenteredSpan>{registration.second.description}</CenteredSpan>
+                <CenteredSpan>{t('Follow instructions')}</CenteredSpan>
                 <br/>
-                <CenteredSpan>{registration.second.warning}</CenteredSpan>
+                <CenteredSpan>{t('Cannot find?')}</CenteredSpan>
                 <br/>
                 {emailDomain && (
                     <StyledLink href={emailDomain.url} target="_blank" rel="noopener noreferrer">

@@ -9,17 +9,17 @@ const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 const validate = ({login}) => ({login: !login || !login.length});
 
 const RestoreForm = () => {
-    const {authorization, nextButton} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <StyledForm onSubmit={console.log} validate={validate} resetFieldErrorOnChange>{({onChange, errors}) => (
         <>
             <StyledInput name="login"
-                   legend={authorization.loginInputPlaceholder}
+                   legend={t('login')}
                    onChange={onChange}
                    error={errors.login}
                    pattern={loginPattern}
             />
-            <StyledButton type="submit">{nextButton}</StyledButton>
+            <StyledButton type="submit">{t('next')}</StyledButton>
         </>
     )}</StyledForm>;
 };

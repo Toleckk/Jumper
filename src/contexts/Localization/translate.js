@@ -1,0 +1,1 @@
+export default lang => key => lang[key] || '';

@@ -1,22 +1,26 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Context from "./Context";
-import {getLang} from "./helpers";
-import defaultLanguage from "./defaultLanguage";
+import {getLang, makeFlat} from "./helpers";
+import translate from "./translate";
 
 export default ({children}) => {
     const [loaded, setLoaded] = useState(false);
     const [errors, setErrors] = useState(false);
-    const [activeLang, setLang] = useState(defaultLanguage);
+    const [activeLang, setLang] = useState({});
+
+    useEffect(() => {
+        changeLang('ru');
+    }, []);
 
     const changeLang = async lang => {
         if (lang !== activeLang.lang) {
             setLoaded(true);
-            await getLang(lang).then(setLang).catch(setErrors);
+            await getLang(lang).then(lang => setLang(lang)).catch(setErrors);
             setLoaded(false);
         }
     };
 
-    const value = {errors, loaded, changeLang, ...activeLang};
+    const value = {errors, loaded, changeLang, t: translate(makeFlat(activeLang))};
 
     return <Context.Provider value={value}>
         {children}

@@ -5,14 +5,14 @@ import RestoreForm from "./RestoreForm";
 import {MainPageTemplate} from "../../templates";
 
 const Login = () => {
-    const {restore} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <MainPageTemplate
         withLastDivider
-        header={restore.login.header}
-        description={restore.login.info}
+        header={t('Enter data for restore')}
+        description={t('Restore action')}
         content={() => <>
-            <StyledSpan>{restore.login.login}</StyledSpan>
+            <StyledSpan>{t('Enter your login')}</StyledSpan>
             <RestoreForm/>
         </>}
     />;

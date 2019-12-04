@@ -4,9 +4,9 @@ import EmailForm from "./EmailForm";
 import {MainPageTemplate} from "../../templates"
 
 const Email = () => {
-    const {registration: {one}} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
-    return <MainPageTemplate header={one.header} description={one.info} content={EmailForm}/>;
+    return <MainPageTemplate header={t('create')} description={t('You are on registration page')} content={EmailForm}/>;
 };
 
 export default React.memo(Email);

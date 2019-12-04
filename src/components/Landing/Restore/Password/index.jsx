@@ -5,14 +5,14 @@ import StyledSpan from "../atoms/StyledSpan";
 import {MainPageTemplate} from "../../templates";
 
 const Password = () => {
-    const {restore} = useLocalizationContext();
+    const {t} = useLocalizationContext();
 
     return <MainPageTemplate
         withLastDivider
-        header={restore.password.header}
-        description={restore.password.info}
+        header={t('Create new password')}
+        description={t('Sessions will be interrupted')}
         content={() => <>
-            <StyledSpan>{restore.password.password}</StyledSpan>
+            <StyledSpan>{t('Short password format')}</StyledSpan>
             <PasswordForm/>
         </>}
     />;
