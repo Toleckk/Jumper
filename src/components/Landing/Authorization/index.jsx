@@ -2,7 +2,7 @@ import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
 import Authorization from "./AuthorizationForm";
 import Registration from "./Registration";
-import MainPageTemplate from "../templates/MainPageTemplate";
+import {MainPageTemplate} from "../templates"
 
 const AuthorizationPage = () => {
     const {authorization} = useLocalizationContext();

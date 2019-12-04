@@ -4,7 +4,7 @@ import {useLocalizationContext} from "contexts/Localization";
 import CenteredSpan from "./CenteredSpan";
 import StyledLink from "./StyledLink";
 import FullWidthButton from "./FullWidthButton";
-import MainPageTemplate from "../../templates/MainPageTemplate";
+import {MainPageTemplate} from "../../templates";
 
 // TODO: email
 const Message = () => {

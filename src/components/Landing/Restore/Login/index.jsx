@@ -2,7 +2,7 @@ import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
 import StyledSpan from "../atoms/StyledSpan";
 import RestoreForm from "./RestoreForm";
-import MainPageTemplate from "../../templates/MainPageTemplate";
+import {MainPageTemplate} from "../../templates";
 
 const Login = () => {
     const {restore} = useLocalizationContext();

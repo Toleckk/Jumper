@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
 import EmailForm from "./EmailForm";
-import MainPageTemplate from "../../templates/MainPageTemplate";
+import {MainPageTemplate} from "../../templates"
 
 const Email = () => {
     const {registration: {one}} = useLocalizationContext();

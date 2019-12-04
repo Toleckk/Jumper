@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
 import PasswordForm from "./PasswordForm";
-import MainPageTemplate from "../../templates/MainPageTemplate";
+import {MainPageTemplate} from "../../templates"
 
 const Password = () => {
     const {registration: {third}} = useLocalizationContext();
