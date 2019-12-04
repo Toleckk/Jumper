@@ -1,12 +1,10 @@
 import React from 'react';
 import {Redirect, Route} from "react-router-dom";
-import Logo from "../Authorization/atoms/Logo";
 import Login from "./Login";
 import Message from "./Message";
 import Password from "./Password";
 
 const Restore = () => <>
-    <Logo src="" alt=""/>
     <Route path="/restore/login">
         <Login/>
     </Route>

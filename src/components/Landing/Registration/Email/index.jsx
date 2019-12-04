@@ -1,19 +1,12 @@
 import React from 'react';
 import {useLocalizationContext} from "contexts/Localization";
-import Header from "../../atoms/Header";
-import LargeSpan from "../../atoms/LargeSpan";
-import Divider from "../../atoms/Divider";
 import EmailForm from "./EmailForm";
+import MainPageTemplate from "../../templates/MainPageTemplate";
 
 const Email = () => {
     const {registration: {one}} = useLocalizationContext();
 
-    return <>
-        <Header>{one.header}</Header>
-        <LargeSpan>{one.info}</LargeSpan>
-        <Divider/>
-        <EmailForm/>
-    </>;
+    return <MainPageTemplate header={one.header} description={one.info} content={EmailForm}/>;
 };
 
 export default React.memo(Email);
