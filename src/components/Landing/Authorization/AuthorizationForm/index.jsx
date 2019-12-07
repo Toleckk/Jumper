@@ -12,10 +12,20 @@ const validate = ({login, password}) => ({
     password: !password || !password.length
 });
 
+const submit = data => fetch('/login', {
+    method: "post",
+    credentials: 'same-origin',
+    body: JSON.stringify(data),
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+});
+
 const Authorization = () => {
     const {t} = useLocalizationContext();
 
-    return <Form onSubmit={console.log} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Input id="login"
                    name="login"
