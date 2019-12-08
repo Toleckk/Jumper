@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from "contexts/Localization";
-import Authorization from "./AuthorizationForm";
+import AuthorizationForm from "./AuthorizationForm";
 import Registration from "./Registration";
 import {MainPageTemplate} from "../templates"
 
@@ -10,7 +10,7 @@ const AuthorizationPage = () => {
     return <MainPageTemplate
             header={t('Let people know about your thoughts')}
             description={t('Log in to account')}
-            content={Authorization}
+            content={AuthorizationForm}
             footer={Registration}
         />
 };
