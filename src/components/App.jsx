@@ -3,7 +3,7 @@ import {useQuery} from "@apollo/react-hooks";
 import {client} from "apollo";
 import {ME} from "apollo/requests/user";
 import {ME as STORED_ME} from "apollo/actions/user";
-import BigLoader from "./BigLoader";
+import {BigLoader} from "./Common/molecules";
 import Landing from "./Landing";
 
 const App = () => {
