@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {confirmRegistration} from "api";
+import {client} from "apollo";
+import {ME} from "apollo/requests/user";
 import {useTranslation} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
 import StyledForm from "../atoms/StyledForm";
@@ -25,7 +27,6 @@ const validateOnChange = ({password, confirm}) => ({
 
 const PasswordForm = ({setLoaded}) => {
     const {t} = useTranslation();
-    const history = useHistory();
     const {token} = useParams();
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState(false);
@@ -33,7 +34,7 @@ const PasswordForm = ({setLoaded}) => {
     const submit = ({password}) => {
         setLoaded(true);
         confirmRegistration(password, token)
-            .then(() => history.push('/me'))
+            .then(() => client.query({query: ME, fetchPolicy: 'network-only'}))
             .catch(e => {
                 setErrors(e);
                 setLoaded(false);

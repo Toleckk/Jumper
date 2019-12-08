@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {confirmRestoring} from "api";
 import {useTranslation} from "contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
 import StyledSpan from "../atoms/StyledSpan";
+import {client} from "apollo";
+import {ME} from "apollo/requests/user";
 
 const isValidPassword = text => (
     /[a-z]+/.test(text) && /[A-Z]+/.test(text) && /\d/.test(text) && text.length >= 8 && text.length <= 50
@@ -23,7 +25,6 @@ const validateOnChange = ({password, confirm}) => ({
 
 const PasswordForm = ({setLoaded}) => {
     const {t} = useTranslation();
-    const history = useHistory();
     const {token} = useParams();
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState(false);
@@ -31,7 +32,7 @@ const PasswordForm = ({setLoaded}) => {
     const submit = ({password}) => {
         setLoaded(true);
         confirmRestoring({password, token})
-            .then(() => history.push('/me'))
+            .then(() => client.query({query: ME, fetchPolicy: 'network-only'}))
             .catch(e => {
                 setErrors(e);
                 setLoaded(false);

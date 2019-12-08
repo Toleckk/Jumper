@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
 import {login} from "api";
+import {client} from "apollo";
+import {ME} from "apollo/requests/user";
 import {useTranslation} from "contexts/Localization";
 import {Form, Input} from "components/Common/molecules";
 import StyledForm from "./StyledForm";
@@ -16,15 +17,13 @@ const validate = ({login, password}) => ({
 
 const AuthorizationForm = ({setLoaded}) => {
     const {t} = useTranslation();
-
-    const history = useHistory();
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState(false);
 
     const submit = data => {
         setLoaded(true);
         login(data)
-            .then(() => history.push('/me'))
+            .then(() => client.query({query: ME, fetchPolicy: 'network-only'}))
             .catch(e => {
                 setErrors(e);
                 setLoaded(false);
