@@ -1,0 +1,30 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Description {
+    about: String
+    age: Int
+    from: String
+}
+
+type Query {
+    me: User
+    user(id: ID!): User
+    users: [User]
+}
+
+type User {
+    avatar: String
+    description: Description!
+    nickname: String!
+    postsCount: Int!
+    registration: Date!
+    subscribersCount: Int!
+    subscribesCount: Int!
+}
+
+
+scalar Date
