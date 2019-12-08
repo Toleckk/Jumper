@@ -10,12 +10,19 @@ export const ME = gql`
 `;
 
 export const USER = gql`
-    query User($id: ID!){
-        user(id: $id) {
+    query User($nickname: String!){
+        user(nickname: $nickname) {
             nickname
             avatar
             postsCount
             subscribersCount
+            subscribesCount
+            registration
+            description {
+                about
+                age
+                from
+            }
         }
     }
 `;
