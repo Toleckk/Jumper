@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useHistory, useParams} from 'react-router-dom';
+import {confirmRestoring} from "api";
 import {useTranslation} from "contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
@@ -11,7 +13,7 @@ const isValidPassword = text => (
 
 const validate = ({password, confirm}) => ({
     password: !password || !password.length || !isValidPassword(password),
-    confirm: !confirm || !confirm.length || confirm === password,
+    confirm: !confirm || !confirm.length || confirm !== password,
 });
 
 const validateOnChange = ({password, confirm}) => ({
@@ -19,33 +21,47 @@ const validateOnChange = ({password, confirm}) => ({
     confirm: confirm && confirm.length && password !== confirm,
 });
 
-const PasswordForm = () => {
+const PasswordForm = ({setLoaded}) => {
     const {t} = useTranslation();
+    const history = useHistory();
+    const {token} = useParams();
+    // eslint-disable-next-line no-unused-vars
+    const [errors, setErrors] = useState(false);
 
-    return <StyledForm onSubmit={console.log}
-                 validate={validate}
-                 validateOnChange={validateOnChange}
-                 resetFieldErrorOnChange
-    >{({updateState, errors, onChange}) => (
-        <>
-            <StyledSpan>{t('Short password format')}</StyledSpan>
-            <StyledInput name="password"
-                         password
-                         legend={t('password')}
-                         onBlur={updateState}
-                         onChange={onChange}
-                         error={errors.password}
-            />
-            <StyledInput name="confirm"
-                         password
-                         legend={t('Confirm password')}
-                         onChange={onChange}
-                         onBlur={updateState}
-                         error={errors.confirm}
-            />
-            <StyledButton>{t('next')}</StyledButton>
-        </>
-    )}</StyledForm>;
+    const submit = ({password}) => {
+        setLoaded(true);
+        confirmRestoring({password, token})
+            .then(() => history.push('/me'))
+            .catch(e => {
+                setErrors(e);
+                setLoaded(false);
+            });
+    };
+
+    return (
+        <StyledForm onSubmit={submit} validate={validate} validateOnChange={validateOnChange} resetFieldErrorOnChange>{
+            ({updateState, errors, onChange}) => (
+                <>
+                    <StyledSpan>{t('Short password format')}</StyledSpan>
+                    <StyledInput name="password"
+                                 password
+                                 legend={t('password')}
+                                 onBlur={updateState}
+                                 onChange={onChange}
+                                 error={errors.password}
+                    />
+                    <StyledInput name="confirm"
+                                 password
+                                 legend={t('Confirm password')}
+                                 onChange={onChange}
+                                 onBlur={updateState}
+                                 error={errors.confirm}
+                    />
+                    <StyledButton>{t('next')}</StyledButton>
+                </>
+            )
+        }</StyledForm>
+    );
 };
 
 export default React.memo(PasswordForm);
