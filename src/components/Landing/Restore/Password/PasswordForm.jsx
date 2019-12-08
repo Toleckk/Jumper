@@ -3,6 +3,7 @@ import {useTranslation} from "contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
+import StyledSpan from "../atoms/StyledSpan";
 
 const isValidPassword = text => (
     /[a-z]+/.test(text) && /[A-Z]+/.test(text) && /\d/.test(text) && text.length >= 8 && text.length <= 50
@@ -27,6 +28,7 @@ const PasswordForm = () => {
                  resetFieldErrorOnChange
     >{({updateState, errors, onChange}) => (
         <>
+            <StyledSpan>{t('Short password format')}</StyledSpan>
             <StyledInput name="password"
                          password
                          legend={t('password')}

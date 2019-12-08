@@ -1,7 +1,6 @@
 import React from 'react';
 import {useTranslation} from "contexts/Localization";
 import PasswordForm from "./PasswordForm";
-import StyledSpan from "../atoms/StyledSpan";
 import {MainPageTemplate} from "../../templates";
 
 const Password = () => {
@@ -11,10 +10,7 @@ const Password = () => {
         withLastDivider
         header={t('Create new password')}
         description={t('Sessions will be interrupted')}
-        content={() => <>
-            <StyledSpan>{t('Short password format')}</StyledSpan>
-            <PasswordForm/>
-        </>}
+        content={PasswordForm}
     />;
 };
 
