@@ -34,8 +34,10 @@ const PasswordForm = ({setLoaded}) => {
         setLoaded(true);
         confirmRegistration(password, token)
             .then(() => history.push('/me'))
-            .catch(setErrors)
-            .finally(() => setLoaded(false));
+            .catch(e => {
+                setErrors(e);
+                setLoaded(false);
+            });
     };
 
     return <Form as={StyledForm}

@@ -31,8 +31,10 @@ const EmailForm = ({setLoaded}) => {
             .then(() => {
                 history.push('/registration/message');
                 setEmail(data.email);
-            }).catch(setErrors)
-            .finally(() => setLoaded(false));
+            }).catch(e => {
+                setErrors(e);
+                setLoaded(false);
+        });
     };
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{

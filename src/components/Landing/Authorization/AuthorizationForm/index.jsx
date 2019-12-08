@@ -25,8 +25,10 @@ const AuthorizationForm = ({setLoaded}) => {
         setLoaded(true);
         login(data)
             .then(() => history.push('/me'))
-            .catch(setErrors)
-            .finally(() => setLoaded(false));
+            .catch(e => {
+                setErrors(e);
+                setLoaded(false);
+            });
     };
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{

@@ -21,8 +21,10 @@ const RestoreForm = ({setLoaded}) => {
         setLoaded(true);
         restore(data)
             .then(() => history.push('/restore/message'))
-            .catch(setErrors)
-            .finally(() => setLoaded(false))
+            .catch(e => {
+                setErrors(e);
+                setLoaded(false);
+            });
     };
 
     return <StyledForm onSubmit={submit} validate={validate} resetFieldErrorOnChange>{({onChange, errors, updateState}) => (
