@@ -1,6 +1,7 @@
 import React from 'react';
-import {useLocalizationContext} from "contexts/Localization";
-import {Input, Form} from "components/Common/molecules";
+import {login} from "api";
+import {useTranslation} from "contexts/Localization";
+import {Form, Input} from "components/Common/molecules";
 import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
 import Link from "./Link";
@@ -12,20 +13,10 @@ const validate = ({login, password}) => ({
     password: !password || !password.length
 });
 
-const submit = data => fetch('/login', {
-    method: "post",
-    credentials: 'same-origin',
-    body: JSON.stringify(data),
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-    }
-});
-
 const Authorization = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
-    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={login} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Input id="login"
                    name="login"

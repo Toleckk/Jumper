@@ -1,6 +1,6 @@
 import React from 'react';
 import useEmail from "hooks/useEmail";
-import {useLocalizationContext} from "contexts/Localization";
+import {useTranslation} from "contexts/Localization";
 import CenteredSpan from "./CenteredSpan";
 import StyledLink from "./StyledLink";
 import FullWidthButton from "./FullWidthButton";
@@ -8,7 +8,7 @@ import {MainPageTemplate} from "../../templates";
 
 // TODO: email
 const Message = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const emailDomain = useEmail('anton1337@gmail.com');
 
     return <MainPageTemplate

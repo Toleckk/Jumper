@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import {useLocalizationContext} from "contexts/Localization";
+import {confirmRegistration} from "api";
+import {useTranslation} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
@@ -23,18 +24,10 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {t} = useLocalizationContext();
-
+    const {t} = useTranslation();
     const {token} = useParams();
 
-    const submit = ({password}) => fetch('/registration/confirm', {
-        method: "post",
-        body: JSON.stringify({password, token}),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
+    const submit = ({password}) => confirmRegistration(password, token);
 
     return <Form as={StyledForm}
                  onSubmit={submit}

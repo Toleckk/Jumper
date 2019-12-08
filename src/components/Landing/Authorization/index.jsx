@@ -1,11 +1,11 @@
 import React from 'react';
-import {useLocalizationContext} from "contexts/Localization";
+import {useTranslation} from "contexts/Localization";
 import Authorization from "./AuthorizationForm";
 import Registration from "./Registration";
 import {MainPageTemplate} from "../templates"
 
 const AuthorizationPage = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
     return <MainPageTemplate
             header={t('Let people know about your thoughts')}

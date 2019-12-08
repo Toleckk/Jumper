@@ -1,5 +1,6 @@
 import React from 'react';
-import {useLocalizationContext} from "contexts/Localization";
+import {registration} from "api";
+import {useTranslation} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
@@ -14,19 +15,10 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
-const submit = data => fetch('/registration', {
-    method: "post",
-    body: JSON.stringify(data),
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-});
-
 const EmailForm = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
-    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
+    return <Form onSubmit={registration} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Row>
                 <label htmlFor="nickname">{t('Create nickname')}</label>

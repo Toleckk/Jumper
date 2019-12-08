@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLocalizationContext} from "contexts/Localization";
+import {useTranslation} from "contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
@@ -19,7 +19,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
     return <StyledForm onSubmit={console.log}
                  validate={validate}
