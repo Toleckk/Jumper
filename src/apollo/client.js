@@ -1,5 +1,13 @@
-import ApolloClient from 'apollo-boost';
+import ApolloClient, {gql} from 'apollo-boost';
 
-const client = new ApolloClient();
+const typeDefs = gql`
+    extend type Query {
+        me: User
+    }
+`;
+
+const resolvers = {};
+
+const client = new ApolloClient({typeDefs, resolvers});
 
 export default client;
