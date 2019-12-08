@@ -3,4 +3,6 @@ import {Flex} from "components/Common/atoms";
 
 export default styled(Flex).attrs({align: 'center'})`
     height: 100%;
+    margin: auto;
+    width: fit-content;
 `;
