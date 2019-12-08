@@ -17,7 +17,6 @@ const Form = ({children, onSubmit, validate, resetFieldErrorOnChange, as: Compon
         [data],
     );
 
-
     const updateState = ({target: {name, value}}) => setData({...data, [name]: value});
     const onChange = createOnChange(updateState, resetFieldErrorOnChange, errors, setErrors, validateOnChange, data);
 
