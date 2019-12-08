@@ -5,11 +5,12 @@ import CenteredSpan from "./CenteredSpan";
 import StyledLink from "./StyledLink";
 import FullWidthButton from "./FullWidthButton";
 import {MainPageTemplate} from "../../templates";
+import {useRegistrationEmail} from "../RegistrationEmailContext";
 
-// TODO: email
 const Message = () => {
     const {t} = useTranslation();
-    const emailDomain = useEmail('anton1337@gmail.com');
+    const {email} = useRegistrationEmail();
+    const emailDomain = useEmail(email);
 
     return <MainPageTemplate
         withLastDivider
@@ -18,7 +19,7 @@ const Message = () => {
         content={
             () => <>
                 <br/>
-                <CenteredSpan>{t('Follow instructions')}</CenteredSpan>
+                <CenteredSpan>{t('Follow instructions', {email})}</CenteredSpan>
                 <br/>
                 <CenteredSpan>{t('Cannot find?')}</CenteredSpan>
                 <br/>
