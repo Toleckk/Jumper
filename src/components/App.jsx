@@ -3,7 +3,7 @@ import {useQuery} from "@apollo/react-hooks";
 import {client} from "apollo";
 import {ME} from "apollo/requests/user";
 import {ME as STORED_ME} from "apollo/actions/user";
-import StyledLoader from "./StyledLoader";
+import BigLoader from "./BigLoader";
 import Landing from "./Landing";
 
 const App = () => {
@@ -13,12 +13,11 @@ const App = () => {
         client.query({query: ME});
     }, []);
 
-    if(loading)
-        return <StyledLoader/>;
-    if(!data || !data.me)
+    if (loading)
+        return <BigLoader/>;
+    if (!data || !data.me)
         return <Landing/>;
     return <></>;
 };
-
 
 export default React.memo(App);
