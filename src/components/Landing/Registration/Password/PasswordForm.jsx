@@ -1,5 +1,5 @@
-import React from 'react';
-import {useParams} from 'react-router-dom';
+import React, {useState} from 'react';
+import {useParams, useHistory} from 'react-router-dom';
 import {confirmRegistration} from "api";
 import {useTranslation} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
@@ -23,11 +23,20 @@ const validateOnChange = ({password, confirm}) => ({
     confirm: confirm && confirm.length && password !== confirm,
 });
 
-const PasswordForm = () => {
+const PasswordForm = ({setLoaded}) => {
     const {t} = useTranslation();
+    const history = useHistory();
     const {token} = useParams();
+    // eslint-disable-next-line no-unused-vars
+    const [errors, setErrors] = useState(false);
 
-    const submit = ({password}) => confirmRegistration(password, token);
+    const submit = ({password}) => {
+        setLoaded(true);
+        confirmRegistration(password, token)
+            .then(() => history.push('/me'))
+            .catch(setErrors)
+            .finally(() => setLoaded(false));
+    };
 
     return <Form as={StyledForm}
                  onSubmit={submit}

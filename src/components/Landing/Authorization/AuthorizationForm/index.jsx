@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {login} from "api";
 import {useTranslation} from "contexts/Localization";
 import {Form, Input} from "components/Common/molecules";
@@ -13,10 +14,22 @@ const validate = ({login, password}) => ({
     password: !password || !password.length
 });
 
-const Authorization = () => {
+const AuthorizationForm = ({setLoaded}) => {
     const {t} = useTranslation();
 
-    return <Form onSubmit={login} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
+    const history = useHistory();
+    // eslint-disable-next-line no-unused-vars
+    const [errors, setErrors] = useState(false);
+
+    const submit = data => {
+        setLoaded(true);
+        login(data)
+            .then(() => history.push('/me'))
+            .catch(setErrors)
+            .finally(() => setLoaded(false));
+    };
+
+    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
             <Input id="login"
                    name="login"
@@ -40,4 +53,4 @@ const Authorization = () => {
     }</Form>;
 };
 
-export default React.memo(Authorization);
+export default React.memo(AuthorizationForm);
