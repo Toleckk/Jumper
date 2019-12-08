@@ -1,3 +1,5 @@
 import {post} from "./utils";
 
-export default data => post('/registration', data);
+export const registration = data => post('/registration', data);
+
+export const confirmRegistration = (password, token) => post('/registration/confirm', {password, token});
