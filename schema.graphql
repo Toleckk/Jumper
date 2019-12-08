@@ -12,7 +12,7 @@ type Description {
 
 type Query {
     me: User
-    user(id: ID!): User
+    user(nickname: String!): User
     users: [User]
 }
 
