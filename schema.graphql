@@ -2,6 +2,7 @@
 
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Description {
@@ -10,20 +11,74 @@ type Description {
     from: String
 }
 
+type Like {
+    id: String!
+    post: Post!
+}
+
+type Mutation {
+    createLike(post: String!): Boolean
+    createPost(post: PostInput): Boolean
+    createSubscribe(subscribe: SubscribeInput): Boolean
+    updateUser(user: UserInput): Boolean
+}
+
+type Post {
+    _id: String!
+    date: Date!
+    likes: [Int]
+    likesCount: Int!
+    owner: User!
+    text: String!
+    isMyLike: Boolean!
+}
+
 type Query {
+    like(id: String!): Like
+    likes(owner: String!): [Like]
     me: User
+    post(id: String!): Post
+    posts(owner: String!): [Post]
+    subscribe(id: String!): Subscribe
+    subscribes(account: String!): [Subscribe]
     user(nickname: String!): User
     users: [User]
 }
 
+type Subscribe {
+    account: User!
+    id: String!
+    subscriber: User!
+}
+
 type User {
-    avatar: String
+    avatar: String!
     description: Description!
     nickname: String!
     postsCount: Int!
     registration: Date!
     subscribersCount: Int!
     subscribesCount: Int!
+}
+
+input DescriptionInput {
+    about: String
+    age: Int
+    from: String
+}
+
+input PostInput {
+    text: String!
+}
+
+input SubscribeInput {
+    account: String!
+}
+
+input UserInput {
+    avatar: String
+    description: DescriptionInput
+    nickname: String
 }
 
 

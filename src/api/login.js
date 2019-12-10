@@ -1,3 +1,5 @@
 import {post} from "./utils";
 
-export default data => post('/login', data);
+export const login = data => post('/login', data);
+
+export const logout = () => post('/logout', {});

@@ -13,7 +13,14 @@ const Nickname = ({nickname, editMode, children, onChange}) => {
     };
 
     if (editMode)
-        return <StyledInput large centered value={text} onChange={onChangeListener} style={{width: text.length * 9 + 'px'}}/>;
+        return <StyledInput
+            large
+            centered
+            name="nickname"
+            value={text}
+            onChange={onChangeListener}
+            style={{width: text.length * 9 + 'px'}}
+        />;
 
     if (text !== nickname)
         setText(nickname);

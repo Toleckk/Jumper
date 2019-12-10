@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import {Form} from "../../../molecules";
 
-export default styled.form.attrs({as: Form})`
+export default styled.form`
     width: 23vw;
     background: transparent;
     border: 2px solid rgb(${props => props.theme.primary});

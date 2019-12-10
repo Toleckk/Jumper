@@ -11,13 +11,14 @@ const About = ({about, editMode, onChange}) => {
         setText(e.target.value);
         return onChange && onChange(e);
     };
-    if(editMode)
-        return <Container><StyledInput value={text} onChange={onChangeListener} style={{width: '100%'}}/></Container>;
 
-    if(about !== text)
+    if(!editMode && about !== text)
         setText(about);
 
-    return <Container>{about && <ColoredSpan>{about}</ColoredSpan>}</Container>;
+    return <Container>{editMode
+        ? <StyledInput value={text} onChange={onChangeListener} style={{width: '100%'}} name="about"/>
+        : about && <ColoredSpan>{about}</ColoredSpan>
+    }</Container>;
 };
 
 About.defaultProps = {

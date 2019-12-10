@@ -30,7 +30,13 @@ const Description = ({age, from, editMode, onChange}) => {
     return <Container>
         {(age || editMode) && <>
             {editMode
-                ? <StyledInput centered value={ageText} onChange={onAgeChanged} style={{width: ageText.toString().length * 10 + 'px'}}/>
+                ? <StyledInput
+                    centered
+                    name="age"
+                    value={ageText}
+                    onChange={onAgeChanged}
+                    style={{width: (ageText || '').toString().length * 10 + 'px'}}
+                />
                 : <StyledSpan>{age}</StyledSpan>
             }
             <StyledSpan>{' ' + t('years old')}</StyledSpan>
@@ -39,7 +45,13 @@ const Description = ({age, from, editMode, onChange}) => {
         {(editMode || from) && <>
             <StyledSpan>{t('from') + ': '}</StyledSpan>
             {editMode
-                ? <StyledInput centered value={fromText} onChange={onFromChanged} style={{width: fromText.length * 10 + 'px'}}/>
+                ? <StyledInput
+                    centered
+                    name="from"
+                    value={fromText}
+                    onChange={onFromChanged}
+                    style={{width: (fromText || '').length * 10 + 'px'}}
+                />
                 : <StyledSpan>{from}</StyledSpan>
             }
         </>}
@@ -49,12 +61,14 @@ const Description = ({age, from, editMode, onChange}) => {
 Description.defaultProps = {
     age: 0,
     from: '',
+    onChange: null,
 };
 
 Description.propTypes = {
     age: Type.number,
     from: Type.string,
     editMode: Type.bool.isRequired,
+    onChange: Type.func,
 };
 
 export default React.memo(Description);

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {confirmRegistration} from "api";
 import {client} from "apollo";
 import {ME} from "apollo/requests/user";
@@ -28,13 +28,17 @@ const validateOnChange = ({password, confirm}) => ({
 const PasswordForm = ({setLoaded}) => {
     const {t} = useTranslation();
     const {token} = useParams();
+    const history = useHistory();
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState(false);
 
     const submit = ({password}) => {
         setLoaded(true);
         confirmRegistration(password, token)
-            .then(() => client.query({query: ME, fetchPolicy: 'network-only'}))
+            .then(async () => {
+                const {data} = await client.query({query: ME, fetchPolicy: 'network-only'});
+                history.replace('/user/' + data.me.nickname);
+            })
             .catch(e => {
                 setErrors(e);
                 setLoaded(false);

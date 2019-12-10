@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useQuery} from "@apollo/react-hooks";
-import {Route, Switch, useHistory} from "react-router-dom";
+import {Route, Switch, useHistory, useLocation} from "react-router-dom";
 import {client} from "apollo";
 import {ME} from "apollo/requests/user";
 import {ME as STORED_ME} from "apollo/actions/user";
@@ -11,13 +11,14 @@ import UserPage from "./UserPage";
 const App = () => {
     const {loading, data} = useQuery(STORED_ME);
     const history = useHistory();
+    const location = useLocation();
 
     useEffect(() => {
         client.query({query: ME});
     }, []);
 
     useEffect(() => {
-        if (data && data.me)
+         if (data && data.me && !location.pathname.match(/\/user\/.+/))
             history.replace(`/user/${data.me.nickname}`);
     }, [data]);
 
