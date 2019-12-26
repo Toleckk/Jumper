@@ -1,4 +1,6 @@
 import React from 'react';
+import {useMutation} from "@apollo/react-hooks";
+import {CREATE} from "apollo/mutations/registration";
 import {useLocalizationContext} from "contexts/Localization";
 import {Form} from 'components/Common/molecules';
 import StyledForm from "../atoms/StyledForm";
@@ -14,17 +16,11 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
-const submit = data => fetch('/registration', {
-    method: "post",
-    body: JSON.stringify(data),
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-});
-
 const EmailForm = () => {
     const {t} = useLocalizationContext();
+
+    const [createRegistration] = useMutation(CREATE);
+    const submit = registration => createRegistration({variables: {registration}});
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
