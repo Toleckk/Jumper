@@ -1,7 +1,9 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
+import {useMutation} from "@apollo/react-hooks";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import {Form} from 'Common/molecules';
+import {CONFIRM} from "Landing/mutations/registration";
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
@@ -24,17 +26,10 @@ const validateOnChange = ({password, confirm}) => ({
 
 const PasswordForm = () => {
     const {t} = useLocalizationContext();
-
     const {token} = useParams();
 
-    const submit = ({password}) => fetch('/registration/confirm', {
-        method: "post",
-        body: JSON.stringify({password, token}),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
+    const [confirmRegistration] = useMutation(CONFIRM, {variables: {token}});
+    const submit = ({password}) => confirmRegistration({variables: {password}});
 
     return <Form as={StyledForm}
                  onSubmit={submit}

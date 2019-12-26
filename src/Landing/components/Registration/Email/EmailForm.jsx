@@ -20,7 +20,7 @@ const EmailForm = () => {
     const {t} = useLocalizationContext();
 
     const [createRegistration] = useMutation(CREATE);
-    const submit = registration => createRegistration({variables: {registration}});
+    const submit = data => createRegistration({variables: {...data}});
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
