@@ -4,6 +4,8 @@ import {Input, Form} from "Common/molecules";
 import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
 import Link from "./Link";
+import {useMutation} from "@apollo/react-hooks";
+import {CREATE} from "../../../mutations/session";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -12,18 +14,11 @@ const validate = ({login, password}) => ({
     password: !password || !password.length
 });
 
-const submit = data => fetch('/login', {
-    method: "post",
-    credentials: 'same-origin',
-    body: JSON.stringify(data),
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-    }
-});
-
 const Authorization = () => {
     const {t} = useLocalizationContext();
+    const [authorize] = useMutation(CREATE);
+
+    const submit = data => authorize({variables: {...data}});
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
