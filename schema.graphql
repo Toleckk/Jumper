@@ -1,0 +1,101 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Description {
+    about: String
+    age: Int
+    from: String
+}
+
+type Like {
+    id: String!
+    post: Post!
+}
+
+type Mutation {
+    confirmRegistration(user: UserCreatingInput!): Void
+    confirmRestore(data: ConfirmRestoringInput): Void
+    createLike(like: LikeInput!): Boolean
+    createPost(post: PostInput): Boolean
+    createRegistration(registration: RegistrationInput!): Void
+    createRestore(email: String!): Void
+    createSession(credentials: SessionInput!): Void
+    createSubscribe(subscribe: SubscribeInput): Boolean
+}
+
+type Post {
+    author: User!
+    date: Date!
+    id: String!
+    likes: [Like]
+    text: String!
+}
+
+type Query {
+    like(id: String!): Like
+    likes(owner: String!): [Like]
+    me: User
+    post(id: String!): Post
+    posts(owner: String!): [Post]
+    subscribe(id: String!): Subscribe
+    subscribes(account: String!): [Subscribe]
+    user(nickname: String!): User
+    users: [User]
+}
+
+type Subscribe {
+    account: User!
+    id: String!
+    subscriber: User!
+}
+
+type User {
+    avatar: String!
+    description: Description!
+    nickname: String!
+    postsCount: Int!
+    registration: Date!
+    subscribersCount: Int!
+    subscribesCount: Int!
+}
+
+input ConfirmRestoringInput {
+    password: String!
+    token: String!
+}
+
+input LikeInput {
+    post: String!
+}
+
+input PostInput {
+    text: String!
+}
+
+input RegistrationInput {
+    email: String!
+    nickname: String!
+}
+
+input SessionInput {
+    login: String!
+    password: String!
+}
+
+input SubscribeInput {
+    account: String!
+}
+
+input UserCreatingInput {
+    password: String!
+    token: String!
+}
+
+
+scalar Date
+
+scalar Void
