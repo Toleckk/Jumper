@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useMutation} from "@apollo/react-hooks";
 import {CREATE} from "Landing/mutations/registration";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import {Form} from 'Common/molecules';
+import {useLoadingContext} from "Landing/contexts/LoadingContext";
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
@@ -18,9 +19,19 @@ const validate = ({nickname, email}) => ({
 
 const EmailForm = () => {
     const {t} = useLocalizationContext();
+    const [createRegistration, {error, loading}] = useMutation(CREATE);
+    const {setLoading} = useLoadingContext();
 
-    const [createRegistration] = useMutation(CREATE);
-    const submit = data => createRegistration({variables: {...data}});
+    useEffect(() => {
+        setLoading(loading);
+    }, [loading]);
+
+    const submit = data => createRegistration({variables: {...data}})
+        .then(() => {
+            /*TODO: redirect*/
+        }).catch(() => {});
+
+    // console.log(error && error.graphQLErrors[0].extensions.exception);
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
