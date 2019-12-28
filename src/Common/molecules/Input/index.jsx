@@ -10,6 +10,9 @@ import withValidation from "./withValidation";
 import {useEye, useFocused} from "./hooks";
 
 const Input = ({id, legend, className, password, error, onFocus, onBlur, ...props}) => {
+    if(!id)
+        id = props.name || 'id' + nanoid(10);
+
     const [focus, setFocused, setUnfocused] = useFocused(onFocus, onBlur);
     const [eyePressed, setPressed, setUnpressed] = useEye();
 
@@ -31,7 +34,6 @@ const Input = ({id, legend, className, password, error, onFocus, onBlur, ...prop
 };
 
 Input.defaultProps = {
-    id: 'id' + nanoid(10),
     legend: '',
     className: '',
     password: false,
