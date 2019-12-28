@@ -1,8 +1,11 @@
 import React from 'react';
+import {useMutation} from "@apollo/react-hooks";
+import {useParams} from "react-router-dom";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
+import {CONFIRM} from "../../../mutations/restore";
 
 const isValidPassword = text => (
     /[a-z]+/.test(text) && /[A-Z]+/.test(text) && /\d/.test(text) && text.length >= 8 && text.length <= 50
@@ -10,7 +13,7 @@ const isValidPassword = text => (
 
 const validate = ({password, confirm}) => ({
     password: !password || !password.length || !isValidPassword(password),
-    confirm: !confirm || !confirm.length || confirm === password,
+    confirm: !confirm || !confirm.length || confirm !== password,
 });
 
 const validateOnChange = ({password, confirm}) => ({
@@ -20,11 +23,14 @@ const validateOnChange = ({password, confirm}) => ({
 
 const PasswordForm = () => {
     const {t} = useLocalizationContext();
+    const {token} = useParams();
+    const [confirmRegistration] = useMutation(CONFIRM, {variables: {token}});
+    const submit = data => confirmRegistration({variables: {...data}});
 
-    return <StyledForm onSubmit={console.log}
-                 validate={validate}
-                 validateOnChange={validateOnChange}
-                 resetFieldErrorOnChange
+    return <StyledForm onSubmit={submit}
+                       validate={validate}
+                       validateOnChange={validateOnChange}
+                       resetFieldErrorOnChange
     >{({updateState, errors, onChange}) => (
         <>
             <StyledInput name="password"

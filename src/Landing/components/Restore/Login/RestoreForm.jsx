@@ -3,21 +3,29 @@ import {useLocalizationContext} from "Common/contexts/Localization";
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
 import StyledInput from "../atoms/StyledInput";
+import {useMutation} from "@apollo/react-hooks";
+import {CREATE} from "../../../mutations/restore";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
-const validate = ({login}) => ({login: !login || !login.length});
+const validate = ({login}) => {
+    console.log(login);
+    return {login: !login || !login.length}
+};
 
 const RestoreForm = () => {
     const {t} = useLocalizationContext();
+    const [createRestore] = useMutation(CREATE);
+    const submit = data => createRestore({variables: {email: data.login}});
 
-    return <StyledForm onSubmit={console.log} validate={validate} resetFieldErrorOnChange>{({onChange, errors}) => (
+    return <StyledForm onSubmit={submit} validate={validate} resetFieldErrorOnChange>{({onChange, updateState, errors}) => (
         <>
             <StyledInput name="login"
-                   legend={t('login')}
-                   onChange={onChange}
-                   error={errors.login}
-                   pattern={loginPattern}
+                         legend={t('login')}
+                         onChange={onChange}
+                         onBlur={updateState}
+                         error={errors.login}
+                         pattern={loginPattern}
             />
             <StyledButton type="submit">{t('next')}</StyledButton>
         </>

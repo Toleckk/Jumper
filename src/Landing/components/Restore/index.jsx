@@ -11,7 +11,7 @@ const Restore = () => <>
     <Route path="/restore/message">
         <Message/>
     </Route>
-    <Route path="/restore/password">
+    <Route path="/restore/password/:token">
         <Password/>
     </Route>
     <Route exact path="/restore">
