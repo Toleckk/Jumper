@@ -4,8 +4,10 @@ import Header from "../../atoms/Header";
 import LargeSpan from "../../atoms/LargeSpan";
 import Divider from "../../atoms/Divider";
 import Logo from "./Logo";
+import Loader from "./Loader";
 
-const MainPageTemplate = ({logo, header, description, content: Main, footer: Footer, withLastDivider}) => <>
+const MainPageTemplate = ({logo, loading, header, description, content: Main, footer: Footer, withLastDivider}) => <>
+    {loading && <Loader/>}
     <Logo large={logo === 'large'} src="" alt=""/>
     <Header>{header}</Header>
     <LargeSpan>{description}</LargeSpan>
@@ -19,6 +21,7 @@ MainPageTemplate.defaultProps = {
     footer: null,
     logo: 'small',
     withLastDivider: false,
+    loading: false,
 };
 
 MainPageTemplate.propTypes = {
@@ -28,6 +31,7 @@ MainPageTemplate.propTypes = {
     content: Type.elementType.isRequired,
     footer: Type.elementType,
     withLastDivider: Type.bool,
+    loading: Type.bool,
 };
 
 export default React.memo(MainPageTemplate);
