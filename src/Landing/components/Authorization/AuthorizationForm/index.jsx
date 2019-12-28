@@ -22,16 +22,14 @@ const Authorization = () => {
 
     return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
         ({updateState, errors, onChange}) => <>
-            <Input id="login"
-                   name="login"
+            <Input name="login"
                    legend={t('login')}
                    regex={loginPattern}
                    onChange={onChange}
                    onBlur={updateState}
                    error={errors.login}
             />
-            <Input id="password"
-                   name="password"
+            <Input name="password"
                    password
                    legend={t('password')}
                    onChange={onChange}
