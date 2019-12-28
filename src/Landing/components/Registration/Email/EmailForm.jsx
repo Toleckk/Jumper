@@ -28,7 +28,7 @@ const EmailForm = () => {
                 <label htmlFor="nickname">{t('Create nickname')}</label>
                 <StyledInput id="nickname"
                              name="nickname"
-                             pattern={loginPattern}
+                             regex={loginPattern}
                              legend={t('nickname')}
                              onBlur={updateState}
                              onChange={onChange}

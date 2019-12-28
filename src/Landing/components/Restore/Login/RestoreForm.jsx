@@ -25,7 +25,7 @@ const RestoreForm = () => {
                          onChange={onChange}
                          onBlur={updateState}
                          error={errors.login}
-                         pattern={loginPattern}
+                         regex={loginPattern}
             />
             <StyledButton type="submit">{t('next')}</StyledButton>
         </>

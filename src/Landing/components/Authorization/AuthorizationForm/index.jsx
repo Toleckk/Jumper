@@ -25,7 +25,7 @@ const Authorization = () => {
             <Input id="login"
                    name="login"
                    legend={t('login')}
-                   pattern={loginPattern}
+                   regex={loginPattern}
                    onChange={onChange}
                    onBlur={updateState}
                    error={errors.login}
