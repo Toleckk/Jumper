@@ -18,7 +18,7 @@ type Like {
 
 type Mutation {
     confirmRegistration(user: UserCreatingInput!): Void
-    confirmRestore(data: ConfirmRestoringInput): Void
+    confirmRestore(password: String!, token: String!): Void
     createLike(like: LikeInput!): Boolean
     createPost(post: PostInput): Boolean
     createRegistration(registration: RegistrationInput!): Void
@@ -61,11 +61,6 @@ type User {
     registration: Date!
     subscribersCount: Int!
     subscribesCount: Int!
-}
-
-input ConfirmRestoringInput {
-    password: String!
-    token: String!
 }
 
 input LikeInput {
