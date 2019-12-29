@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import {useHistory} from "react-router-dom";
 import {useMutation} from "@apollo/react-hooks";
+import {Field, Form} from "react-final-form";
 import {CREATE} from "Landing/mutations/registration";
 import {useLocalizationContext} from "Common/contexts/Localization";
-import {Form} from 'Common/molecules';
-import {useLoadingContext} from "Landing/contexts/LoadingContext";
 import StyledForm from "../atoms/StyledForm";
 import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
@@ -18,51 +18,45 @@ const validate = ({nickname, email}) => ({
     email: !email || !email.length
 });
 
+const validateNickname = () => new Promise(resolve => setTimeout(() => resolve(false), 5000));
+
 const EmailForm = () => {
     const {t} = useLocalizationContext();
     const [createRegistration, {error, loading}] = useMutation(CREATE);
-    const {setLoading} = useLoadingContext();
-
-    useEffect(() => {
-        setLoading(loading);
-    }, [loading]);
+    const history = useHistory();
 
     const submit = data => createRegistration({variables: {...data}})
-        .then(() => {
-            /*TODO: redirect*/
-        }).catch(() => {});
+        .then(() => history.push({pathname: '/registration/message', state: {email: data.email}}));
 
-    // console.log(error && error.graphQLErrors[0].extensions.exception);
+    // console.log(error && error.graphQLErrors[0].extensions.exception)
 
     return <Form onSubmit={submit} validateOnBlur>{({handleSubmit}) => <>
-        {loading && <Loader background="dark"/>}
+        {loading && <Loader background={"dark"}/>}
         <StyledForm onSubmit={handleSubmit}>
             <Row>
                 <label htmlFor="nickname">{t('Create nickname')}</label>
-                <StyledInput id="nickname"
-                             name="nickname"
-                             regex={loginPattern}
-                             legend={t('nickname')}
-                             onBlur={updateState}
-                             onChange={onChange}
-                             error={errors.nickname}
-                />
+                <Field name="nickname" validate={validateNickname}>{({input, meta: {error, validating}}) =>
+                    <StyledInput id="nickname"
+                                 regex={loginPattern}
+                                 legend={t('nickname')}
+                                 {...input}
+                                 error={error}
+                                 loading={validating}
+                    />
+                }</Field>
             </Row>
             <Divider/>
             <Row>
                 <label htmlFor="email">{t('Enter email')}</label>
-                <StyledInput id="email"
-                             name="email"
-                             legend={t('email')}
-                             onChange={onChange}
-                             onBlur={updateState}
-                             error={errors.email}
-                />
+                <Field name="email">{({input}) =>
+                    <StyledInput id="email" legend={t('email')} {...input}/>
+                }</Field>
             </Row>
             <Divider/>
             <StyledButton>{t('next')}</StyledButton>
-        </>
-    }</Form>;
+        </StyledForm>
+    </>
+    }</Form>
 };
 
 export default React.memo(EmailForm);
