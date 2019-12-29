@@ -9,6 +9,7 @@ import StyledButton from "../atoms/StyledButton";
 import Divider from "../../atoms/Divider";
 import Row from "../atoms/Row";
 import StyledInput from "../atoms/StyledInput";
+import {Loader} from "Common/molecules";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;
 
@@ -33,8 +34,9 @@ const EmailForm = () => {
 
     // console.log(error && error.graphQLErrors[0].extensions.exception);
 
-    return <Form onSubmit={submit} validate={validate} as={StyledForm} resetFieldErrorOnChange>{
-        ({updateState, errors, onChange}) => <>
+    return <Form onSubmit={submit} validateOnBlur>{({handleSubmit}) => <>
+        {loading && <Loader background="dark"/>}
+        <StyledForm onSubmit={handleSubmit}>
             <Row>
                 <label htmlFor="nickname">{t('Create nickname')}</label>
                 <StyledInput id="nickname"
