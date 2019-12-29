@@ -1,4 +1,5 @@
 import React from 'react';
+import {useLocation} from 'react-router-dom';
 import useEmail from "Common/hooks/useEmail";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import CenteredSpan from "./CenteredSpan";
@@ -6,10 +7,10 @@ import StyledLink from "./StyledLink";
 import FullWidthButton from "./FullWidthButton";
 import {MainPageTemplate} from "../../templates";
 
-// TODO: email
 const Message = () => {
     const {t} = useLocalizationContext();
-    const emailDomain = useEmail('anton1337@gmail.com');
+    const {state} = useLocation();
+    const emailDomain = useEmail(state.email);
 
     return <MainPageTemplate
         withLastDivider
@@ -18,7 +19,7 @@ const Message = () => {
         content={
             () => <>
                 <br/>
-                <CenteredSpan>{t('Follow instructions')}</CenteredSpan>
+                <CenteredSpan>{t('Follow instructions', {...state})}</CenteredSpan>
                 <br/>
                 <CenteredSpan>{t('Cannot find?')}</CenteredSpan>
                 <br/>
