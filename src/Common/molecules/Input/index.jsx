@@ -9,7 +9,7 @@ import StyledInput from "./StyledInput";
 import withValidation from "./withValidation";
 import {useEye, useFocused} from "./hooks";
 
-const Input = ({id, legend, className, password, error, onFocus, onBlur, ...props}) => {
+const Input = ({id, legend, className, password, error, loading, onFocus, onBlur, ...props}) => {
     if(!id)
         id = props.name || 'id' + nanoid(10);
 
@@ -38,6 +38,7 @@ Input.defaultProps = {
     className: '',
     password: false,
     error: false,
+    loading: false,
     onFocus: null,
     onBlur: null,
     onMouseDown: null,
@@ -49,7 +50,8 @@ Input.propTypes = {
     legend: Type.string,
     className: Type.string,
     password: Type.bool,
-    error: Type.bool,
+    error: Type.any,
+    loading: Type.any,
     onFocus: Type.func,
     onBlur: Type.func,
     onMouseDown: Type.func,

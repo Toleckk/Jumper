@@ -8,7 +8,7 @@ const withValidation = Component => {
         if(regex) {
             const checkPattern = createPatternChecker(regex, onChange, setValue);
 
-            return <Component value={value} onChange={checkPattern} {...props}/>;
+            return <Component onChange={checkPattern} {...props} value={value}/>;
         }
 
         return <Component onChange={onChange} {...props}/>;
