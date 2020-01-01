@@ -3,7 +3,7 @@ import {useLocalizationContext} from "Common/contexts/Localization";
 import {Input, Form} from "Common/molecules";
 import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
-import Link from "./Link";
+import Link from "./StyledLink";
 import {useMutation} from "@apollo/react-hooks";
 import {CREATE} from "../../../mutations/session";
 
