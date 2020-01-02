@@ -7,6 +7,7 @@
     "apollo-boost": "^0.4.7",
     "final-form": "^4.18.6",
     "graphql": "^14.5.8",
+    "mem": "^6.0.1",
     "nanoid": "^2.1.6",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
