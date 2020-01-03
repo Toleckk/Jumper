@@ -6,6 +6,7 @@ const StyledFieldset = styled.fieldset`
     color: rgb(${props => props.theme.primaryText});
     
     box-sizing: border-box;
+    position: relative;
     
     width: 100%;    
     min-width: 215px;
@@ -25,10 +26,25 @@ const StyledFieldset = styled.fieldset`
     ${({error, theme}) => error ? `
         box-shadow: inset rgba(${theme.error}, 0.9) 0 0 1.1rem;
     ` : ''}
+    
+    &::before {
+      position: absolute;
+      content: '${props => typeof props.error === 'string' && props.error}';
+      top: calc(100% + 3px);
+      padding-left: 2px;
+      font-size: small;
+      color: rgb(${props => props.theme.errorText});
+      border-left: 4px solid rgb(${props => props.theme.secondary});
+    }
 `;
+
+StyledFieldset.defaultProps = {
+    error: false,
+};
 
 StyledFieldset.propTypes = {
     focused: Type.bool,
+    error: Type.oneOfType([Type.bool, Type.string]),
 };
 
 export default StyledFieldset;
