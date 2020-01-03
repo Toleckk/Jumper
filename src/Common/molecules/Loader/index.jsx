@@ -12,13 +12,15 @@ const Loader = ({background, ...props}) => <Container background={background}>
 Loader.defaultProps = {
     size: 30,
     bold: 15,
-    background: 'lite'
+    background: 'lite',
+    shadow: true,
 };
 
 Loader.propTypes = {
     size: Type.number,
     bold: Type.number,
     background: Type.oneOf(['dark', 'lite']),
+    shadow: Type.bool,
 };
 
 export default Loader;
