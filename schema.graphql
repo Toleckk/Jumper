@@ -36,6 +36,7 @@ type Post {
 }
 
 type Query {
+    canRegister(data: RegistrationCheckInput): Boolean
     like(id: String!): Like
     likes(owner: String!): [Like]
     me: User
@@ -69,6 +70,11 @@ input LikeInput {
 
 input PostInput {
     text: String!
+}
+
+input RegistrationCheckInput {
+    email: String
+    nickname: String
 }
 
 input RegistrationInput {
