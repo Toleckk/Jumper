@@ -8,6 +8,8 @@ import StyledLegend from "./StyledLegend";
 import StyledInput from "./StyledInput";
 import withValidation from "./withValidation";
 import {useEye, useFocused} from "./hooks";
+import {Loader} from "../";
+import LoaderContainer from "./LoaderContainer";
 
 const Input = ({id, legend, className, password, error, loading, onFocus, onBlur, ...props}) => {
     if(!id)
@@ -28,7 +30,8 @@ const Input = ({id, legend, className, password, error, loading, onFocus, onBlur
                 onBlur={setUnfocused}
                 {...props}
             />
-            {password ? <Eye onMouseDown={setPressed} onMouseUp={setUnpressed}/> : ''}
+            {loading && <LoaderContainer><Loader size={2} bold={2} shadow={false}/></LoaderContainer>}
+            {password && <Eye onMouseDown={setPressed} onMouseUp={setUnpressed}/>}
         </Flex>
     </StyledFieldset>;
 };
