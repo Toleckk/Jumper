@@ -7,6 +7,7 @@ import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
 import {CONFIRM} from "../../mutations/restore";
 
+// TODO: remove
 const isValidPassword = text => (
     /[a-z]+/.test(text) && /[A-Z]+/.test(text) && /\d/.test(text) && text.length >= 8 && text.length <= 50
 );

@@ -5,15 +5,17 @@ import {useLocalizationContext} from "Common/contexts/Localization";
 import {client} from "Common/apollo";
 import {StyledInput, Row} from "../atoms";
 import {CAN_REGISTER} from "../../queries/registration";
+import useValidation from "../../../Common/hooks/useValidation";
 
 const EmailField = () => {
     const {t} = useLocalizationContext();
+    const {email: emailPattern} = useValidation('email');
 
     const validateEmail = useCallback(mem(async email => {
         if (!email)
             return true;
 
-        if (!/^[-0-9.A-Za-z_]+@[A-Za-z]+\.[A-Za-z]{2,10}$/.test(email))
+        if (!emailPattern.test(email))
             return 'Should be correct email';
 
         try {
