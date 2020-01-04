@@ -1,6 +1,24 @@
 import React from 'react';
-import {Landing} from "./Landing";
+import Title from "react-document-title";
+import {Route} from "react-router-dom";
+import Authorization from "./Authorization";
+import Registration from "./Registration";
+import Restore from "./Restore";
 
-const App = () => <Landing/>;
+const App = () => <>
+    <Route exact path="/">
+        <Authorization/>
+    </Route>
+    <Route path="/registration">
+        <Title title="Registration">
+            <Registration/>
+        </Title>
+    </Route>
+    <Route path="/restore">
+        <Title title="Restore">
+            <Restore/>
+        </Title>
+    </Route>
+</>;
 
 export default React.memo(App);
