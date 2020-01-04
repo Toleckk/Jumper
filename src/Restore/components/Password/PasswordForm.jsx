@@ -5,9 +5,7 @@ import {Field, Form} from "react-final-form";
 import {useTranslation} from "Common/contexts/Localization";
 import {Loader} from "Common/molecules";
 import useValidation from "Common/hooks/useValidation";
-import StyledButton from "../atoms/StyledButton";
-import StyledForm from "../atoms/StyledForm";
-import StyledInput from "../atoms/StyledInput";
+import {StyledButton, StyledForm, StyledInput} from "../atoms";
 import {CONFIRM} from "../../mutations/restore";
 
 const PasswordForm = () => {

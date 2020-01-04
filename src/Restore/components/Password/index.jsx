@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from "Common/contexts/Localization";
 import {Landing} from "Common/templates";
 import PasswordForm from "./PasswordForm";
-import StyledSpan from "../atoms/StyledSpan";
+import {StyledSpan} from "../atoms";
 
 const Password = () => {
     const {t} = useTranslation();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from "Common/contexts/Localization";
-import StyledSpan from "../atoms/StyledSpan";
+import {StyledSpan} from "../atoms";
 import RestoreForm from "./RestoreForm";
 import {Landing} from "Common/templates";
 

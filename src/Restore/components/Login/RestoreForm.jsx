@@ -5,9 +5,7 @@ import {useHistory} from "react-router-dom";
 import {useTranslation} from "Common/contexts/Localization";
 import useValidation from "Common/hooks/useValidation";
 import {Loader} from "Common/molecules";
-import StyledForm from "../atoms/StyledForm";
-import StyledButton from "../atoms/StyledButton";
-import StyledInput from "../atoms/StyledInput";
+import {StyledForm, StyledInput, StyledButton} from "../atoms";
 import {CREATE} from "../../mutations/restore";
 
 const RestoreForm = () => {
