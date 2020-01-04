@@ -1,8 +1,8 @@
 import {gql} from "apollo-boost";
 
 export const CREATE = gql`
-    mutation CreateRestore($email: String!) {
-        createRestore(email: $email)
+    mutation CreateRestore($login: String!) {
+        createRestore(login: $login)
     }
 `;
 
