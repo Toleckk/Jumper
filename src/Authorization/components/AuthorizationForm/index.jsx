@@ -1,7 +1,8 @@
 import React from 'react';
 import {useMutation} from "@apollo/react-hooks";
+import {Field, Form} from "react-final-form";
 import {useLocalizationContext} from "Common/contexts/Localization";
-import {Input, Form} from "Common/molecules";
+import {Input, Loader} from "Common/molecules";
 import useValidation from "Common/hooks/useValidation";
 import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
@@ -10,31 +11,52 @@ import {CREATE} from "../../mutations/session";
 
 const Authorization = () => {
     const {t} = useLocalizationContext();
-    const [authorize] = useMutation(CREATE);
-    const {login, authorization} = useValidation('login', 'authorization');
+    const [authorize, {loading}] = useMutation(CREATE);
+    const {login, authorization} = useValidation();
 
-    const submit = data => authorize({variables: {...data}});
+    const submit = async data => {
+        const errors = authorization(data);
 
-    return <Form onSubmit={submit} validate={authorization} as={StyledForm} resetFieldErrorOnChange>{
-        ({updateState, errors, onChange}) => <>
-            <Input name="login"
-                   legend={t('login')}
-                   regex={login}
-                   onChange={onChange}
-                   onBlur={updateState}
-                   error={errors.login}
-            />
-            <Input name="password"
-                   password
-                   legend={t('password')}
-                   onChange={onChange}
-                   onBlur={updateState}
-                   error={errors.password}
-            />
+        if (errors && Object.values(errors).length)
+            return errors;
+
+        try {
+            await authorize({variables: {...data}});
+            // TODO: redirect
+        } catch (e) {
+            // TODO: error context
+            return e.graphQLErrors[0].extensions;
+        }
+    };
+
+    return <Form onSubmit={submit}>{({handleSubmit}) => <>
+        {loading && <Loader background={"dark"}/>}
+        <StyledForm onSubmit={handleSubmit}>
+
+            <Field name="login" validateFields={[]}>{
+                ({input, meta: {submitError, submitFailed, dirtySinceLastSubmit}}) => (
+                    <Input legend={t('login')}
+                           regex={login}
+                           {...input}
+                           error={submitFailed && !dirtySinceLastSubmit && t(submitError)}
+                    />
+                )
+            }</Field>
+
+            <Field name="password" validateFields={[]}>{
+                ({input, meta: {submitError, submitFailed, dirtySinceLastSubmit}}) => (
+                    <Input legend={t('password')}
+                           password
+                           {...input}
+                           error={submitFailed && !dirtySinceLastSubmit && t(submitError)}
+                    />
+                )
+            }</Field>
+
             <StyledButton type="submit">{t('signIn')}</StyledButton>
             <Link to="/restore">{t('Forgot password?')}</Link>
-        </>
-    }</Form>;
+        </StyledForm>
+    </>}</Form>;
 };
 
 export default React.memo(Authorization);
