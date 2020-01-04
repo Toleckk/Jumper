@@ -1,8 +1,19 @@
 const patterns = {
-    authorization: ({login, password}) => ({
-        login: !login || !login.length,
-        password: !password || !password.length
-    }),
+    authorization: ({login, password}) => {
+        const errors = {};
+
+        if (!login)
+            errors.login = true;
+        else if (!patterns.nickname.test(login) && !patterns.email.test(login))
+            errors.login = 'Invalid nickname';
+
+        if (!password)
+            errors.password = true;
+        else if (!patterns.password(password))
+            errors.password = 'Invalid password';
+
+        return errors;
+    },
     login: /^[-_0-9A-Za-z.@]*$/,
     email: /^[-0-9.A-Za-z_]+@[A-Za-z]+\.[A-Za-z]{2,10}$/,
     nickname: /^[A-z0-9]{5,}$/,
@@ -15,16 +26,16 @@ const patterns = {
         && password.length <= 32
     ),
     passwordCreation: ({password, confirm}) => {
-        if(this.password(password) && this.password(confirm) && password === confirm)
+        if (patterns.password(password) && patterns.password(confirm) && password === confirm)
             return false;
 
         return {
-            password: !this.password(password),
+            password: !patterns.password(password),
             confirm: confirm !== password,
         };
     }
 };
 
-const useValidation = (...fields) => fields.reduce((acc, field) => ({...acc, [field]: patterns[field]}), {});
+const useValidation = () => patterns;
 
 export default useValidation;
