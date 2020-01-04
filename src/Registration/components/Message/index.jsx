@@ -1,14 +1,14 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
 import useEmail from "Common/hooks/useEmail";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import {Landing} from "Common/templates";
 import CenteredSpan from "./CenteredSpan";
 import StyledLink from "./StyledLink";
 import FullWidthButton from "./FullWidthButton";
 
 const Message = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const {state} = useLocation();
     const emailDomain = useEmail(state.email);
 

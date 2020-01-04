@@ -1,11 +1,11 @@
 import React from 'react';
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import AuthorizationForm from "./AuthorizationForm";
 import Registration from "./Registration";
 import {Landing} from "Common/templates"
 
 const Authorization = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
     return <Landing
             header={t('Let people know about your thoughts')}

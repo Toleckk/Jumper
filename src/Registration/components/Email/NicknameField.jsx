@@ -1,14 +1,14 @@
 import React, {useCallback} from 'react';
 import {Field} from "react-final-form";
 import mem from "mem";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import {client} from "Common/apollo";
 import useValidation from "Common/hooks/useValidation";
 import {StyledInput, Row} from "../atoms";
 import {CAN_REGISTER} from "../../queries/registration";
 
 const NicknameField = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const {nickname: nicknamePattern, login} = useValidation();
 
     const validateNickname = useCallback(mem(async nickname => {

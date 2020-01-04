@@ -1,12 +1,12 @@
 import React from 'react';
 import {Flex} from "Common/atoms";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import Link from "./Link";
 import StyledButton from "./StyledButton";
 import StyledSpan from "./StyledSpan";
 
 const Registration = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
     return <Flex direction="column" align="center">
         <StyledSpan>{t('Join us')}</StyledSpan>

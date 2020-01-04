@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import {useMutation} from "@apollo/react-hooks";
 import {Field, Form} from "react-final-form";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import useValidation from "Common/hooks/useValidation";
 import {Divider} from "Common/atoms";
 import {Loader} from "Common/molecules";
@@ -11,7 +11,7 @@ import {CONFIRM} from "../../mutations/registration";
 
 const PasswordForm = () => {
     const {passwordCreation} = useValidation();
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const {token} = useParams();
 
     const [confirmRegistration, {loading}] = useMutation(CONFIRM, {variables: {token}});

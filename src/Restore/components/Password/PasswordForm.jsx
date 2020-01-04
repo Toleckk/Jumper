@@ -1,7 +1,7 @@
 import React from 'react';
 import {useMutation} from "@apollo/react-hooks";
 import {useParams} from "react-router-dom";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import StyledButton from "../atoms/StyledButton";
 import StyledForm from "../atoms/StyledForm";
 import StyledInput from "../atoms/StyledInput";
@@ -23,7 +23,7 @@ const validateOnChange = ({password, confirm}) => ({
 });
 
 const PasswordForm = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const {token} = useParams();
     const [confirmRegistration] = useMutation(CONFIRM, {variables: {token}});
     const submit = data => confirmRegistration({variables: {...data}});

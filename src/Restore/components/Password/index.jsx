@@ -1,11 +1,11 @@
 import React from 'react';
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import {Landing} from "Common/templates";
 import PasswordForm from "./PasswordForm";
 import StyledSpan from "../atoms/StyledSpan";
 
 const Password = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
 
     return <Landing
         withLastDivider

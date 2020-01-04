@@ -1,7 +1,7 @@
 import React from 'react';
 import {useMutation} from "@apollo/react-hooks";
 import {Field, Form} from "react-final-form";
-import {useLocalizationContext} from "Common/contexts/Localization";
+import {useTranslation} from "Common/contexts/Localization";
 import {Input, Loader} from "Common/molecules";
 import useValidation from "Common/hooks/useValidation";
 import StyledForm from "./StyledForm";
@@ -10,7 +10,7 @@ import Link from "./StyledLink";
 import {CREATE} from "../../mutations/session";
 
 const Authorization = () => {
-    const {t} = useLocalizationContext();
+    const {t} = useTranslation();
     const [authorize, {loading}] = useMutation(CREATE);
     const {login, authorization} = useValidation();
 

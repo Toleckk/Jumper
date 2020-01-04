@@ -1,4 +1,4 @@
 import Provider from "./Provider";
-import useLocalizationContext from "./useLocalizationContext";
+import useTranslation from "./useTranslation";
 
-export {Provider as LocalizationProvider, useLocalizationContext};
+export {Provider as LocalizationProvider, useTranslation};
