@@ -9,7 +9,7 @@ import {CAN_REGISTER} from "../../queries/registration";
 
 const NicknameField = () => {
     const {t} = useLocalizationContext();
-    const {nickname: nicknamePattern, login} = useValidation('nickname', 'login');
+    const {nickname: nicknamePattern, login} = useValidation();
 
     const validateNickname = useCallback(mem(async nickname => {
         if (!nickname)

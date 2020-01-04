@@ -9,7 +9,7 @@ import useValidation from "../../../Common/hooks/useValidation";
 
 const EmailField = () => {
     const {t} = useLocalizationContext();
-    const {email: emailPattern} = useValidation('email');
+    const {email: emailPattern} = useValidation();
 
     const validateEmail = useCallback(mem(async email => {
         if (!email)

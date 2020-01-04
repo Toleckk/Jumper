@@ -10,7 +10,7 @@ import {StyledInput, Row, StyledButton, StyledForm} from "../atoms";
 import {CONFIRM} from "../../mutations/registration";
 
 const PasswordForm = () => {
-    const {passwordCreation} = useValidation('password', 'passwordCreation');
+    const {passwordCreation} = useValidation();
     const {t} = useLocalizationContext();
     const {token} = useParams();
 

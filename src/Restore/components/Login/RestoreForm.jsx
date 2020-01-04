@@ -14,7 +14,7 @@ const RestoreForm = () => {
     const {t} = useLocalizationContext();
     const [createRestore] = useMutation(CREATE);
     const submit = data => createRestore({variables: {email: data.login}});
-    const {login} = useValidation('login');
+    const {login} = useValidation();
 
     return <StyledForm onSubmit={submit} validate={validate} resetFieldErrorOnChange>{({onChange, updateState, errors}) => (
         <>

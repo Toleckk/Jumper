@@ -36,6 +36,4 @@ const patterns = {
     }
 };
 
-const useValidation = () => patterns;
-
-export default useValidation;
+export default () => patterns;
