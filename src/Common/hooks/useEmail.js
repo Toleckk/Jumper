@@ -15,5 +15,7 @@ export default email => {
                     name: 'Mail.ru',
                     url: 'https://mail.ru/'
                 };
+            default:
+                return '';
         }
 };
