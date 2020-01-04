@@ -22,9 +22,11 @@ const RestoreForm = () => {
             return {login: 'Invalid login'};
 
         try {
-            // TODO: state with masked email
-            await createRestore({variables: {login}});
-            history.push('/restore/message');
+            const {data} = await createRestore({variables: {login}});
+            history.push({
+                pathname: '/restore/message',
+                state: {email: data.createRestore}
+            });
         } catch (e) {
             // TODO: error context
             return e.graphQLErrors[0].extensions;
