@@ -29,7 +29,7 @@ const StyledFieldset = styled.fieldset`
     
     &::before {
       position: absolute;
-      content: '${props => typeof props.error === 'string' && props.error}';
+      content: "${props => typeof props.error === 'string' && props.error}";
       top: calc(100% + 3px);
       padding-left: 2px;
       font-size: small;
