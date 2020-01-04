@@ -3,8 +3,7 @@ import {Field} from "react-final-form";
 import mem from "mem";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import {client} from "Common/apollo";
-import StyledInput from "../atoms/StyledInput";
-import Row from "../atoms/Row";
+import {StyledInput, Row} from "../atoms";
 import {CAN_REGISTER} from "../../queries/registration";
 
 const loginPattern = /^[-_0-9A-Za-z.@]*$/;

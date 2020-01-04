@@ -5,10 +5,7 @@ import {Field, Form} from "react-final-form";
 import {useLocalizationContext} from "Common/contexts/Localization";
 import {Divider} from "Common/atoms";
 import {Loader} from "Common/molecules";
-import StyledForm from "../atoms/StyledForm";
-import StyledButton from "../atoms/StyledButton";
-import Row from "../atoms/Row";
-import StyledInput from "../atoms/StyledInput";
+import {StyledInput, Row, StyledButton, StyledForm} from "../atoms";
 import {CONFIRM} from "../../mutations/registration";
 
 const isValidPassword = text => (
