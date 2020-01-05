@@ -1,14 +1,15 @@
 import React, {useCallback} from 'react';
 import {Field} from "react-final-form";
 import mem from "mem";
+import {useApolloClient} from "@apollo/react-hooks";
 import {useTranslation} from "Common/contexts/Localization";
-import {client} from "Common/apollo";
 import useValidation from "Common/hooks/useValidation";
 import {StyledInput, Row} from "../atoms";
 import {CAN_REGISTER} from "../../queries/registration";
 
 const NicknameField = () => {
     const {t} = useTranslation();
+    const client = useApolloClient();
     const {nickname: nicknamePattern, login} = useValidation();
 
     const validateNickname = useCallback(mem(async nickname => {
