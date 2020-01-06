@@ -8,7 +8,10 @@ import ApolloClient from "apollo-boost";
 
 const App = ({setError}) => {
     const client = useMemo(() => new ApolloClient({
-        onError: e => e.graphQLErrors && e.graphQLErrors.some(e => e.message === ' NotFound') && setError(e)
+        onError: (e) => {
+            if (e.graphQLErrors && e.graphQLErrors.some(e => e.message === ' NotFound'))
+                setError(e);
+        }
     }), [setError]);
 
     return <ApolloProvider client={client}>
