@@ -24,8 +24,18 @@ const Authorization = () => {
             await authorize({variables: {...data}});
             // TODO: redirect
         } catch (e) {
-            // TODO: error context
-            return e.graphQLErrors[0].extensions;
+            if (e.graphQLErrors && e.graphQLErrors.length)
+                switch (e.graphQLErrors[0].message) {
+                    case 'User does not exist':
+                        return {login: 'User does not exist'};
+                    case 'Invalid password':
+                        return {password: 'Invalid password'};
+                    default:
+                        throw e;
+                }
+
+            if(!e.networkError)
+                throw e;
         }
     };
 

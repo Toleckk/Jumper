@@ -28,8 +28,11 @@ const RestoreForm = () => {
                 state: {email: data.createRestore}
             });
         } catch (e) {
-            // TODO: error context
-            return e.graphQLErrors[0].extensions;
+            if(e.graphQLErrors && e.graphQLErrors.length && e.graphQLErrors[0].message === 'User does not exist')
+                return {login: 'User does not exist'};
+
+            if(!e.networkError)
+                throw e;
         }
     };
 

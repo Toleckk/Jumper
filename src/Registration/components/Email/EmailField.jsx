@@ -19,17 +19,11 @@ const EmailField = () => {
         if (!emailPattern.test(email))
             return 'Should be correct email';
 
-        try {
-            const {data} = await client.query({
-                query: CAN_REGISTER,
-                variables: {data: {email}}
-            });
-            return !data.canRegister && 'Email is already in use';
-        } catch (error) {
-            // TODO: Error context
-            console.log(error);
-            return true;
-        }
+        const {data} = await client.query({
+            query: CAN_REGISTER,
+            variables: {data: {email}}
+        });
+        return !data.canRegister && 'Email is already in use';
     }), []);
 
     return <Row>

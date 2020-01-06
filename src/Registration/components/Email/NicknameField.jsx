@@ -16,21 +16,15 @@ const NicknameField = () => {
         if (!nickname)
             return true;
 
-        if(!nicknamePattern.test(nickname))
+        if (!nicknamePattern.test(nickname))
             return 'Should be more then 5 symbols';
 
-        try {
-            const {data} = await client.query({
-                query: CAN_REGISTER,
-                variables: {data: {nickname}}
-            });
+        const {data} = await client.query({
+            query: CAN_REGISTER,
+            variables: {data: {nickname}}
+        });
 
-            return !data.canRegister && 'Nickname is already in use';
-        } catch (error) {
-            // TODO: Error context
-            console.log(error);
-            return true;
-        }
+        return !data.canRegister && 'Nickname is already in use';
     }), []);
 
     return <Row>
