@@ -7,7 +7,9 @@ import Restore from "./Restore";
 
 const App = () => <>
     <Route exact path="/">
-        <Authorization/>
+        <Title title="Login">
+            <Authorization/>
+        </Title>
     </Route>
     <Route path="/registration">
         <Title title="Registration">
