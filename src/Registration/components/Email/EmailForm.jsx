@@ -12,7 +12,7 @@ import {CREATE} from "../../mutations/registration";
 
 const EmailForm = () => {
     const {t} = useTranslation();
-    const [createRegistration, {error: apolloError, loading}] = useMutation(CREATE);
+    const [createRegistration, {loading}] = useMutation(CREATE);
     const history = useHistory();
 
     const submit = async variables => {
