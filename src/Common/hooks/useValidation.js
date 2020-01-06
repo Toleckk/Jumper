@@ -5,7 +5,7 @@ const patterns = {
         if (!login)
             errors.login = true;
         else if (!patterns.nickname.test(login) && !patterns.email.test(login))
-            errors.login = 'Invalid nickname';
+            errors.login = 'Invalid login';
 
         if (!password)
             errors.password = true;
