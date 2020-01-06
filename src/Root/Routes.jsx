@@ -1,11 +1,12 @@
 import React from 'react';
 import Title from "react-document-title";
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Authorization from "../Authorization";
 import Registration from "../Registration";
 import Restore from "../Restore";
+import NotFound from "./NotFound";
 
-const Routes = () => <>
+const Routes = () => <Switch>
     <Route exact path="/">
         <Title title="Login">
             <Authorization/>
@@ -21,6 +22,11 @@ const Routes = () => <>
             <Restore/>
         </Title>
     </Route>
-</>;
+    <Route path="/">
+        <Title title="Not Found">
+            <NotFound/>
+        </Title>
+    </Route>
+</Switch>;
 
 export default React.memo(Routes);
