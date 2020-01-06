@@ -14,23 +14,16 @@ const patterns = {
 
         return errors;
     },
-    login: /^[-_0-9A-Za-z.@]*$/,
-    email: /^[-0-9.A-Za-z_]+@[A-Za-z]+\.[A-Za-z]{2,10}$/,
-    nickname: /^[A-z0-9]{5,}$/,
-    password: password => (
-        password
-        && /[a-z]+/.test(password)
-        && /[A-Z]+/.test(password)
-        && /\d/.test(password)
-        && password.length >= 8
-        && password.length <= 32
-    ),
+    login: /^[_0-9A-Za-z.@]*$/,
+    email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    nickname: /^(?!.*__)(?!_)(?!.*_$)(?!.*\.\.)(?!\.)(?!.*\.$)(?!\d+$)[a-zA-Z0-9._]{5,69}$/,
+    password: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/,
     passwordCreation: ({password, confirm}) => {
-        if (patterns.password(password) && patterns.password(confirm) && password === confirm)
+        if (patterns.password.test(password) && patterns.password.test(confirm) && password === confirm)
             return false;
 
         return {
-            password: !patterns.password(password),
+            password: !patterns.password.test(password),
             confirm: confirm !== password,
         };
     }
