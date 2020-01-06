@@ -1,11 +1,11 @@
 import React from 'react';
 import Title from "react-document-title";
 import {Route} from "react-router-dom";
-import Authorization from "./Authorization";
-import Registration from "./Registration";
-import Restore from "./Restore";
+import Authorization from "../Authorization";
+import Registration from "../Registration";
+import Restore from "../Restore";
 
-const App = () => <>
+const Routes = () => <>
     <Route exact path="/">
         <Title title="Login">
             <Authorization/>
@@ -23,4 +23,4 @@ const App = () => <>
     </Route>
 </>;
 
-export default React.memo(App);
+export default React.memo(Routes);
