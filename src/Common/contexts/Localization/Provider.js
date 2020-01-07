@@ -10,11 +10,11 @@ export default ({children}) => {
 
     const changeLang = useCallback(async lang => {
         if (lang !== activeLang.lang) {
-            setLoaded(true);
+            setLoaded(false);
             getLang(lang)
                 .then(lang => setLang(lang))
                 .catch(setErrors)
-                .finally(() => setLoaded(false));
+                .finally(() => setLoaded(true));
         }
     }, [activeLang.lang]);
 

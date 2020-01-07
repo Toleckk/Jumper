@@ -5,4 +5,5 @@ export default {
     secondaryText: '202, 202, 220',
     error: '193, 27, 27',
     errorText: '255, 96, 96',
+    primaryDark: '10, 21, 27',
 };

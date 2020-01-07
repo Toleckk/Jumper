@@ -9,7 +9,7 @@ const patterns = {
 
         if (!password)
             errors.password = true;
-        else if (!patterns.password(password))
+        else if (!patterns.password.test(password))
             errors.password = 'Invalid password';
 
         return errors;
