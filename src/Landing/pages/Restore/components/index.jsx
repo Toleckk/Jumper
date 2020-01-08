@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {Suspense} from 'react';
+import {Loader} from "Common/molecules";
 import {Redirect, Route} from "react-router-dom";
-import Login from "./Login";
-import Message from "./Message";
-import Password from "./Password";
 
-const Restore = () => <>
+const Login = React.lazy(() => import("./Login"));
+const Message = React.lazy(() => import("./Message"));
+const Password = React.lazy(() => import("./Password"));
+
+const Restore = () => <Suspense fallback={<Loader background="lite"/>}>
     <Route path="/landing/restore/login">
         <Login/>
     </Route>
@@ -17,6 +19,6 @@ const Restore = () => <>
     <Route exact path="/landing/restore">
         <Redirect to="/landing/restore/login"/>
     </Route>
-</>;
+</Suspense>;
 
 export default React.memo(Restore);
