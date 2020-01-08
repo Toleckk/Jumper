@@ -5,17 +5,17 @@ import Password from "./Password";
 import Message from "./Message";
 
 const Registration = () => <>
-    <Route path="/registration/email">
+    <Route path="/landing/registration/email">
         <Email/>
     </Route>
-    <Route path="/registration/password/:token">
+    <Route path="/landing/registration/password/:token">
         <Password/>
     </Route>
-    <Route path="/registration/message">
+    <Route path="/landing/registration/message">
         <Message/>
     </Route>
-    <Route exact path="/registration">
-        <Redirect to="/registration/email"/>
+    <Route exact path="/landing/registration">
+        <Redirect to="/landing/registration/email"/>
     </Route>
 </>;
 

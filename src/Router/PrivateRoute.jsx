@@ -8,7 +8,7 @@ const PrivateRoute = ({children, ...props}) => {
     const history = useHistory();
 
     if(!data.user)
-        history.push('/');
+        history.push('/landing/login');
 
     return <Route {...props}>{children}</Route>;
 };

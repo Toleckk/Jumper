@@ -18,7 +18,7 @@ const EmailForm = () => {
     const submit = async variables => {
         await createRegistration({variables});
         history.push({
-            pathname: '/registration/message',
+            pathname: '/landing/registration/message',
             state: {email: variables.email}
         });
     };

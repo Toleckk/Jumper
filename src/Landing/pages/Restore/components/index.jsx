@@ -5,17 +5,17 @@ import Message from "./Message";
 import Password from "./Password";
 
 const Restore = () => <>
-    <Route path="/restore/login">
+    <Route path="/landing/restore/login">
         <Login/>
     </Route>
-    <Route path="/restore/message">
+    <Route path="/landing/restore/message">
         <Message/>
     </Route>
-    <Route path="/restore/password/:token">
+    <Route path="/landing/restore/password/:token">
         <Password/>
     </Route>
-    <Route exact path="/restore">
-        <Redirect to="/restore/login"/>
+    <Route exact path="/landing/restore">
+        <Redirect to="/landing/restore/login"/>
     </Route>
 </>;
 

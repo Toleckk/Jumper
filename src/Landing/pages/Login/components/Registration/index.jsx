@@ -10,7 +10,7 @@ const Registration = () => {
 
     return <Flex direction="column" align="center">
         <StyledSpan>{t('Join us')}</StyledSpan>
-        <Link to={'/registration'}>
+        <Link to={'/landing/registration'}>
             <StyledButton>{t('signUp')}</StyledButton>
         </Link>
     </Flex>;

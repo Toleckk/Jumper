@@ -8,7 +8,7 @@ const PublicRoute = ({children, ...props}) => {
     const history = useHistory();
 
     if(data && data.me)
-        history.push('/');
+        history.push('/feed');
 
     return <Route {...props}>{children}</Route>;
 };

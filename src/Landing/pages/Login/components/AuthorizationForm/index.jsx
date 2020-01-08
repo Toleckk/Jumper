@@ -1,6 +1,7 @@
 import React from 'react';
 import {useMutation} from "@apollo/react-hooks";
 import {Field, Form} from "react-final-form";
+import {useHistory} from "react-router-dom";
 import {useTranslation} from "Common/contexts/Localization";
 import {Input, Loader} from "Common/molecules";
 import useValidation from "Common/hooks/useValidation";
@@ -13,6 +14,7 @@ const Authorization = () => {
     const {t} = useTranslation();
     const [authorize, {loading}] = useMutation(CREATE);
     const {login, authorization} = useValidation();
+    const history = useHistory();
 
     const submit = async data => {
         const errors = authorization(data);
@@ -22,7 +24,7 @@ const Authorization = () => {
 
         try {
             await authorize({variables: {...data}});
-            // TODO: redirect
+            history.push('/feed');
         } catch (e) {
             if (e.graphQLErrors && e.graphQLErrors.length)
                 switch (e.graphQLErrors[0].message) {
@@ -64,7 +66,7 @@ const Authorization = () => {
             }</Field>
 
             <StyledButton type="submit">{t('signIn')}</StyledButton>
-            <Link to="/restore">{t('Forgot password?')}</Link>
+            <Link to="/landing/restore">{t('Forgot password?')}</Link>
         </StyledForm>
     </>}</Form>;
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useMutation} from "@apollo/react-hooks";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import {Field, Form} from "react-final-form";
 import {useTranslation} from "Common/contexts/Localization";
 import {Loader} from "Common/molecules";
@@ -12,10 +12,14 @@ const PasswordForm = () => {
     const {t} = useTranslation();
     const {token} = useParams();
     const {passwordCreation} = useValidation();
+    const history = useHistory();
 
     const [confirmRestore, {loading}] = useMutation(CONFIRM, {variables: {token}});
-    // TODO: redirect
-    const submit = ({password}) => confirmRestore({variables: {password}});
+
+    const submit = async ({password}) => {
+        await confirmRestore({variables: {password}});
+        history.push('/feed');
+    };
 
     return <Form onSubmit={submit} validate={passwordCreation}>{({handleSubmit}) => <>
         {loading && <Loader background={"dark"}/>}

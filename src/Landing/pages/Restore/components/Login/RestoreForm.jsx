@@ -24,7 +24,7 @@ const RestoreForm = () => {
         try {
             const {data} = await createRestore({variables: {login}});
             history.push({
-                pathname: '/restore/message',
+                pathname: '/landing/restore/message',
                 state: {email: data.createRestore}
             });
         } catch (e) {
