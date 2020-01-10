@@ -5,8 +5,8 @@ import {Field, Form} from "react-final-form";
 import {useTranslation} from "Common/contexts/Localization";
 import {Loader} from "Common/molecules";
 import useValidation from "Common/hooks/useValidation";
+import {CONFIRM_RESTORE} from "Common/apollo/entities/restore";
 import {StyledButton, StyledForm, StyledInput} from "../atoms";
-import {CONFIRM} from "../../mutations/restore";
 
 const PasswordForm = () => {
     const {t} = useTranslation();
@@ -14,7 +14,7 @@ const PasswordForm = () => {
     const {passwordCreation} = useValidation();
     const history = useHistory();
 
-    const [confirmRestore, {loading}] = useMutation(CONFIRM, {variables: {token}});
+    const [confirmRestore, {loading}] = useMutation(CONFIRM_RESTORE, {variables: {token}});
 
     const submit = async ({password}) => {
         await confirmRestore({variables: {password}});

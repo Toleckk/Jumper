@@ -8,11 +8,11 @@ import useValidation from "Common/hooks/useValidation";
 import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
 import Link from "./StyledLink";
-import {CREATE} from "../../mutations/session";
+import {CREATE_SESSION} from "Common/apollo/entities/session";
 
 const Authorization = () => {
     const {t} = useTranslation();
-    const [authorize, {loading}] = useMutation(CREATE);
+    const [authorize, {loading}] = useMutation(CREATE_SESSION);
     const {login, authorization} = useValidation();
     const history = useHistory();
 

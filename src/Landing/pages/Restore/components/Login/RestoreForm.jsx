@@ -5,12 +5,12 @@ import {useHistory} from "react-router-dom";
 import {useTranslation} from "Common/contexts/Localization";
 import useValidation from "Common/hooks/useValidation";
 import {Loader} from "Common/molecules";
+import {CREATE_RESTORE} from "Common/apollo/entities/restore";
 import {StyledForm, StyledInput, StyledButton} from "../atoms";
-import {CREATE} from "../../mutations/restore";
 
 const RestoreForm = () => {
     const {t} = useTranslation();
-    const [createRestore, {loading}] = useMutation(CREATE);
+    const [createRestore, {loading}] = useMutation(CREATE_RESTORE);
     const {login, email, nickname} = useValidation();
     const history = useHistory();
 

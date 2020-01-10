@@ -5,14 +5,14 @@ import {Form} from "react-final-form";
 import {Divider} from "Common/atoms";
 import {Loader} from "Common/molecules";
 import {useTranslation} from "Common/contexts/Localization";
+import {CREATE_REGISTRATION} from "Common/apollo/entities/registration";
 import {StyledForm, StyledButton} from "../atoms";
 import NicknameField from "./NicknameField";
 import EmailField from "./EmailField";
-import {CREATE} from "../../mutations/registration";
 
 const EmailForm = () => {
     const {t} = useTranslation();
-    const [createRegistration, {loading}] = useMutation(CREATE);
+    const [createRegistration, {loading}] = useMutation(CREATE_REGISTRATION);
     const history = useHistory();
 
     const submit = async variables => {

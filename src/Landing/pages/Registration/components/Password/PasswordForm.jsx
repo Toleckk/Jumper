@@ -6,15 +6,15 @@ import {useTranslation} from "Common/contexts/Localization";
 import useValidation from "Common/hooks/useValidation";
 import {Divider} from "Common/atoms";
 import {Loader} from "Common/molecules";
+import {CONFIRM_REGISTRATION} from "Common/apollo/entities/registration";
 import {StyledInput, Row, StyledButton, StyledForm} from "../atoms";
-import {CONFIRM} from "../../mutations/registration";
 
 const PasswordForm = () => {
     const {passwordCreation} = useValidation();
     const {t} = useTranslation();
     const {token} = useParams();
 
-    const [confirmRegistration, {loading}] = useMutation(CONFIRM, {variables: {token}});
+    const [confirmRegistration, {loading}] = useMutation(CONFIRM_REGISTRATION, {variables: {token}});
     // TODO: redirect
     const submit = ({password}) => confirmRegistration({variables: {password}});
 

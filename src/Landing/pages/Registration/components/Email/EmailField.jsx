@@ -4,8 +4,8 @@ import mem from "mem";
 import {useApolloClient} from "@apollo/react-hooks";
 import {useTranslation} from "Common/contexts/Localization";
 import useValidation from "Common/hooks/useValidation";
+import {CAN_REGISTER} from "Common/apollo/entities/registration";
 import {StyledInput, Row} from "../atoms";
-import {CAN_REGISTER} from "../../queries/registration";
 
 const EmailField = () => {
     const {t} = useTranslation();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useQuery} from "@apollo/react-hooks";
-import {ME} from "Common/apollo/queries/user";
+import {ME} from "Common/apollo/entities/user";
 import {Loader} from "Common/molecules";
 import {useTranslation} from "Common/contexts/Localization";
 import Routes from "./Routes";
