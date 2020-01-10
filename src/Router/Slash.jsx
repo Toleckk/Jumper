@@ -1,6 +1,6 @@
 import React from 'react';
 import {useQuery} from "@apollo/react-hooks";
-import {ME} from "../Common/apollo/queries/user";
+import {ME} from "../Common/apollo/entities/user";
 import {Redirect} from "react-router-dom";
 import {Loader} from "../Common/molecules";
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useQuery} from "@apollo/react-hooks";
 import {Route, useHistory} from "react-router-dom";
-import {ME} from "Common/apollo/queries/user";
+import {ME} from "Common/apollo/entities/user";
 
 const PrivateRoute = ({children, ...props}) => {
     const {data} = useQuery(ME);
