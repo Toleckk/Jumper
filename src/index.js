@@ -5,6 +5,7 @@ import {ApolloProvider} from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import {ThemeProvider} from "styled-components";
 import {LocalizationProvider} from "Common/contexts/Localization";
+import {GlobalAppContainer} from "Common/atoms";
 import dark from "Common/theme/dark";
 import App from "App";
 import 'index.css';
@@ -14,7 +15,9 @@ ReactDOM.render(<ThemeProvider theme={dark}>
         <ApolloProvider client={new ApolloClient()}>
             <LocalizationProvider lang="ru">
                 <BrowserRouter>
-                    <App/>
+                    <GlobalAppContainer>
+                        <App/>
+                    </GlobalAppContainer>
                 </BrowserRouter>
             </LocalizationProvider>
         </ApolloProvider>
