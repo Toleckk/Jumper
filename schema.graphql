@@ -22,7 +22,7 @@ type Mutation {
     createLike(like: LikeInput!): Boolean
     createPost(post: PostInput): Boolean
     createRegistration(registration: RegistrationInput!): Void
-    createRestore(login: String!): Void
+    createRestore(login: String!): String!
     createSession(credentials: SessionInput!): Void
     createSubscribe(subscribe: SubscribeInput): Boolean
 }
@@ -55,10 +55,11 @@ type Subscribe {
 }
 
 type User {
-    avatar: String!
+    avatar: String
     description: Description!
     nickname: String!
     postsCount: Int!
+    private: Boolean!
     registration: Date!
     subscribersCount: Int!
     subscribesCount: Int!
