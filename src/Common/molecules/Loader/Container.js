@@ -8,20 +8,11 @@ const Container = styled(Flex).attrs({align: 'center', justify: 'center'})`
     position: absolute;
     z-index: 1; 
     
-    ${props => {
-        switch(props.background) {
-            case 'dark':
-                return 'background: rgba(0, 0, 0, 0.7);';
-            case 'lite':
-                return '';
-            default:
-                return `background: rgb(${props.theme.primaryDark})`;
-        }
-    }};
+    ${props => props.background === 'dark' && 'background: rgba(0, 0, 0, 0.7);'};
 `;
 
 Container.propTypes = {
-    background: Type.oneOf(['dark', 'lite', 'primary'])
+    background: Type.oneOf(['dark', 'lite'])
 };
 
 export default Container;
