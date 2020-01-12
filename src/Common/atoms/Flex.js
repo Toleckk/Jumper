@@ -11,7 +11,7 @@ const Flex = styled.div`
 Flex.propTypes = {
     direction: Type.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
     align: Type.oneOf(['center', 'flex-start', 'flex-end']),
-    justify: Type.oneOf(['flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly']),
+    justify: Type.oneOf(['flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'center']),
 };
 
 export default Flex;
