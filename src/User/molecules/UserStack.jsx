@@ -6,7 +6,7 @@ import Avatar from "../atoms/Avatar";
 const props = {alt: '', border: true, size: 'small'};
 
 const UserStack = ({users}) => {
-    const [first, ...rest] = users;
+    const [first, ...rest] = users.slice(0, 3);
 
     return <Flex>
         <Avatar key={0} src={first.avatar} {...props}/>
