@@ -11,7 +11,7 @@ export const UserFragment = gql`
         private
         description {
             about
-            age
+            birthday
             from
         }
     }
