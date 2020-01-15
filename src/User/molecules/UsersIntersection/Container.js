@@ -7,7 +7,7 @@ export default styled(Flex).attrs({align: 'center', justify: 'center'})`
     cursor: pointer;
     
     @media (max-width: 768px) {
-      margin-top: 5px;
+      font-size: smaller;
     }
     
     &::after {
