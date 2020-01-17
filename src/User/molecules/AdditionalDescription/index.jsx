@@ -1,6 +1,5 @@
 import React, {useMemo} from 'react';
 import Type from "prop-types";
-import {Flex} from "Common/atoms";
 import {Icon} from "../../atoms";
 import Container from "./Container";
 
@@ -22,7 +21,7 @@ const AdditionalDescription = ({user}) => {
             &nbsp;{user.description.from}
         </>}
     </Container>;
-}
+};
 
 AdditionalDescription.propTypes = {
     user: Type.shape({
