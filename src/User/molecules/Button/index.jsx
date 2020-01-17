@@ -3,8 +3,8 @@ import Type from 'prop-types';
 import StyledButton from "./StyledButton";
 import {Icon} from "../../atoms";
 
-const Button = ({type, icon, children}) => {
-    return <StyledButton type={type}>{
+const Button = ({type, icon, children, ...props}) => {
+    return <StyledButton {...props}>{
         icon
             ? <Icon icon={icon}/>
             : children
@@ -12,12 +12,10 @@ const Button = ({type, icon, children}) => {
 };
 
 Button.defaultProps = {
-    type: 'circle',
     icon: null
 };
 
 Button.propTypes = {
-    type: Type.oneOf(['circle']),
     icon: Type.string,
 };
 
