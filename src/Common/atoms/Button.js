@@ -20,7 +20,7 @@ export default styled.button`
         background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.35));
     }
     
-    &:focus {
+    &.focus-visible:focus {
         border-color: rgb(${props => props.theme.primary});
         box-shadow: rgba(${props => props.theme.primary}, 0.99) 0 0 2rem;
         background: radial-gradient(transparent, rgba(${props => props.theme.secondary}, 0.6));

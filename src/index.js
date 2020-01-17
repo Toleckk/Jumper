@@ -10,6 +10,7 @@ import dark from "Common/theme/dark";
 import App from "App";
 import 'index.css';
 import * as serviceWorker from 'serviceWorker';
+import 'focus-visible/dist/focus-visible.min';
 
 ReactDOM.render(<ThemeProvider theme={dark}>
         <ApolloProvider client={new ApolloClient()}>
