@@ -27,6 +27,13 @@ type Mutation {
     createSubscribe(subscribe: SubscribeInput): Boolean
 }
 
+type PageInfo {
+    endCursor: String
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+    startCursor: String
+}
+
 type Post {
     author: User!
     date: Date!
@@ -45,7 +52,7 @@ type Query {
     subscribe(id: String!): Subscribe
     subscribes(account: String!): [Subscribe]
     user(nickname: String!): User
-    users: [User]
+    users(after: String, before: String, first: Int, last: Int): UserPage
 }
 
 type Subscribe {
@@ -57,6 +64,8 @@ type Subscribe {
 type User {
     avatar: String
     description: Description!
+    followsIntersection(page: PaginationInput): [User]!
+    followsIntersectionCount: Int!
     nickname: String!
     postsCount: Int!
     private: Boolean!
@@ -65,8 +74,26 @@ type User {
     subscribesCount: Int!
 }
 
+type UserEdge {
+    cursor: String!
+    node: User!
+}
+
+type UserPage {
+    edges: [UserEdge]
+    pageInfo: PageInfo
+}
+
 input LikeInput {
     post: String!
+}
+
+input PaginationInput {
+    after: String
+    before: String
+    first: Int
+    last: Int
+    offset: Int
 }
 
 input PostInput {
