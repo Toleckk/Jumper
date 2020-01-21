@@ -30,6 +30,10 @@ export const GET_USER = gql`
     query GetUser($nickname: String!) {
         user(nickname: $nickname) {
             ...UserFragment
+            followsIntersectionCount
+            followsIntersection {
+                avatar
+            }
         }
     }
     ${UserFragment}
