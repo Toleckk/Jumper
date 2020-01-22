@@ -5,6 +5,15 @@ schema {
     mutation: Mutation
 }
 
+interface Connection {
+    edges: [Edge]!
+    pageInfo: PageInfo!
+}
+
+interface Edge {
+    cursor: String!
+}
+
 type Description {
     about: String
     birthday: Date
@@ -52,7 +61,7 @@ type Query {
     subscribe(id: String!): Subscribe
     subscribes(account: String!): [Subscribe]
     user(nickname: String!): User
-    users(after: String, before: String, first: Int, last: Int): UserPage
+    usersConnection(after: String, before: String, first: Int, last: Int): UserConnection
 }
 
 type Subscribe {
@@ -74,14 +83,14 @@ type User {
     subscribesCount: Int!
 }
 
-type UserEdge {
-    cursor: String!
-    node: User!
+type UserConnection implements Connection {
+    edges: [UserEdge]!
+    pageInfo: PageInfo!
 }
 
-type UserPage {
-    edges: [UserEdge]
-    pageInfo: PageInfo
+type UserEdge implements Edge {
+    cursor: String!
+    node: User!
 }
 
 input LikeInput {
@@ -93,7 +102,6 @@ input PaginationInput {
     before: String
     first: Int
     last: Int
-    offset: Int
 }
 
 input PostInput {
