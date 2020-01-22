@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import {Flex} from "Common/atoms";
 
-export default styled(Flex).attrs({direction: 'column', justify: 'space-evenly'})`
+export default styled.div`
     width: 200px;
     padding: 5px;
 
