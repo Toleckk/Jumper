@@ -12,6 +12,7 @@ import UserStatContainer from "./UserStatContainer";
 import DetailsContainer from "./DetailsContainer";
 import CategoryText from "./CategoryText";
 import NumberStatisticContainer from "./NumberStatisticContainer";
+import NicknameContainer from "./NicknameContainer";
 
 const UserCard = ({user, onHide}) => {
     const {primaryText} = useContext(ThemeContext);
@@ -54,7 +55,9 @@ const UserCard = ({user, onHide}) => {
                 }
             </DetailsContainer>
         </Flex>
-        <Nickname>{user.nickname}</Nickname>
+        <NicknameContainer>
+            <Nickname>{user.nickname}</Nickname>
+        </NicknameContainer>
         {user.description.about && <Description description={user.description.about}/>}
         {(user.description.birthday || user.description.from) && <AdditionalDescription user={user}/>}
         <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck scrollDelay={10} offset="54">
