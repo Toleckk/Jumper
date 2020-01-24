@@ -6,13 +6,15 @@ import {Flex} from "Common/atoms";
 import {useTranslation} from "Common/contexts/Localization"
 import {Avatar, Icon, Nickname} from "../../atoms";
 import {ActionButtons, AdditionalDescription, Description, UsersIntersection} from "../../molecules";
-import Container from "./Container";
-import ActionsContainer from "./ActionsContainer";
-import UserStatContainer from "./UserStatContainer";
-import DetailsContainer from "./DetailsContainer";
-import CategoryText from "./CategoryText";
-import NumberStatisticContainer from "./NumberStatisticContainer";
-import NicknameContainer from "./NicknameContainer";
+import {
+    ActionsContainer,
+    CategoryText,
+    Container,
+    DetailsContainer,
+    NicknameContainer,
+    NumberStatisticContainer,
+    UserStatContainer
+} from "./containers";
 
 const UserCard = ({user, onHide}) => {
     const {primaryText} = useContext(ThemeContext);
@@ -60,7 +62,8 @@ const UserCard = ({user, onHide}) => {
         </NicknameContainer>
         {user.description.about && <Description description={user.description.about}/>}
         {(user.description.birthday || user.description.from) && <AdditionalDescription user={user}/>}
-        <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck scrollDelay={10} offset="54">
+        <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck scrollDelay={10}
+                               offset="54">
             <ActionsContainer>
                 <ActionButtons/>
             </ActionsContainer>
