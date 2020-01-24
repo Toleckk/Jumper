@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-    width: 200px;
+    width: 190px;
     padding: 5px;
 
     position: absolute;
@@ -13,6 +13,5 @@ export default styled.div`
       align-self: flex-end;
       padding: 0;
       margin-top: 10px;
-      width: 190px;
     }
 `;
