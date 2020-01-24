@@ -13,5 +13,6 @@ export default styled.div`
       align-self: flex-end;
       padding: 0;
       margin-top: 10px;
+      width: 190px;
     }
 `;
