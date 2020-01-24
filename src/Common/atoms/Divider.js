@@ -1,4 +1,5 @@
 import styled, {keyframes} from "styled-components";
+import Type from "prop-types";
 
 const appear = keyframes`
   from {
@@ -10,13 +11,23 @@ const appear = keyframes`
   }
 `;
 
-export default styled.hr`
+const Divider = styled.hr`
     width: 100%;
     height: 1px;
     flex-shrink: 0;
-    background: rgb(${props => props.theme.primary});
+    background: rgb(${props => props.theme[props.color]});
     margin: 3vh 0;
-    box-shadow: rgb(${props => props.theme.primary}) 0 0 1rem 0.05rem;
+    box-shadow: rgb(${props => props.theme[props.color]}) 0 0 1rem 0.05rem;
     
     animation: ${appear} 880ms ease normal;
 `;
+
+Divider.defaultProps = {
+    color: 'primary',
+};
+
+Divider.propTypes = {
+    color: Type.oneOf(['primary', 'secondary']),
+};
+
+export default Divider;
