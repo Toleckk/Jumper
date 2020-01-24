@@ -6,4 +6,9 @@ export default styled(Button)`
     height: 40px;
     border-radius: 50%;
     padding: 5px;
+    
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
 `;
