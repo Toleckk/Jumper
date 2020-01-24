@@ -9,7 +9,7 @@ const Description = ({description}) => {
         <DecorativeAlpha>{first}</DecorativeAlpha>
         {rest.join('')}
     </Container>;
-}
+};
 
 Description.propTypes = {
     description: Type.string.isRequired
