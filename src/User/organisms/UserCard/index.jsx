@@ -13,7 +13,7 @@ import DetailsContainer from "./DetailsContainer";
 import CategoryText from "./CategoryText";
 import NumberStatisticContainer from "./NumberStatisticContainer";
 
-const UserCard = ({user}) => {
+const UserCard = ({user, onHide}) => {
     const {primaryText} = useContext(ThemeContext);
     const {t} = useTranslation();
 
@@ -55,9 +55,9 @@ const UserCard = ({user}) => {
             </DetailsContainer>
         </Flex>
         <Nickname>{user.nickname}</Nickname>
-        <Description description={user.description.about}/>
+        {user.description.about && <Description description={user.description.about}/>}
         {(user.description.birthday || user.description.from) && <AdditionalDescription user={user}/>}
-        <ReactVisibilitySensor onChange={() => console.log('a')} partialVisibility intervalCheck={false} scrollCheck>
+        <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck scrollDelay={10} offset="54">
             <ActionsContainer>
                 <ActionButtons/>
             </ActionsContainer>
@@ -66,6 +66,7 @@ const UserCard = ({user}) => {
 };
 
 UserCard.propTypes = {
+    onHide: Type.func.isRequired,
     user: Type.shape({
         nickname: Type.string.isRequired,
         avatar: Type.string,
