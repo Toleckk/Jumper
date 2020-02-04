@@ -1,23 +1,22 @@
 import React from 'react';
 import Type from "prop-types";
-import {Flex} from "Common/atoms";
 import {Nickname, Avatar} from "../../atoms";
 import {ActionButtons} from "../../molecules";
 import Container from "./Container";
 import ActionButtonsContainer from "./ActionButtonsContainer";
 import AvatarContainer from "./AvatarContainer";
 
-const Header = ({user}) => <Container>
-    <Flex align="center">
+const Header = ({user}) => (
+    <Container>
         <AvatarContainer>
-            <Avatar src={user.avatar} alt="" size="header"/>
+            <Avatar src={user.avatar} size="header"/>
         </AvatarContainer>
         <Nickname>{user.nickname}</Nickname>
-    </Flex>
-    <ActionButtonsContainer>
-        <ActionButtons/>
-    </ActionButtonsContainer>
-</Container>;
+        <ActionButtonsContainer>
+            <ActionButtons/>
+        </ActionButtonsContainer>
+    </Container>
+);
 
 Header.propTypes = {
     user: Type.shape({
