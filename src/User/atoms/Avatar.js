@@ -44,7 +44,7 @@ const sizes = {
     }
 };
 
-const Avatar = styled.img`
+const Avatar = styled.img.attrs({alt: 'avatar'})`
   user-select: none;
   cursor: pointer;
   border-radius: 50%;
