@@ -11,6 +11,7 @@ const Nickname = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex-grow: 1;
     
     @media(max-width: 768px) {
       font-size: ${props => props.size === 'big' ? 'larger' : 'medium'};
