@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
-import Type from 'prop-types';
-import {ThemeContext} from "styled-components";
-import ReactVisibilitySensor from "react-visibility-sensor";
-import {Flex} from "Common/atoms";
-import {useTranslation} from "Common/contexts/Localization"
-import {Avatar, Icon, Nickname} from "../../atoms";
-import {ActionButtons, AdditionalDescription, Description, UsersIntersection} from "../../molecules";
+import React, {useContext} from 'react'
+import Type from 'prop-types'
+import {ThemeContext} from 'styled-components'
+import ReactVisibilitySensor from 'react-visibility-sensor'
+import {Flex} from 'Common/atoms'
+import {useTranslation} from 'Common/contexts/Localization'
+import {Avatar, Icon, Nickname} from '../../atoms'
+import {ActionButtons, AdditionalDescription, Description, UsersIntersection} from '../../molecules'
 import {
     ActionsContainer,
     CategoryText,
@@ -13,12 +13,12 @@ import {
     DetailsContainer,
     NicknameContainer,
     NumberStatisticContainer,
-    UserStatContainer
-} from "./containers";
+    UserStatContainer,
+} from './containers'
 
 const UserCard = ({user, onHide}) => {
-    const {primaryText} = useContext(ThemeContext);
-    const {t} = useTranslation();
+    const {primaryText} = useContext(ThemeContext)
+    const {t} = useTranslation()
 
     return <Container>
         <Flex>
@@ -62,14 +62,15 @@ const UserCard = ({user, onHide}) => {
         </NicknameContainer>
         {user.description.about && <Description description={user.description.about}/>}
         {(user.description.birthday || user.description.from) && <AdditionalDescription user={user}/>}
-        <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck scrollDelay={10}
+        <ReactVisibilitySensor onChange={onHide} partialVisibility intervalCheck={false} scrollCheck
+                               scrollDelay={10}
                                offset="54">
             <ActionsContainer>
-                <ActionButtons/>
+                <ActionButtons user={user}/>
             </ActionsContainer>
         </ReactVisibilitySensor>
-    </Container>;
-};
+    </Container>
+}
 
 UserCard.propTypes = {
     onHide: Type.func.isRequired,
@@ -88,7 +89,8 @@ UserCard.propTypes = {
             birthday: Type.string,
             from: Type.string,
         }).isRequired,
+        isReadByMe: Type.bool.isRequired,
     }).isRequired,
-};
+}
 
-export default React.memo(UserCard);
+export default React.memo(UserCard)

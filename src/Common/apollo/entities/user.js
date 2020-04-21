@@ -9,6 +9,7 @@ export const UserFragment = gql`
         subscribesCount
         postsCount
         private
+        isReadByMe
         description {
             about
             birthday

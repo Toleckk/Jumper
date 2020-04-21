@@ -34,6 +34,7 @@ type Mutation {
     createRestore(login: String!): String!
     createSession(credentials: SessionInput!): Void
     createSubscribe(subscribe: SubscribeInput): Boolean
+    removeSubscribe(subscribe: SubscribeInput): Boolean
 }
 
 type PageInfo {
@@ -51,6 +52,16 @@ type Post {
     text: String!
 }
 
+type PostConnection implements Connection {
+    edges: [PostEdge]!
+    pageInfo: PageInfo!
+}
+
+type PostEdge implements Edge {
+    cursor: String!
+    node: Post!
+}
+
 type Query {
     canRegister(data: RegistrationCheckInput): Boolean
     like(id: String!): Like
@@ -58,6 +69,7 @@ type Query {
     me: User
     post(id: String!): Post
     posts(owner: String!): [Post]
+    postsConnection(after: String, before: String, first: Int, last: Int, owner: String!): PostConnection
     subscribe(id: String!): Subscribe
     subscribes(account: String!): [Subscribe]
     user(nickname: String!): User
@@ -75,6 +87,7 @@ type User {
     description: Description!
     followsIntersection(page: PaginationInput): [User]!
     followsIntersectionCount: Int!
+    isReadByMe: Boolean!
     nickname: String!
     postsCount: Int!
     private: Boolean!

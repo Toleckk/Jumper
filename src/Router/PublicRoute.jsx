@@ -3,6 +3,7 @@ import {useQuery} from "@apollo/react-hooks";
 import {Route, useHistory} from "react-router-dom";
 import {ME} from "Common/apollo/entities/user";
 
+// TODO: fix
 const PublicRoute = ({children, ...props}) => {
     const {data} = useQuery(ME);
     const history = useHistory();

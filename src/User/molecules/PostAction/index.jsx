@@ -16,7 +16,7 @@ const PostAction = ({icon, count}) => {
 
 PostAction.propTypes = {
     icon: Type.oneOf(['view', 'comment', 'share', 'love']).isRequired,
-    count: Type.number.isRequired,
+    count: Type.string.isRequired,
 };
 
 export default React.memo(PostAction);

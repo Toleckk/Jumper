@@ -6,6 +6,7 @@ import {Loader} from "Common/molecules";
 import {PublicRoute, Slash} from "Router";
 
 const LandingRoutes = React.lazy(() => import('./Landing/Routes'));
+const User = React.lazy(() => import('./User'));
 
 const Routes = () => (
     <Suspense fallback={<Loader/>}>
@@ -13,6 +14,9 @@ const Routes = () => (
             <PublicRoute path="/landing">
                 <LandingRoutes/>
             </PublicRoute>
+            <Route path="/@:nickname">
+                <User/>
+            </Route>
             <Route exact path="/">
                 <Slash/>
             </Route>

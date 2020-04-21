@@ -13,7 +13,7 @@ const Header = ({user}) => (
         </AvatarContainer>
         <Nickname>{user.nickname}</Nickname>
         <ActionButtonsContainer>
-            <ActionButtons/>
+            <ActionButtons user={user}/>
         </ActionButtonsContainer>
     </Container>
 );
