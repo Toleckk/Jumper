@@ -28,10 +28,25 @@ export const ME = gql`
 `;
 
 export const GET_USER = gql`
-    query GetUser($nickname: String!) {
+    query GetUser($nickname: String!, $postsCount: Int) {
         user(nickname: $nickname) {
             ...UserFragment
             followsIntersectionCount
+            posts(first: $postsCount) {
+                edges {
+                    node {
+                        user {
+                            nickname
+                            avatar
+                        }
+                        date
+                        id
+                        likesCount
+                        text
+                        likedByMe
+                    }
+                }
+            }
             followsIntersection {
                 avatar
             }

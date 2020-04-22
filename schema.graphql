@@ -29,11 +29,14 @@ type Mutation {
     confirmRegistration(user: UserCreatingInput!): Void
     confirmRestore(password: String!, token: String!): Void
     createLike(like: LikeInput!): Boolean
-    createPost(post: PostInput): Boolean
+    createPost(post: PostInput!): Boolean
     createRegistration(registration: RegistrationInput!): Void
     createRestore(login: String!): String!
     createSession(credentials: SessionInput!): Void
     createSubscribe(subscribe: SubscribeInput): Boolean
+    removeLike(like: LikeInput!): Boolean
+    removePost(id: String!): Boolean
+    removeSession: Void
     removeSubscribe(subscribe: SubscribeInput): Boolean
 }
 
@@ -45,11 +48,13 @@ type PageInfo {
 }
 
 type Post {
-    author: User!
     date: Date!
     id: String!
+    likedByMe: Boolean!
     likes: [Like]
+    likesCount: Int!
     text: String!
+    user: User!
 }
 
 type PostConnection implements Connection {
@@ -89,6 +94,7 @@ type User {
     followsIntersectionCount: Int!
     isReadByMe: Boolean!
     nickname: String!
+    posts(after: String, before: String, first: Int, last: Int): PostConnection
     postsCount: Int!
     private: Boolean!
     registration: Date!

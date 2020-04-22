@@ -15,10 +15,12 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.10.2",
     "react-final-form": "^6.3.3",
+    "react-focus-within": "^2.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-visibility-sensor": "^5.1.1",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "use-react-modal": "^0.0.9"
   },
   "scripts": {
     "start": "react-scripts start",

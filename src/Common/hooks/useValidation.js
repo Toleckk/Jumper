@@ -27,7 +27,8 @@ const patterns = {
             password: !patterns.password.test(password),
             confirm: confirm !== password,
         };
-    }
+    },
+    post: /^.{0,120}$/
 };
 
 export default () => patterns;

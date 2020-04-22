@@ -41,7 +41,20 @@ const sizes = {
             shadow: '1px',
         },
         offset: '-12px',
-    }
+    },
+    navigation: {
+        desktop: {
+            size: '55px',
+            borderSize: '2px',
+            shadow: '2px',
+        },
+        mobile: {
+            size: '20px',
+            borderSize: '1px',
+            shadow: '1px',
+        },
+        offset: '-6px',
+    },
 };
 
 const Avatar = styled.img.attrs({alt: 'avatar'})`
@@ -82,7 +95,7 @@ Avatar.defaultProps = {
 };
 
 Avatar.propTypes = {
-    size: Type.oneOf(['big', 'small', 'header']),
+    size: Type.oneOf(['big', 'small', 'header', 'navigation']),
     border: Type.bool,
     stacked: Type.bool,
     hover: Type.bool,

@@ -8,6 +8,8 @@ export default styled(Flex).attrs({as: 'main', direction: 'column', align: 'cent
     
     box-sizing: border-box;
     
+    padding-bottom: 2rem;
+    
     @media(max-width: 768px){
         width: 100vw;
     }

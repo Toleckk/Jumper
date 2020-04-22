@@ -17,8 +17,8 @@ import {
 } from './containers'
 
 const UserCard = ({user, onHide}) => {
-    const {primaryText} = useContext(ThemeContext)
-    const {t} = useTranslation()
+    const {primaryText} = useContext(ThemeContext);
+    const {t} = useTranslation();
 
     return <Container>
         <Flex>

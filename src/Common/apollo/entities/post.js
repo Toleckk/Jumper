@@ -16,3 +16,15 @@ export const POSTS_CONNECTION = gql`
         }
     }
 `;
+
+export const CREATE_POST = gql`
+    mutation CreatePost($text: String!) {
+        createPost(post: {text: $text})
+    }
+`;
+
+export const DELETE_POST = gql`
+    mutation RemovePost($id: String!) {
+        removePost(id: $id)
+    }
+`;
