@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import gql from 'graphql-tag'
 
 export const CAN_REGISTER = gql`
     query CanRegister($data: RegistrationCheckInput!) {

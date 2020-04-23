@@ -20,6 +20,12 @@ type Description {
     from: String
 }
 
+type File {
+    encoding: String!
+    filename: String!
+    mimetype: String!
+}
+
 type Like {
     id: String!
     post: Post!
@@ -38,6 +44,9 @@ type Mutation {
     removePost(id: String!): Boolean
     removeSession: Void
     removeSubscribe(subscribe: SubscribeInput): Boolean
+    updatePassword(password: PasswordInput!): Boolean
+    updateProfileInformation(profileInformation: ProfileInformationInput): Boolean
+    upload(file: Upload!): File!
 }
 
 type PageInfo {
@@ -69,6 +78,7 @@ type PostEdge implements Edge {
 
 type Query {
     canRegister(data: RegistrationCheckInput): Boolean
+    feed(after: String, first: Int): PostConnection!
     like(id: String!): Like
     likes(owner: String!): [Like]
     me: User
@@ -112,6 +122,12 @@ type UserEdge implements Edge {
     node: User!
 }
 
+input DescriptionInput {
+    about: String
+    birthday: Date
+    from: String
+}
+
 input LikeInput {
     post: String!
 }
@@ -123,8 +139,18 @@ input PaginationInput {
     last: Int
 }
 
+input PasswordInput {
+    newPassword: String!
+    oldPassword: String!
+}
+
 input PostInput {
     text: String!
+}
+
+input ProfileInformationInput {
+    avatar: String!
+    description: DescriptionInput!
 }
 
 input RegistrationCheckInput {
@@ -155,3 +181,6 @@ input UserCreatingInput {
 scalar Date
 
 scalar Void
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload

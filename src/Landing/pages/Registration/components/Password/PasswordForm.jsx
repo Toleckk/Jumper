@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom'
 import {useMutation} from "@apollo/react-hooks";
 import {Field, Form} from "react-final-form";
 import {useTranslation} from "Common/contexts/Localization";
@@ -14,9 +14,12 @@ const PasswordForm = () => {
     const {t} = useTranslation();
     const {token} = useParams();
 
-    const [confirmRegistration, {loading}] = useMutation(CONFIRM_REGISTRATION, {variables: {token}});
-    // TODO: redirect
+    const [confirmRegistration, {loading, data}] = useMutation(CONFIRM_REGISTRATION, {variables: {token}});
+
     const submit = ({password}) => confirmRegistration({variables: {password}});
+
+    if(data)
+        return <Redirect to="/settings"/>;
 
     return <Form onSubmit={submit} validate={passwordCreation}>{({handleSubmit}) => <>
         {loading && <Loader background={"dark"}/>}

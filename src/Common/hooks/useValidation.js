@@ -28,6 +28,15 @@ const patterns = {
             confirm: confirm !== password,
         };
     },
+    passwordChanging: ({oldPassword, newPassword}) => {
+        if(patterns.password.test(newPassword) && patterns.password.test(oldPassword))
+            return false;
+
+        return {
+            newPassword: !patterns.password.test(newPassword),
+            oldPassword: !patterns.password.test(oldPassword),
+        }
+    },
     post: /^.{0,120}$/
 };
 

@@ -1,4 +1,4 @@
-import {gql} from "apollo-boost";
+import gql from 'graphql-tag'
 
 export const UserFragment = gql`
     fragment UserFragment on User {
@@ -28,11 +28,11 @@ export const ME = gql`
 `;
 
 export const GET_USER = gql`
-    query GetUser($nickname: String!, $postsCount: Int) {
+    query GetUser($nickname: String!, $postsCount: Int, $after: String) {
         user(nickname: $nickname) {
             ...UserFragment
             followsIntersectionCount
-            posts(first: $postsCount) {
+            posts(first: $postsCount, after: $after) {
                 edges {
                     node {
                         user {
@@ -46,6 +46,10 @@ export const GET_USER = gql`
                         likedByMe
                     }
                 }
+                pageInfo {
+                    hasNextPage
+                    endCursor
+                }
             }
             followsIntersection {
                 avatar
@@ -54,3 +58,15 @@ export const GET_USER = gql`
     }
     ${UserFragment}
 `;
+
+export const UPDATE_PROFILE_INFORMATION = gql`
+    mutation UpdateProfileInformation($profileInformation: ProfileInformationInput!) {
+        updateProfileInformation(profileInformation: $profileInformation)
+    }
+`
+
+export const UPDATE_PASSWORD = gql`
+    mutation UpdatePassword($password: PasswordInput!) {
+        updatePassword(password: $password)
+    }
+`

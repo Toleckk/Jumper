@@ -1,16 +1,17 @@
 import React, {useCallback, useContext, useState} from 'react'
-import {Field, Form, FormSpy} from 'react-final-form'
-import Divider from "Common/atoms/Divider"
-import TextArea from "./TextArea"
-import Icon from "../../atoms/Icon"
 import {ThemeContext} from "styled-components"
+import {Field, Form, FormSpy} from 'react-final-form'
+import FocusWithin from "react-focus-within"
+import {useMutation, useQuery} from "@apollo/react-hooks"
+import {Divider} from "Common/atoms"
+import {GET_USER, ME} from "Common/apollo/entities/user"
+import {CREATE_POST} from "Common/apollo/entities/post"
+import useValidation from "Common/hooks/useValidation"
+import {Icon} from "../../atoms"
+import TextArea from "./TextArea"
 import Container from './Container'
 import Button from "./Button"
-import {useMutation, useQuery} from "@apollo/react-hooks"
-import {GET_USER, ME} from "../../../Common/apollo/entities/user"
-import {CREATE_POST} from "../../../Common/apollo/entities/post"
-import FocusWithin from "react-focus-within"
-import useValidation from "../../../Common/hooks/useValidation"
+import {FEED} from "../../../Common/apollo/entities/feed"
 
 const PostForm = () => {
     const {primaryText} = useContext(ThemeContext)
@@ -21,6 +22,9 @@ const PostForm = () => {
         refetchQueries: [{
             query: GET_USER,
             variables: {nickname: me.me.nickname},
+        }, {
+            query: FEED,
+            variables: {first: 25}
         }]
     })
 

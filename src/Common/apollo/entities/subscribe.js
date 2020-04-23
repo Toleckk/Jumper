@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import gql from 'graphql-tag'
 
 export const SUBSCRIBE = gql`
     mutation Subscribe ($account: String!) {

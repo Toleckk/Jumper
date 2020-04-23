@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Type from "prop-types";
 
-const Nickname = styled.span`
+const Nickname = styled.a`
     display: block;
     font-size: ${props => props.size === 'big' ? 'x-large' : 'large'};
     font-weight: 700;

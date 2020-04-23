@@ -15,8 +15,9 @@ export default styled.nav`
   transition: 350ms all linear;
  
   &:hover {
-    background: white;
+    background: rgba(${props => props.theme.primaryText}, 0.1);
     border-color: rgb(${props => props.theme.primary});
+    box-shadow: 0 0 10px rgb(${props => props.theme.primary});
     max-height: 100vh;
 }
 `

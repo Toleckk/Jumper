@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import gql from 'graphql-tag'
 
 export const LIKE = gql`
     mutation Like($post: String!) {

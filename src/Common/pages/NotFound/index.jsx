@@ -1,8 +1,13 @@
-import React from 'react';
+import React from 'react'
+import Text from "./Text"
+import Container from "./Container"
 
-// TODO: implement
-const NotFound = () => <span>
-    Stub: Not Found
-</span>;
+const NotFound = () => (
+    <Container>
+        <Text>
+           Страница не найдена
+        </Text>
+    </Container>
+)
 
-export default React.memo(NotFound);
+export default React.memo(NotFound)

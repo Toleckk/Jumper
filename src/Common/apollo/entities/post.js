@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import gql from 'graphql-tag'
 
 export const POSTS_CONNECTION = gql`
     query PostsConnection($owner: String!, $after: String, $first: Int!) {

@@ -1,22 +1,22 @@
-import React from "react";
-import Type from "prop-types";
-import nanoid from "nanoid";
-import {Flex} from "Common/atoms";
-import Eye from "../Eye";
-import StyledFieldset from "./StyledFieldset";
-import StyledLegend from "./StyledLegend";
-import StyledInput from "./StyledInput";
-import withValidation from "./withValidation";
-import {useEye, useFocused} from "./hooks";
-import {Loader} from "../";
-import LoaderContainer from "./LoaderContainer";
+import React from "react"
+import Type from "prop-types"
+import nanoid from "nanoid"
+import {Flex} from "Common/atoms"
+import Eye from "../Eye"
+import StyledFieldset from "./StyledFieldset"
+import StyledLegend from "./StyledLegend"
+import StyledInput from "./StyledInput"
+import withValidation from "./withValidation"
+import {useEye, useFocused} from "./hooks"
+import {Loader} from "../"
+import LoaderContainer from "./LoaderContainer"
 
-const Input = ({id, legend, className, password, error, loading, onFocus, onBlur, ...props}) => {
-    if(!id)
-        id = props.name || 'id' + nanoid(10);
+const Input = React.forwardRef(({id, legend, className, password, error, loading, onFocus, onBlur, ...props}, ref) => {
+    if (!id)
+        id = props.name || 'id' + nanoid(10)
 
-    const [focus, setFocused, setUnfocused] = useFocused(onFocus, onBlur);
-    const [eyePressed, setPressed, setUnpressed] = useEye();
+    const [focus, setFocused, setUnfocused] = useFocused(onFocus, onBlur)
+    const [eyePressed, setPressed, setUnpressed] = useEye()
 
     return <StyledFieldset focused={focus} className={className} error={error}>
         <StyledLegend focused={focus}>
@@ -28,13 +28,14 @@ const Input = ({id, legend, className, password, error, loading, onFocus, onBlur
                 type={password && !eyePressed ? 'password' : 'text'}
                 onFocus={setFocused}
                 onBlur={setUnfocused}
+                ref={ref}
                 {...props}
             />
             {loading && <LoaderContainer><Loader size={2} bold={2} shadow={false}/></LoaderContainer>}
             {password && <Eye onMouseDown={setPressed} onMouseUp={setUnpressed}/>}
         </Flex>
-    </StyledFieldset>;
-};
+    </StyledFieldset>
+})
 
 Input.defaultProps = {
     legend: '',
@@ -61,4 +62,4 @@ Input.propTypes = {
     onMouseUp: Type.func,
 };
 
-export default withValidation(Input);
+export default withValidation(Input)

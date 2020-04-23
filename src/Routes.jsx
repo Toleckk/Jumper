@@ -4,6 +4,8 @@ import {Route, Switch} from "react-router-dom";
 import {NotFound} from "Common/pages";
 import {Loader} from "Common/molecules";
 import {PublicRoute, Slash} from "Router";
+import Settings from "./Settings"
+import Feed from "./Feed"
 
 const LandingRoutes = React.lazy(() => import('./Landing/Routes'));
 const User = React.lazy(() => import('./User'));
@@ -16,6 +18,12 @@ const Routes = () => (
             </PublicRoute>
             <Route path="/@:nickname">
                 <User/>
+            </Route>
+            <Route path="/settings">
+                <Settings/>
+            </Route>
+            <Route path="/feed">
+                <Feed/>
             </Route>
             <Route exact path="/">
                 <Slash/>
