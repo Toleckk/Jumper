@@ -14,4 +14,9 @@ export default styled.section`
       opacity: 1;
     }
   }
+  
+  @media(max-width: 768px) {
+    margin-right: 0;
+    flex-wrap: wrap;
+  }
 `

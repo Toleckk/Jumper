@@ -10,6 +10,7 @@ export const FEED = gql`
                     likedByMe
                     likesCount
                     text
+                    commentsCount
                     user {
                         avatar
                         nickname

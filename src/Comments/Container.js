@@ -9,4 +9,8 @@ export default styled.div`
   
   display: flex;
   flex-direction: column;
+  
+  @media(max-width: 768px) {
+    width: 95vw;
+  }
 `

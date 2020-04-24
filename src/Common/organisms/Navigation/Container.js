@@ -19,5 +19,19 @@ export default styled.nav`
     border-color: rgb(${props => props.theme.primary});
     box-shadow: 0 0 10px rgb(${props => props.theme.primary});
     max-height: 100vh;
-}
+  }
+  
+  @media(max-width: 768px) {
+    background: rgb(${props => props.theme.primaryDark});
+    box-shadow: 0 0 10px rgb(${props => props.theme.primary});
+    border: 0;
+    border-radius: 0;
+    
+    max-height: 30vh;
+    max-width: 100vw;
+    
+    left: 0;
+    bottom: 0;
+    top: unset;
+  }
 `

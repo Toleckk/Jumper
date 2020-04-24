@@ -49,7 +49,7 @@ const sizes = {
             shadow: '2px',
         },
         mobile: {
-            size: '20px',
+            size: '45px',
             borderSize: '1px',
             shadow: '1px',
         },
@@ -62,7 +62,7 @@ const sizes = {
             shadow: '1px',
         },
         mobile: {
-            size: '20px',
+            size: '85px',
             borderSize: '1px',
             shadow: '1px',
         },

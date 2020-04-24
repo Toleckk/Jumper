@@ -19,4 +19,9 @@ export default styled.textarea`
     box-shadow: rgb(${props => props.theme.secondary}) 0 0 1.4rem;
     border-color: rgb(${props => props.theme.secondary});
   }
+  
+  @media(max-width: 768px) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 `

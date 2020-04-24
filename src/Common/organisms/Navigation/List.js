@@ -20,5 +20,14 @@ export default styled.ul`
       filter: drop-shadow(0px 0px 6px rgb(${props => props.theme.secondary}));
     }
   }
- 
+  @media(max-width: 768px) {
+    flex-direction: row;
+    place-content: space-evenly;
+    width: 100vw;
+    padding: 0;
+    
+    & > *:last-child {
+      display: none;
+    }
+  }
 `

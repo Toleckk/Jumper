@@ -14,4 +14,8 @@ export default styled.ul`
     padding-bottom: 2rem;
     
     list-style: none;
+    
+    @media(max-width: 768px) {
+      width: 95vw;
+    }
 `;

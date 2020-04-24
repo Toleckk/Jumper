@@ -30,3 +30,10 @@ button {
 *:focus {
   outline: none;
 }
+
+
+/*
+ @media(max-width: 768px) {
+    padding-bottom: 30vh;
+  }
+*/

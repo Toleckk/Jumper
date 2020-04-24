@@ -1,17 +1,17 @@
-import {Header} from "../../atoms"
-import {Flex} from "../../../Common/atoms"
-import AvatarChanger from "./AvatarChanger"
-import BirthDate from "./BirthDate"
 import React, {useCallback, useMemo, useState} from "react"
-import InputsContainer from "./InputsContainer"
-import {Input} from "Common/molecules"
-import {Field, Form, FormSpy} from "react-final-form"
-import {useMutation} from "@apollo/react-hooks"
-import {UPDATE_PROFILE_INFORMATION} from "Common/apollo/entities/user"
-import {ME} from "../../../Common/apollo/entities/user"
-import TextArea from "./TextArea"
-import Icon from "../../../User/atoms/Icon"
-import AboutContainer from "./AboutContainer"
+import {Header} from '../../atoms'
+import AvatarChanger from './AvatarChanger'
+import BirthDate from "./BirthDate"
+import InputsContainer from './InputsContainer'
+import {Input} from 'Common/molecules'
+import {Field, Form, FormSpy} from 'react-final-form'
+import {useMutation} from '@apollo/react-hooks'
+import {UPDATE_PROFILE_INFORMATION} from 'Common/apollo/entities/user'
+import {ME} from 'Common/apollo/entities/user'
+import TextArea from './TextArea'
+import Icon from 'User/atoms/Icon'
+import AboutContainer from './AboutContainer'
+import Container from './Container'
 
 const ProfileInformation = ({user}) => {
     const birthday = useMemo(() => user.description.birthday ? new Date(user.description.birthday) : '', [user.description.birthday])
@@ -39,7 +39,7 @@ const ProfileInformation = ({user}) => {
             <Header>Информация профиля</Header>
             <Form onSubmit={submit}>{({handleSubmit, form}) => (
                 <form onSubmit={handleSubmit}>
-                    <Flex>
+                    <Container>
                         <AvatarChanger setAvatar={setAvatar} avatar={avatar}/>
                         <InputsContainer>
                             <Field name="birthday" initialValue={birthday}>{({input}) => (
@@ -49,7 +49,7 @@ const ProfileInformation = ({user}) => {
                                 <Input legend="Откуда" placeholder="Место" {...input}/>
                             )}</Field>
                         </InputsContainer>
-                    </Flex>
+                    </Container>
                     <AboutContainer>
                         <Field name="about" initialValue={user.description.about || undefined}>{({input}) => (
                             // TODO: length

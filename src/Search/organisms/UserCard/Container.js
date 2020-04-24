@@ -25,4 +25,9 @@ export default styled.a`
     content: '';
     display: block;
   }
+  
+  @media(max-width: 768px) {
+    width: 180px;
+    height: 200px;
+  }
 `
