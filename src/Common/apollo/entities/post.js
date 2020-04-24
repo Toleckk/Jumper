@@ -28,3 +28,20 @@ export const DELETE_POST = gql`
         removePost(id: $id)
     }
 `;
+
+export const GET_POST = gql`
+    query GetPost($id: String!) {
+        post(id: $id) {
+            commentsCount
+            date
+            id
+            likedByMe
+            likesCount
+            text
+            user {
+                avatar 
+                nickname
+            }
+        }
+    }
+`

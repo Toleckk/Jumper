@@ -9,10 +9,11 @@ import StyledForm from "./StyledForm";
 import StyledButton from "./StyledButton";
 import Link from "./StyledLink";
 import {CREATE_SESSION} from "Common/apollo/entities/session";
+import {ME} from "Common/apollo/entities/user"
 
 const Authorization = () => {
     const {t} = useTranslation();
-    const [authorize, {loading}] = useMutation(CREATE_SESSION);
+    const [authorize, {loading}] = useMutation(CREATE_SESSION, {refetchQueries: [{query: ME}]});
     const {login, authorization} = useValidation();
     const history = useHistory();
 

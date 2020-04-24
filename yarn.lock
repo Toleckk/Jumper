@@ -6251,6 +6251,11 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -8196,7 +8201,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8461,6 +8466,13 @@ react-focus-within@^2.0.1:
   dependencies:
     "@types/react" "^15.0.0 || ^16.0.0"
     prop-types "^15.6.1"
+
+react-infinite-scroll-reverse@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-reverse/-/react-infinite-scroll-reverse-1.0.3.tgz#d581dff5e7d5fd264b267203cc8c0dc08d2f8e0c"
+  integrity sha512-sbACmGs42B06eVnsqlCh3z5Qs7/RepuFSEPc31ByrLDFXurhZYdVT4lCB/IvMugevIWwVIOsiN/Pr0JBfhm+IQ==
+  dependencies:
+    prop-types "15.7.2"
 
 react-infinite-scroller@^1.2.4:
   version "1.2.4"
@@ -10183,6 +10195,19 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-debounce@^3.3.0:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-3.4.1.tgz#361a20e583c1bd4a44f8b29a26793a52a0b84d2c"
+  integrity sha512-KHZPsL+cZvOt/ZAsHTcoAK65ImXU0iG9FDeofuj9uJTdUULF6Gjws8HpK+JlIjZpZ7LTqPHZtEknc+Im4cB3AA==
+
+use-debounced-effect-hook@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/use-debounced-effect-hook/-/use-debounced-effect-hook-1.1.6.tgz#ea50c072f751327e77c1ac2ba7f8fe963518337b"
+  integrity sha512-l0gaZnlIVCqNIZcQ6/AjzUZKldHVgV/NDCIuZe4IvqTBxL2tkC+l36tiaQRBFoEGcKFy48H2JN+bcP4cg/p/5g==
+  dependencies:
+    lodash.isequal "^4.5.0"
+    use-debounce "^3.3.0"
 
 use-react-modal@^0.0.9:
   version "0.0.9"

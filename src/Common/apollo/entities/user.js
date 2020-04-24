@@ -44,6 +44,7 @@ export const GET_USER = gql`
                         likesCount
                         text
                         likedByMe
+                        commentsCount
                     }
                 }
                 pageInfo {

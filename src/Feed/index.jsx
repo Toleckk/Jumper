@@ -9,6 +9,8 @@ import PostCard from "../User/organisms/PostCard"
 import Loader from "./Loader"
 import PostForm from "../User/organisms/PostForm"
 import Container from "./Container"
+import {ME} from "../Common/apollo/entities/user"
+import {Redirect} from "react-router-dom"
 
 const first = 25
 
@@ -22,14 +24,18 @@ const updateQuery = (previousResult, {fetchMoreResult}) => {
 
 const Feed = () => {
     const {data, fetchMore, loading} = useQuery(FEED, {variables: {first}})
+    const {data: me, loading: meLoading} = useQuery(ME)
 
     const loadMore = useCallback(() => fetchMore({
         updateQuery,
         variables: {first, after: data.feed.pageInfo.endCursor}
     }), [fetchMore, data])
 
-    if (loading)
+    if (loading || meLoading)
         return <BigLoader/>
+
+    if (!me || !me.me)
+        return <Redirect to="/"/>
 
     return (
         <Container>
@@ -40,7 +46,7 @@ const Feed = () => {
                     loadMore={loadMore}
                     loader={<Loader>Загрузка...</Loader>}
                 >
-                    {data.feed.edges.map(({node}) => <PostCard post={node} key={node.id}/>)}
+                    {data.feed.edges.map(({node}) => <PostCard post={node} key={node.id} withDelete={false}/>)}
                 </InfiniteScroll>
             </List>
             <Navigation/>

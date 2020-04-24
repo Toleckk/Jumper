@@ -21,7 +21,7 @@ const PostForm = () => {
     const [post, {loading}] = useMutation(CREATE_POST, {
         refetchQueries: [{
             query: GET_USER,
-            variables: {nickname: me.me.nickname},
+            variables: {nickname: me.me.nickname, postsCount: 25},
         }, {
             query: FEED,
             variables: {first: 25}

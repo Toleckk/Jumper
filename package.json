@@ -25,15 +25,17 @@
     "react-dropzone": "^10.2.2",
     "react-final-form": "^6.3.3",
     "react-focus-within": "^2.0.1",
+    "react-infinite-scroll-reverse": "^1.0.3",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-visibility-sensor": "^5.1.1",
     "styled-components": "^4.4.0",
+    "use-debounced-effect-hook": "^1.1.6",
     "use-react-modal": "^0.0.9"
   },
   "scripts": {
-    "start": "set HOST=192.168.56.1&&set PORT=3000&&react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

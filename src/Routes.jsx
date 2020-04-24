@@ -1,14 +1,15 @@
-import React, {Suspense} from 'react';
-import Title from "react-document-title";
-import {Route, Switch} from "react-router-dom";
-import {NotFound} from "Common/pages";
-import {Loader} from "Common/molecules";
-import {PublicRoute, Slash} from "Router";
-import Settings from "./Settings"
-import Feed from "./Feed"
+import React, {Suspense} from 'react'
+import Title from "react-document-title"
+import {Route, Switch} from "react-router-dom"
+import {NotFound} from "Common/pages"
+import {Loader} from "Common/molecules"
+import {PublicRoute, Slash} from "Router"
 
-const LandingRoutes = React.lazy(() => import('./Landing/Routes'));
-const User = React.lazy(() => import('./User'));
+const Feed = React.lazy(() => import('./Feed'))
+const LandingRoutes = React.lazy(() => import('./Landing/Routes'))
+const SearchRoutes = React.lazy(() => import('./Search/Routes'))
+const User = React.lazy(() => import('./User'))
+const Settings = React.lazy(() => import('./Settings'))
 
 const Routes = () => (
     <Suspense fallback={<Loader/>}>
@@ -25,6 +26,9 @@ const Routes = () => (
             <Route path="/feed">
                 <Feed/>
             </Route>
+            <Route path="/search">
+                <SearchRoutes/>
+            </Route>
             <Route exact path="/">
                 <Slash/>
             </Route>
@@ -35,6 +39,6 @@ const Routes = () => (
             </Route>
         </Switch>
     </Suspense>
-);
+)
 
-export default React.memo(Routes);
+export default React.memo(Routes)
