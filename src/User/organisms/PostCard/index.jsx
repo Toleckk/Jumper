@@ -33,7 +33,7 @@ const PostCard = ({post, withDelete, withClick}) => {
                 {post.text}
             </PostContent>
             <ActionsContainer>
-                <PostAction icon="view" count="150K"/>
+                {/*<PostAction icon="view" count="150K"/>*/}
                 <PostAction icon="comment" count={post.commentsCount} onClick={withClick ? openModal : undefined}/>
                 {/*<PostAction icon="share" count="150K"/>*/}
                 <LikeButton post={post} onPending={setPending}/>

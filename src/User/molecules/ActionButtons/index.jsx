@@ -39,12 +39,12 @@ const ActionButtons = ({user}) => {
         >
             {user.isReadByMe ? 'Не читать' : t('Follow')}
         </TextButton>
-        <IconButton>
-            <Icon icon="message" color={`rgb(${theme.primaryText})`}/>
-        </IconButton>
-        <IconButton>
-            <Icon icon="more" color={`rgb(${theme.primaryText})`}/>
-        </IconButton>
+        {/*<IconButton>*/}
+        {/*    <Icon icon="message" color={`rgb(${theme.primaryText})`}/>*/}
+        {/*</IconButton>*/}
+        {/*<IconButton>*/}
+        {/*    <Icon icon="more" color={`rgb(${theme.primaryText})`}/>*/}
+        {/*</IconButton>*/}
     </Container>
 }
 
