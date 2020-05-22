@@ -6,4 +6,5 @@ export default {
     error: '193, 27, 27',
     errorText: '255, 96, 96',
     primaryDark: '10, 21, 27',
+    landingBackground: '/images/landing.jpg',
 };

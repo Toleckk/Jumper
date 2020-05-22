@@ -31,9 +31,8 @@ button {
   outline: none;
 }
 
-
-/*
- @media(max-width: 768px) {
-    padding-bottom: 30vh;
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 10vh;
   }
-*/
+}

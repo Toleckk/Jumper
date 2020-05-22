@@ -11,7 +11,7 @@ const createClient = setError => new ApolloClient({
                 setError(e)
         }),
         createUploadLink({
-            uri: '/graphql',
+            uri: 'http://localhost:8080/graphql',
             credentials: 'include',
             headers: {
                 "keep-alive": "true"

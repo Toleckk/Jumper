@@ -7,6 +7,8 @@ export default styled.div`
     position: absolute;
     right: 0;
     top: 0;
+  
+    
     
     @media (max-width: 768px) {
       position: static;
