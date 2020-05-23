@@ -6,7 +6,7 @@ export default styled(Flex)`
         flex-direction: column;
     }
     
-    background-image: url('/images/landing.jpg');
+    background-image: url(${props => props.theme.landingBackground});
     background-position-x: -130px;
     
     min-height: 100vh;

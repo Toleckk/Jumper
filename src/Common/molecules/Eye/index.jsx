@@ -32,6 +32,7 @@ const Eye = ({onMouseDown, onMouseUp, ...props}) => {
         onMouseUp={onMouseReleased}
         onKeyDown={onDown}
         onKeyUp={onUp}
+        aria-label="show password"
         {...props}
     >
         <Icon/>

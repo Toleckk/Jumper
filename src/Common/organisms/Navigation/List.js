@@ -21,7 +21,7 @@ export default styled.ul`
     }
   }
   @media(max-width: 768px) {
-    flex-direction: row;
+    flex-direction: row-reverse;
     place-content: space-evenly;
     width: 100vw;
     padding: 0;
@@ -29,5 +29,7 @@ export default styled.ul`
     & > *:last-child {
       display: none;
     }
+    
+    
   }
 `

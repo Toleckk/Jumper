@@ -11,11 +11,14 @@ const createClient = setError => new ApolloClient({
                 setError(e)
         }),
         createUploadLink({
-            uri: '/graphql',
+            uri: 'http://localhost:4000/',
             credentials: 'include',
             headers: {
                 "keep-alive": "true"
             },
+            fetchOptions: {
+                mode: 'no-cors'
+            }
         })
     ]),
     cache: new InMemoryCache()

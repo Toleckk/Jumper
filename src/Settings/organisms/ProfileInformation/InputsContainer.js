@@ -17,7 +17,9 @@ export default styled.section`
   
   & > .react-datepicker-wrapper {
     display: block;
-    width: 100%;
+    @media(max-width: 768px) {
+      width: 100%;
+    }
   }
   
   & .react-datepicker__close-icon {
