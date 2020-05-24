@@ -5,7 +5,7 @@ import {ApolloProvider} from "@apollo/react-hooks"
 import {ThemeProvider} from "styled-components"
 import {LocalizationProvider} from "Common/contexts/Localization"
 import {GlobalAppContainer} from "Common/atoms"
-// import dark from "Common/theme/dark"
+import dark from "Common/theme/dark"
 import light  from "Common/theme/light"
 import {createClient} from "Common/apollo"
 import App from "App"
@@ -15,7 +15,7 @@ import 'focus-visible/dist/focus-visible.min'
 
 const client = createClient(console.log)
 
-ReactDOM.render(<ThemeProvider theme={light}>
+ReactDOM.render(<ThemeProvider theme={dark}>
     <ApolloProvider client={client}>
         <LocalizationProvider lang="ru">
             <BrowserRouter>
