@@ -49,7 +49,6 @@ const Feed = () => {
                     {data.feed.edges.map(({node}) => <PostCard post={node} key={node.id} withDelete={false}/>)}
                 </InfiniteScroll>
             </List>
-            <Navigation/>
         </>
     )
 }
