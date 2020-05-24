@@ -9,6 +9,10 @@ import Icon from "User/atoms/Icon"
 import {Link, Redirect} from "react-router-dom"
 import {LOGOUT} from "../../apollo/entities/session"
 
+const width = {width: '100%'}
+
+const fullSize = {width: '100%', height: '100%'}
+
 const Navigation = () => {
     const {data: {me}} = useQuery(ME)
 
@@ -45,8 +49,8 @@ const Navigation = () => {
                         <Icon icon="search" height={height} size={null} color={color}/>
                     </Link>
                 </li>
-                <li title="Выйти">
-                    <button onClick={logout}>
+                <li title="Выйти" style={width}>
+                    <button onClick={logout} style={fullSize}>
                         <Icon icon="logout" height={height} size={null} color={color}/>
                     </button>
                 </li>
