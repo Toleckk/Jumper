@@ -12,6 +12,6 @@ export default styled(Flex).attrs({as: 'main', direction: 'column', align: 'cent
     
     @media(max-width: 768px){
         width: 100vw;
-        padding-bottom: 10vh;
+        padding-bottom: 11vh;
     }
 `;

@@ -2,9 +2,9 @@ import React, {useContext} from 'react'
 import Type from "prop-types"
 import {ThemeContext} from "styled-components"
 
-const Icon = ({icon, color, size}) => {
+const Icon = ({icon, color, size, width, height}) => {
     const theme = useContext(ThemeContext)
-    const props = {width: size, height: size, fill: (color ? color : `rgb(${theme.secondary})`)}
+    const props = {width: width || size, height: height || size, fill: (color ? color : `rgb(${theme.secondary})`)}
 
     switch (icon) {
         case 'check':
@@ -281,11 +281,15 @@ const Icon = ({icon, color, size}) => {
 Icon.defaultProps = {
     color: null,
     size: '100%',
+    width: null,
+    height: null,
 }
 
 Icon.propTypes = {
     size: Type.string,
     color: Type.string,
+    width: Type.string,
+    height: Type.string,
     icon: Type.oneOf([
         'check',
         'message',

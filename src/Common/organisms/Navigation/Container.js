@@ -27,8 +27,8 @@ export default styled.nav`
     border: 0;
     border-radius: 0;
     
-    max-height: 30vh;
     max-width: 100vw;
+    height: 10vh;
     
     left: 0;
     bottom: 0;

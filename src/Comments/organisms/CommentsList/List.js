@@ -4,13 +4,13 @@ export default styled.div`
   overflow-y: auto;
   
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   
-  max-height: 400px;
+  height: 100%;
   width: 100%;
   
   & > div {
       display: flex;
-  flex-direction: column-reverse;
+      flex-direction: column-reverse;
   }
 `

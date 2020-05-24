@@ -49,7 +49,7 @@ const sizes = {
             shadow: '2px',
         },
         mobile: {
-            size: '45px',
+            size: '7vh',
             borderSize: '1px',
             shadow: '1px',
         },

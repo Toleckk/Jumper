@@ -48,7 +48,7 @@ const User = () => {
 
     return (
         <Title title={nickname + ' | Jumper'}>
-            <MainContainer>
+            <>
                 {!header && <Header user={data.user}/>}
                 <UserCard user={data.user} onHide={setHeader}/>
                 <StyledDivider/>
@@ -65,8 +65,7 @@ const User = () => {
                         }
                     </InfiniteScroll>
                 </PostsContainer>
-                <Navigation/>
-            </MainContainer>
+            </>
         </Title>
     )
 }

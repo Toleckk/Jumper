@@ -10,6 +10,8 @@ export default styled.ul`
   flex-direction: column;
   align-items: center;
   
+  height: 100%;
+  
   & > li {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -19,7 +21,13 @@ export default styled.ul`
     &:hover {
       filter: drop-shadow(0px 0px 6px rgb(${props => props.theme.secondary}));
     }
+    
+    @media (max-width: 768px) {
+      height: 70%;
+    }
   }
+  
+  
   @media(max-width: 768px) {
     flex-direction: row-reverse;
     place-content: space-evenly;

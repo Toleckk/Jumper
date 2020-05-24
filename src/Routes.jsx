@@ -1,9 +1,10 @@
 import React, {Suspense} from 'react'
-import Title from "react-document-title"
-import {Route, Switch} from "react-router-dom"
-import {NotFound} from "Common/pages"
-import {Loader} from "Common/molecules"
-import {PublicRoute, Slash} from "Router"
+import Title from 'react-document-title'
+import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import {NotFound} from 'Common/pages'
+import {Loader} from 'Common/molecules'
+import {MainTemplate} from 'Common/templates'
+import {PublicRoute, Slash} from 'Router'
 
 const Feed = React.lazy(() => import('./Feed'))
 const LandingRoutes = React.lazy(() => import('./Landing/Routes'))
@@ -17,26 +18,32 @@ const Routes = () => (
             <PublicRoute path="/landing">
                 <LandingRoutes/>
             </PublicRoute>
-            <Route path="/@:nickname">
-                <User/>
-            </Route>
-            <Route path="/settings">
-                <Settings/>
-            </Route>
-            <Route path="/feed">
-                <Feed/>
-            </Route>
-            <Route path="/search">
-                <SearchRoutes/>
-            </Route>
-            <Route exact path="/">
-                <Slash/>
-            </Route>
-            <Route path="/">
-                <Title title="Not Found">
-                    <NotFound/>
-                </Title>
-            </Route>
+            <MainTemplate>
+                <Suspense fallback={<Loader/>}>
+                <Switch>
+                    <Route path="/@:nickname">
+                        <User/>
+                    </Route>
+                    <Route path="/settings">
+                        <Settings/>
+                    </Route>
+                    <Route path="/feed">
+                        <Feed/>
+                    </Route>
+                    <Route path="/search">
+                        <SearchRoutes/>
+                    </Route>
+                    <Route exact path="/">
+                        <Slash/>
+                    </Route>
+                    <Route path="/">
+                        <Title title="Not Found">
+                            <NotFound/>
+                        </Title>
+                    </Route>
+                </Switch>
+                </Suspense>
+            </MainTemplate>
         </Switch>
     </Suspense>
 )

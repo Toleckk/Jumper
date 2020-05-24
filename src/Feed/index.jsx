@@ -38,7 +38,7 @@ const Feed = () => {
         return <Redirect to="/"/>
 
     return (
-        <Container>
+        <>
             <PostForm/>
             <List>
                 <InfiniteScroll
@@ -50,7 +50,7 @@ const Feed = () => {
                 </InfiniteScroll>
             </List>
             <Navigation/>
-        </Container>
+        </>
     )
 }
 

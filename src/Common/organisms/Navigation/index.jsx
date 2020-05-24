@@ -20,7 +20,7 @@ const Navigation = () => {
         return <Redirect to="/"/>
 
     const color = `rgb(${theme.primaryText})`
-    const size = '45px'
+    const height = '100%'
 
     return (
         <Container>
@@ -32,22 +32,22 @@ const Navigation = () => {
                 </li>
                 <li title="Новости">
                     <Link to="/feed">
-                        <Icon icon="feed" size={size} color={color}/>
+                        <Icon icon="feed" height={height} size={null} color={color}/>
                     </Link>
                 </li>
                 <li title="Настройки">
                     <Link to="/settings">
-                        <Icon icon="settings" size={size} color={color}/>
+                        <Icon icon="settings" height={height} size={null} color={color}/>
                     </Link>
                 </li>
                 <li title="Поиск">
                     <Link to="/search">
-                        <Icon icon="search" size={size} color={color}/>
+                        <Icon icon="search" height={height} size={null} color={color}/>
                     </Link>
                 </li>
                 <li title="Выйти">
                     <button onClick={logout}>
-                        <Icon icon="logout" size={size} color={color}/>
+                        <Icon icon="logout" height={height} size={null} color={color}/>
                     </button>
                 </li>
             </List>

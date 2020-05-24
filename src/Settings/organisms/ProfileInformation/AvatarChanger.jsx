@@ -1,15 +1,16 @@
-import React, {useCallback, useEffect} from "react"
+import React, {useCallback, useEffect} from 'react'
 import {useDropzone} from 'react-dropzone'
-import {useMutation} from "@apollo/react-hooks"
-import {UPLOAD} from "Common/apollo/entities/file"
-import {Avatar, Button} from "../../atoms"
-import useHover from "Common/hooks/useHover"
-import Icon from "../../../User/atoms/Icon"
-import UploadIcon from "./UploadIcon"
+import {useMutation} from '@apollo/react-hooks'
+import {UPLOAD} from 'Common/apollo/entities/file'
+import {Avatar, Button} from '../../atoms'
+import useHover from 'Common/hooks/useHover'
+import Icon from '../../../User/atoms/Icon'
+import UploadIcon from './UploadIcon'
+import useUpload from '../../hooks/useUpload'
 
 const AvatarChanger = ({avatar, setAvatar}) => {
-    const [upload, {loading, data}] = useMutation(UPLOAD)
-    const onDrop = useCallback(files => !loading && upload({variables: {file: files[0]}}), [upload])
+    const {execute: upload, pending: loading, value: data} = useUpload()
+    const onDrop = useCallback(files => !loading && upload(files[0]), [upload])
     const {hovered, hoverProps} = useHover()
 
     const {getRootProps, getInputProps, isDragAccept} = useDropzone({
@@ -21,8 +22,8 @@ const AvatarChanger = ({avatar, setAvatar}) => {
     })
 
     useEffect(() => {
-        if (data && data.upload && data.upload.filename)
-            setAvatar(data.upload.filename)
+        if (data && data.secure_url)
+            setAvatar(data.secure_url)
     }, [data, setAvatar])
 
     return (
