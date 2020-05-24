@@ -12,7 +12,7 @@ const createClient = setError => new ApolloClient({
                 setError(e)
         }),
         createHttpLink({
-            uri: process.env.API_URL,
+            uri: process.env.REACT_APP_API_URL,
             fetchOptions: {
                 credentials: 'include'
             }
