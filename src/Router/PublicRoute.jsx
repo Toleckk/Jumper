@@ -1,17 +1,15 @@
-import React from 'react';
-import {useQuery} from "@apollo/react-hooks";
-import {Route, useHistory} from "react-router-dom";
-import {ME} from "Common/apollo/entities/user";
+import React from 'react'
+import {useQuery} from '@apollo/react-hooks'
+import {Route, Redirect} from 'react-router-dom'
+import {ME} from 'Common/apollo/entities/user'
 
-// TODO: fix
 const PublicRoute = ({children, ...props}) => {
-    const {data} = useQuery(ME);
-    const history = useHistory();
+    const {data} = useQuery(ME)
 
-    if(data && data.me)
-        history.push('/feed');
+    if (data && data.me && data.me.nickname)
+        return <Redirect to="/feed"/>
 
-    return <Route {...props}>{children}</Route>;
-};
+    return <Route {...props}>{children}</Route>
+}
 
-export default React.memo(PublicRoute);
+export default React.memo(PublicRoute)

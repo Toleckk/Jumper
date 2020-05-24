@@ -18,6 +18,9 @@ const Routes = () => (
             <PublicRoute path="/landing">
                 <LandingRoutes/>
             </PublicRoute>
+            <Route exact path="/">
+                <Slash/>
+            </Route>
             <MainTemplate>
                 <Suspense fallback={<Loader/>}>
                 <Switch>
@@ -33,17 +36,14 @@ const Routes = () => (
                     <Route path="/search">
                         <SearchRoutes/>
                     </Route>
-                    <Route exact path="/">
-                        <Slash/>
-                    </Route>
-                    <Route path="/">
-                        <Title title="Not Found">
-                            <NotFound/>
-                        </Title>
-                    </Route>
                 </Switch>
                 </Suspense>
             </MainTemplate>
+            <Route path="/">
+                <Title title="Not Found">
+                    <NotFound/>
+                </Title>
+            </Route>
         </Switch>
     </Suspense>
 )

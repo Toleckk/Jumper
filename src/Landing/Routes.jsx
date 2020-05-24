@@ -1,14 +1,14 @@
-import React, {Suspense} from 'react';
-import {Switch} from "react-router-dom";
-import Title from "react-document-title";
-import {PublicRoute} from "../Router";
-import {FullWidthContainer, Main} from "./atoms";
-import {Picture} from "./molecules";
-import {Loader} from "../Common/molecules";
+import React, {Suspense} from 'react'
+import {Switch, Redirect} from 'react-router-dom'
+import Title from 'react-document-title'
+import {PublicRoute} from '../Router'
+import {FullWidthContainer, Main} from './atoms'
+import {Picture} from './molecules'
+import {Loader} from '../Common/molecules'
 
-const Login = React.lazy(() => import('./pages/Login'));
-const Registration = React.lazy(() => import('./pages/Registration'));
-const Restore = React.lazy(() => import('./pages/Restore'));
+const Login = React.lazy(() => import('./pages/Login'))
+const Registration = React.lazy(() => import('./pages/Registration'))
+const Restore = React.lazy(() => import('./pages/Restore'))
 
 const Landing = () => (
     <FullWidthContainer>
@@ -26,15 +26,18 @@ const Landing = () => (
                             <Registration/>
                         </Title>
                     </PublicRoute>
-                    <PublicRoute>
+                    <PublicRoute path="/landing/restore">
                         <Title title="Restore">
                             <Restore/>
                         </Title>
+                    </PublicRoute>
+                    <PublicRoute>
+                        <Redirect to="/landing/login"/>
                     </PublicRoute>
                 </Switch>
             </Suspense>
         </Main>
     </FullWidthContainer>
-);
+)
 
-export default React.memo(Landing);
+export default React.memo(Landing)
