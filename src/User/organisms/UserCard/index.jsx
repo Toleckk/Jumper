@@ -22,7 +22,7 @@ const UserCard = ({user, onHide}) => {
 
     return <Container>
         <Flex>
-            <Avatar size="big" src={user.avatar} border hover/>
+            <Avatar src={user.avatar} border hover/>
             <DetailsContainer>
                 <UserStatContainer>
                     <Flex direction="column" align="center">

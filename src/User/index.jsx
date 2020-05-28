@@ -6,9 +6,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import {GET_USER} from "Common/apollo/entities/user"
 import {Loader as BigLoader} from "Common/molecules"
 import useIsMe from "Common/hooks/useIsMe"
-import {Navigation} from "Common/organisms"
 import {Header, PostCard, PostForm, UserCard} from "./organisms"
-import MainContainer from './MainContainer'
 import StyledDivider from "./StyledDivider"
 import PostsContainer from "./PostsContainer"
 import Loader from "../Feed/Loader"

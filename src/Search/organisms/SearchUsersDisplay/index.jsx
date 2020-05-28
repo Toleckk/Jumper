@@ -12,7 +12,7 @@ import Header from "../SearchDisplay/Header"
 import UsersList from "../SearchDisplay/UsersList"
 import UserCard from "../UserCard"
 import EmptyUser from "../SearchDisplay/EmptyUser"
-import ResultsContainer from "../../ResultsContainer"
+import ResultsContainer from "../../atoms/ResultsContainer"
 import Loader from "Feed/Loader"
 
 const first = 16

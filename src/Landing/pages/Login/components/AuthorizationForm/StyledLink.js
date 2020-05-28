@@ -10,6 +10,8 @@ export default styled(Link)`
     
     transition: all 100ms;
     
+    white-space: nowrap;
+    
     &::after {
       content: '';
       

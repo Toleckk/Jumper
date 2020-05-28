@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export default styled.div`
-    width: 190px;
     padding: 5px;
 
     position: absolute;

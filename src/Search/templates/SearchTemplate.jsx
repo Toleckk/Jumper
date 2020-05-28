@@ -1,14 +1,14 @@
 import React, {useCallback, useContext} from "react"
 import {useHistory, useLocation} from 'react-router-dom'
 import {Navigation} from 'Common/organisms'
-import Container from '../Container'
-import SearchInput from '../SearchInput'
-import InputContainer from '../InputContainer'
+import Container from '../atoms/Container'
+import SearchInput from '../atoms/SearchInput'
+import InputContainer from '../atoms/InputContainer'
 import {Icon} from '../../User/atoms'
 import FocusWithin from 'react-focus-within'
-import IconContainer from '../IconContainer'
+import IconContainer from '../atoms/IconContainer'
 import {ThemeContext} from 'styled-components'
-import AllResultsContainer from '../AllResultsContainer'
+import AllResultsContainer from '../atoms/AllResultsContainer'
 
 const SearchTemplate = ({Component}) => {
     const location = useLocation()

@@ -29,5 +29,6 @@ export default styled.a`
   @media(max-width: 768px) {
     width: 180px;
     height: 200px;
+    margin: auto;
   }
 `

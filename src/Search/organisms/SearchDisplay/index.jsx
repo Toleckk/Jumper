@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {ThemeContext} from 'styled-components'
 import {useLazyQuery} from '@apollo/react-hooks'
 import {SEARCH} from 'Common/apollo/entities/search'
-import ResultsContainer from '../../ResultsContainer'
+import ResultsContainer from '../../atoms/ResultsContainer'
 import Loader from 'Common/molecules/Loader'
 import {Icon} from 'User/atoms'
 import {PostCard} from 'User/organisms'
@@ -16,6 +16,7 @@ import LoaderContainer from "./LoaderContainer"
 import useDebouncedEffect from 'use-debounced-effect-hook'
 import {Flex} from 'Common/atoms'
 import StyledLink from 'Landing/pages/Login/components/AuthorizationForm/StyledLink'
+import DisplayHeader from "../../atoms/DisplayHeader"
 
 const SearchDisplay = ({isFocused, query}) => {
     const theme = useContext(ThemeContext)
@@ -45,7 +46,7 @@ const SearchDisplay = ({isFocused, query}) => {
         {data.search.users && !!data.search.users.edges.length &&
         <ResultsContainer>
             <Flex align="center" justify="space-between">
-                <h1>Найденные пользователи</h1>
+                <DisplayHeader>Найденные пользователи</DisplayHeader>
                 <StyledLink to={`/search/users?value=${query}`}>Показать все</StyledLink>
             </Flex>
             <UsersList>
