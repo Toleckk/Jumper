@@ -6,6 +6,8 @@ export default styled(Flex).attrs({as: 'main', direction: 'column', align: 'cent
     margin-right: auto;
     width: 55vw;
     
+    min-height: 100vh;
+    
     box-sizing: border-box;
     
     padding-bottom: 2rem;

@@ -10,6 +10,7 @@ import {Header, PostCard, PostForm, UserCard} from "./organisms"
 import StyledDivider from "./StyledDivider"
 import PostsContainer from "./PostsContainer"
 import Loader from "../Feed/Loader"
+import {PrivateScreen} from "./molecules"
 
 const first = 25
 
@@ -45,24 +46,29 @@ const User = () => {
         return <BigLoader/>
 
     return (
-        <Title title={nickname + ' | Jumper'}>
+        <Title title={nickname + ' | Skyflux'}>
             <>
                 {!header && <Header user={data.user}/>}
                 <UserCard user={data.user} onHide={setHeader}/>
                 <StyledDivider/>
                 {isMe(data.user) ? <PostForm/> : ''}
-                <PostsContainer>
-                    <InfiniteScroll
-                        hasMore={data.user.posts.pageInfo.hasNextPage}
-                        loadMore={loadMore}
-                        loader={<Loader>Загрузка...</Loader>}
-                    >
-                        {!data.user.posts.edges.length
-                            ? <h1 align="center">Постов пока нет</h1>
-                            : data.user.posts.edges.map(({node, cursor}) => <PostCard post={node} key={cursor}/>)
-                        }
-                    </InfiniteScroll>
-                </PostsContainer>
+                <PostsContainer>{
+                    data.user.private && !data.user.isReadByMe
+                        ? <PrivateScreen/>
+                        : (
+                            <InfiniteScroll
+                                hasMore={data.user.posts.pageInfo.hasNextPage}
+                                loadMore={loadMore}
+                                loader={<Loader>Загрузка...</Loader>}
+                            >
+                                {!data.user.posts.edges.length
+                                    ? <h1 align="center">Постов пока нет</h1>
+                                    : data.user.posts.edges.map(({node, cursor}) => <PostCard post={node}
+                                                                                              key={cursor}/>)
+                                }
+                            </InfiniteScroll>
+                        )
+                }</PostsContainer>
             </>
         </Title>
     )
