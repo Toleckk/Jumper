@@ -30,3 +30,7 @@ button {
 *:focus {
   outline: none;
 }
+
+ul {
+  list-style: none;
+}

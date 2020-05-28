@@ -1,11 +1,14 @@
 import React from 'react'
 import {Navigation} from '../organisms'
-import {MainContentContainer} from '../atoms'
+import {MainContentContainer, ThemeSwitcher, DesktopThemeSwitcherContainer} from '../atoms'
 
 const MainTemplate = ({children}) => (
     <MainContentContainer>
         {children}
         <Navigation/>
+        <DesktopThemeSwitcherContainer>
+            <ThemeSwitcher/>
+        </DesktopThemeSwitcherContainer>
     </MainContentContainer>
 )
 

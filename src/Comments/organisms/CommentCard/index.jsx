@@ -22,9 +22,11 @@ const CommentCard = ({comment}) => {
                             <Avatar size="small" src={comment.user.avatar}/>
                         </AvatarContainer>
                     </Link>
-                    <Link to={`/@${comment.user.nickname}`} component={Nickname} size="small">
-                        {comment.user.nickname}
-                    </Link>
+                    <Nickname size="small">
+                        <Link to={`/@${comment.user.nickname}`}>
+                            {comment.user.nickname}
+                        </Link>
+                    </Nickname>
                     <PostData>{new Date(comment.createdAt).toLocaleString()}</PostData>
                     {(isMe(comment.user) || isMe(comment.post.user)) &&
                     <>

@@ -14,11 +14,13 @@ export default styled.nav`
   
   transition: 350ms all linear;
  
-  &:hover {
-    background: rgba(${props => props.theme.primaryText}, 0.1);
-    border-color: rgb(${props => props.theme.primary});
-    box-shadow: 0 0 10px rgb(${props => props.theme.primary});
-    max-height: 100vh;
+  @media (min-width: 768px) {
+      &:hover {
+        background: rgba(${props => props.theme.primaryText}, 0.1);
+        border-color: rgb(${props => props.theme.primary});
+        box-shadow: 0 0 10px rgb(${props => props.theme.primary});
+        max-height: 100vh;
+      }
   }
   
   @media(max-width: 768px) {
@@ -28,7 +30,7 @@ export default styled.nav`
     border-radius: 0;
     
     max-width: 100vw;
-    height: 10vh;
+    height: min(15vw, 10vh);
     
     left: 0;
     bottom: 0;

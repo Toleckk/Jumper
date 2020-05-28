@@ -1,4 +1,4 @@
-import Input from "./Input";
-import Loader from "./Loader";
+import Input from "./Input"
+import Loader from "./Loader"
 
-export {Input, Loader};
+export {Input, Loader}

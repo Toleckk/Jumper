@@ -23,9 +23,11 @@ const PostCard = ({post, withDelete, withClick}) => {
                         <Avatar size="small" src={post.user.avatar}/>
                     </AvatarContainer>
                 </Link>
-                <Link to={`/@${post.user.nickname}`} component={Nickname} size="small">
-                    {post.user.nickname}
-                </Link>
+                <Nickname size="small">
+                    <Link to={`/@${post.user.nickname}`}>
+                        {post.user.nickname}
+                    </Link>
+                </Nickname>
                 <PostData>{new Date(post.date).toLocaleString()}</PostData>
                 {withDelete && <DeletePost id={post.id} user={post.user} onDelete={setIsPending}/>}
             </Flex>

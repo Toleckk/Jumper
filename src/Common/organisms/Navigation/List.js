@@ -39,7 +39,5 @@ export default styled.ul`
     & > *:last-child {
       display: none;
     }
-    
-    
   }
 `
