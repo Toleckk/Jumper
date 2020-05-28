@@ -1,5 +1,9 @@
 import gql from 'graphql-tag'
 
+export const DEFAULT_LIGHT_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590683553/defaultAvatar_yg4kdh.png'
+
+export const DEFAULT_DARK_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590685175/defaultAvatar_gray_hzr2sc.png'
+
 export const UserFragment = gql`
     fragment UserFragment on User {
         nickname

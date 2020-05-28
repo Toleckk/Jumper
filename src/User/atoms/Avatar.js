@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Type from "prop-types";
+import {DEFAULT_LIGHT_AVATAR, DEFAULT_DARK_AVATAR} from "Common/apollo/entities/user"
 
-const DEFAULT_LIGHT_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590683553/defaultAvatar_yg4kdh.png'
-const DEFAULT_DARK_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590685175/defaultAvatar_gray_hzr2sc.png'
 
 const sizes = {
     big: {

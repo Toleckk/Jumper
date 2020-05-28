@@ -1,6 +1,10 @@
 import styled from "styled-components"
+import {DEFAULT_DARK_AVATAR, DEFAULT_LIGHT_AVATAR} from "Common/apollo/entities/user"
 
-export default styled.img`
+export default styled.img.attrs(props => ({
+    alt: 'avatar',
+    src: props.src || (props.theme.name === 'dark' ? DEFAULT_DARK_AVATAR : DEFAULT_LIGHT_AVATAR)
+}))`
   width: 150px;
   height: 150px;
   

@@ -99,8 +99,6 @@ type Query {
     likes(owner: String!): [Like]
     me: User
     post(id: String!): Post
-    posts(owner: String!): [Post]
-    postsConnection(after: String, before: String, first: Int, last: Int, owner: String!): PostConnection
     search(query: String!): SearchResult
     subscribe(id: String!): Subscribe
     subscribes(account: String!): [Subscribe]
