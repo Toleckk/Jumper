@@ -22,7 +22,6 @@ const LoginData = () => {
     return (
         <>
             <Header>Данные для входа</Header>
-            {/*<h3>Здесь вы можете изменить пароль</h3>*/}
             <Form onSubmit={submit} validate={passwordChanging}>{({handleSubmit}) => (
                 <>
                     <StyledForm onSubmit={handleSubmit}>

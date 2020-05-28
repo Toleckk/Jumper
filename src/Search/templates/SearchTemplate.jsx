@@ -28,7 +28,7 @@ const SearchTemplate = ({Component}) => {
             <FocusWithin>{({focusProps, isFocused}) => (
                 <>
                     <InputContainer {...focusProps}>
-                        <SearchInput id="search" onChange={onChange} value={params.get('value')}/>
+                        <SearchInput id="search" onChange={onChange} value={params.get('value')} autocomplete="off"/>
                         <IconContainer for="search" focused={isFocused}>
                             <Icon icon="find" color={`rgb(${theme.primary})`}/>
                         </IconContainer>

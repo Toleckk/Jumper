@@ -38,12 +38,6 @@ type Description {
     from: String
 }
 
-type File {
-    encoding: String!
-    filename: String!
-    mimetype: String!
-}
-
 type Like {
     id: String!
     post: Post!
@@ -65,8 +59,8 @@ type Mutation {
     removeSession: Void
     removeSubscribe(subscribe: SubscribeInput): Boolean
     updatePassword(password: PasswordInput!): Boolean
+    updatePrivate(isPrivate: Boolean!): Void
     updateProfileInformation(profileInformation: ProfileInformationInput): Boolean
-    upload(file: Upload!): File!
 }
 
 type PageInfo {
@@ -209,6 +203,3 @@ input UserCreatingInput {
 scalar Date
 
 scalar Void
-
-"The `Upload` scalar type represents a file upload."
-scalar Upload

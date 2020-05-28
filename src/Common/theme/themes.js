@@ -8,7 +8,7 @@ export const dark = {
     error: '193, 27, 27',
     errorText: '255, 96, 96',
     primaryDark: '10, 21, 27',
-    landingBackground: '/images/landing.jpg',
+    landingBackground: 'https://res.cloudinary.com/jumper/image/upload/v1590683915/landing_ahhvvr.jpg',
 }
 
 
@@ -22,5 +22,5 @@ export const light = {
     error: '154, 30, 4',
     errorText: '255, 96, 96',
     primaryDark: '255, 255, 255',
-    landingBackground: '/images/light-landing.jpg',
+    landingBackground: 'https://res.cloudinary.com/jumper/image/upload/v1590683553/light-landing_ekpnuq.jpg',
 }

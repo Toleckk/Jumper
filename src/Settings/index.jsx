@@ -6,20 +6,25 @@ import {ME} from "Common/apollo/entities/user"
 import {Divider} from "Common/atoms"
 import ProfileInformation from "./organisms/ProfileInformation"
 import LoginData from "./organisms/LoginData"
+import Privacy from './organisms/Privacy'
 import Navigation from "Common/organisms/Navigation"
 import {Redirect} from "react-router-dom"
 
 const Settings = () => {
     const {data: {me}} = useQuery(ME)
 
-    if(!me)
-        return <Redirect to="/"/>;
+    if (!me)
+        return <Redirect to="/"/>
 
     return (
         <>
             <SettingsList>
                 <Setting>
                     <ProfileInformation user={me}/>
+                </Setting>
+                <Divider/>
+                <Setting>
+                    <Privacy user={me}/>
                 </Setting>
                 <Divider/>
                 <Setting>

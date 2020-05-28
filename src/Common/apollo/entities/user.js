@@ -71,3 +71,9 @@ export const UPDATE_PASSWORD = gql`
         updatePassword(password: $password)
     }
 `
+
+export const UPDATE_PRIVATE = gql`
+    mutation UpdatePrivate($isPrivate: Boolean!) {
+        updatePrivate(isPrivate: $isPrivate)
+    }
+`

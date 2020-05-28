@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Type from "prop-types";
 
+const DEFAULT_LIGHT_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590683553/defaultAvatar_yg4kdh.png'
+const DEFAULT_DARK_AVATAR = 'https://res.cloudinary.com/jumper/image/upload/v1590685175/defaultAvatar_gray_hzr2sc.png'
+
 const sizes = {
     big: {
         desktop: {
@@ -70,7 +73,7 @@ const sizes = {
     }
 };
 
-const Avatar = styled.img.attrs({alt: 'avatar'})`
+const Avatar = styled.img.attrs(props => ({alt: 'avatar', src: props.src || (props.theme.name === 'dark' ? DEFAULT_DARK_AVATAR : DEFAULT_LIGHT_AVATAR)}))`
   user-select: none;
   cursor: pointer;
   border-radius: 50%;
