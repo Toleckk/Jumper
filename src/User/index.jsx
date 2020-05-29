@@ -9,7 +9,7 @@ import useIsMe from "Common/hooks/useIsMe"
 import {Header, PostCard, PostForm, UserCard} from "./organisms"
 import StyledDivider from "./StyledDivider"
 import PostsContainer from "./PostsContainer"
-import Loader from "../Feed/Loader"
+import Loader from "../Feed/atoms/Loader"
 import {PrivateScreen} from "./molecules"
 
 const first = 25

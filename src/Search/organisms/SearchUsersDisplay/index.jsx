@@ -13,7 +13,7 @@ import UsersList from "../SearchDisplay/UsersList"
 import UserCard from "../UserCard"
 import EmptyUser from "../SearchDisplay/EmptyUser"
 import ResultsContainer from "../../atoms/ResultsContainer"
-import Loader from "Feed/Loader"
+import Loader from "Feed/atoms/Loader"
 
 const first = 16
 

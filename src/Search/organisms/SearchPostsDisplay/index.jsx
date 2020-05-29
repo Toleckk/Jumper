@@ -10,7 +10,7 @@ import LoaderContainer from "../SearchDisplay/LoaderContainer"
 import {Loader as BigLoader} from "Common/molecules"
 import Header from "../SearchDisplay/Header"
 import ResultsContainer from "../../atoms/ResultsContainer"
-import Loader from "Feed/Loader"
+import Loader from "Feed/atoms/Loader"
 import {PostCard} from "../../../User/organisms"
 import PostsList from "../SearchDisplay/PostsList"
 

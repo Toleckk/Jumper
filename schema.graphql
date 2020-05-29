@@ -100,6 +100,7 @@ type Query {
     likes(owner: String!): [Like]
     me: User
     post(id: String!): Post
+    randomUsers: [User]
     search(query: String!): SearchResult
     user(nickname: String!): User
     usersConnection(after: String, before: String, first: Int, last: Int): UserConnection

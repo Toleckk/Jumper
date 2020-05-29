@@ -11,3 +11,23 @@ export const UNSUBSCRIBE = gql`
         removeSubscribe(subscribe: {account: $account})
     }
 `;
+
+export const GET_PENDING = gql`
+    query GetPending ($after: String, $first: Int) {
+        getPending(after: $after, first: $first) {
+            edges {
+                cursor
+                node {
+                    subscriber {
+                        avatar
+                        nickname
+                    }
+                }
+            } 
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+        }
+    }
+`

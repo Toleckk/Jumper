@@ -6,7 +6,7 @@ import {Tip} from '../../atoms'
 import CommentCard from "../CommentCard"
 import List from "./List"
 import Pagination from '../Pagination'
-import Loader from "Feed/Loader"
+import Loader from "Feed/atoms/Loader"
 
 const first = 15
 

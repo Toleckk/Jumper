@@ -2,15 +2,14 @@ import React, {useCallback} from "react"
 import {useQuery} from "@apollo/react-hooks"
 import InfiniteScroll from 'react-infinite-scroller'
 import {Loader as BigLoader} from 'Common/molecules'
-import {Navigation} from "Common/organisms"
 import {FEED} from "Common/apollo/entities/feed"
-import List from "./List"
+import List from "./atoms/List"
 import PostCard from "../User/organisms/PostCard"
-import Loader from "./Loader"
+import Loader from "./atoms/Loader"
 import PostForm from "../User/organisms/PostForm"
-import Container from "./Container"
 import {ME} from "../Common/apollo/entities/user"
 import {Redirect} from "react-router-dom"
+import Suggestions from "./organisms/Suggestions"
 
 const first = 25
 
@@ -40,6 +39,7 @@ const Feed = () => {
     return (
         <>
             <PostForm/>
+            {!me.subscribesCount && <Suggestions/>}
             <List>
                 <InfiniteScroll
                     hasMore={data.feed.pageInfo.hasNextPage}
