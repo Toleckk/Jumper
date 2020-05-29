@@ -90,6 +90,7 @@ UserCard.propTypes = {
             from: Type.string,
         }).isRequired,
         isReadByMe: Type.bool.isRequired,
+        isSubscribePending: Type.bool.isRequired,
     }).isRequired,
 }
 

@@ -14,6 +14,7 @@ export const UserFragment = gql`
         postsCount
         private
         isReadByMe
+        isSubscribePending
         description {
             about
             birthday

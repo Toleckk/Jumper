@@ -11,7 +11,7 @@ import {GET_USER, ME} from 'Common/apollo/entities/user'
 
 const ActionButtons = ({user}) => {
     const {t} = useTranslation()
-    const theme = useContext(ThemeContext)
+    // const theme = useContext(ThemeContext)
     const {data: {me}} = useQuery(ME)
 
     const options = useMemo(() => ({
@@ -27,7 +27,10 @@ const ActionButtons = ({user}) => {
     const [unsubscribe, {loading: unsubscribing}] = useMutation(UNSUBSCRIBE, options)
     const [subscribe, {loading: subscribing}] = useMutation(SUBSCRIBE, options)
 
-    const onClick = useCallback(() => user.isReadByMe ? unsubscribe() : subscribe(), [user, subscribe, unsubscribe])
+    const onClick = useCallback(
+        () => (user.isReadByMe || user.isSubscribePending) ? unsubscribe() : subscribe(),
+        [user, subscribe, unsubscribe]
+    )
 
     if (!me || me.nickname === user.nickname)
         return ''
@@ -37,7 +40,7 @@ const ActionButtons = ({user}) => {
             onClick={onClick}
             disabled={unsubscribing || subscribing}
         >
-            {user.isReadByMe ? 'Не читать' : t('Follow')}
+            {user.isReadByMe ? 'Не читать' : user.isSubscribePending ? 'Отменить' : t('Follow')}
         </TextButton>
         {/*<IconButton>*/}
         {/*    <Icon icon="message" color={`rgb(${theme.primaryText})`}/>*/}

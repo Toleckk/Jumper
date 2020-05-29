@@ -95,13 +95,12 @@ type Query {
     canRegister(data: RegistrationCheckInput): Boolean
     comments(after: String, first: Int!, post: String!): CommentConnection!
     feed(after: String, first: Int): PostConnection!
+    getPending(after: String, first: Int): SubscribeConnection!
     like(id: String!): Like
     likes(owner: String!): [Like]
     me: User
     post(id: String!): Post
     search(query: String!): SearchResult
-    subscribe(id: String!): Subscribe
-    subscribes(account: String!): [Subscribe]
     user(nickname: String!): User
     usersConnection(after: String, before: String, first: Int, last: Int): UserConnection
 }
@@ -117,12 +116,23 @@ type Subscribe {
     subscriber: User!
 }
 
+type SubscribeConnection implements Connection {
+    edges: [SubscribeEdge]!
+    pageInfo: PageInfo!
+}
+
+type SubscribeEdge implements Edge {
+    cursor: String!
+    node: Subscribe!
+}
+
 type User {
     avatar: String
     description: Description!
     followsIntersection(page: PaginationInput): [User]!
     followsIntersectionCount: Int!
     isReadByMe: Boolean!
+    isSubscribePending: Boolean!
     nickname: String!
     posts(after: String, before: String, first: Int, last: Int): PostConnection
     postsCount: Int!
