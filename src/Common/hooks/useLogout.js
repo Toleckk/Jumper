@@ -11,7 +11,7 @@ const useLogout = (onCompleted = null, refetchQueries = [], ...args) => {
             if (onCompleted)
                 onCompleted(...args)
 
-            return client.cache.reset()
+            return client.resetStore().then(() => client.clearStore()).then(() => client.cache.reset())
         },
         [onCompleted, client],
     )
