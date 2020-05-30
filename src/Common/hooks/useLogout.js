@@ -11,9 +11,9 @@ const useLogout = (onCompleted = null, refetchQueries = [], ...args) => {
             if (onCompleted)
                 onCompleted(...args)
 
-            return client.resetStore()
+            return client.cache.reset()
         },
-        [onCompleted, client.resetStore],
+        [onCompleted, client],
     )
 
     const queries = useMemo(() => [...refetchQueries, [{query: ME}]], [refetchQueries])
