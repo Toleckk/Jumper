@@ -1,69 +1,80 @@
-import React, {useCallback, useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import {ThemeContext} from 'styled-components'
-import Container from "./Container"
-import Avatar from "User/atoms/Avatar"
+import {Link, Redirect, useLocation} from "react-router-dom"
 import {useMutation, useQuery} from "@apollo/react-hooks"
 import {ME} from "Common/apollo/entities/user"
-import List from "./List"
-import Icon from "User/atoms/Icon"
-import {Link, Redirect} from "react-router-dom"
-import {LOGOUT} from "../../apollo/entities/session"
+import {LOGOUT} from "Common/apollo/entities/session"
+import {Avatar, Icon} from "User/atoms"
 import NavigationDrawer from "../NavigationDrawer"
+import Container from "./Container"
+import List from "./List"
 import DrawerButton from "./DrawerButton"
 import UserLink from "./UserLink"
+import Item from "./Item"
+import Notifications from "../Notifications"
+import useBooleanState from "Common/hooks/useBooleanState"
+import useOnClickOutside from "Common/hooks/useOnClickOutside"
 
 const width = {width: '100%'}
-
+const height = '100%'
 const fullSize = {width: '100%', height: '100%'}
+
 
 const Navigation = () => {
     const {data: {me}} = useQuery(ME)
     const [logout] = useMutation(LOGOUT, {refetchQueries: [{query: ME}]})
-    const theme = useContext(ThemeContext)
+    const {pathname} = useLocation()
 
-    const [drawerVisible, setDrawerVisible] = useState(false)
-    const openDrawer = useCallback(() => setDrawerVisible(true), [setDrawerVisible])
-    const closeDrawer = useCallback(() => setDrawerVisible(false), [setDrawerVisible])
+    const [drawerVisible, openDrawer, closeDrawer] = useBooleanState(false)
+    const [notificationsOpened, openNotifications, closeNotifications] = useBooleanState(false)
+
+    const container = useOnClickOutside(closeNotifications)
+
+    const theme = useContext(ThemeContext)
+    const color = `rgb(${theme.primaryText})`
 
     if (!me)
         return <Redirect to="/"/>
 
-    const color = `rgb(${theme.primaryText})`
-    const height = '100%'
-
     return (
-        <Container>
+        <Container ref={container} active={notificationsOpened}>
             <List>
-                <li title={me.nickname}>
+                <Item title={me.nickname} active={pathname.startsWith(`/@${me.nickname}`)}>
                     <DrawerButton onClick={openDrawer}>
                         <Avatar src={me.avatar} border size="navigation"/>
                     </DrawerButton>
                     <UserLink to={`/@${me.nickname}`}>
                         <Avatar src={me.avatar} border size="navigation"/>
                     </UserLink>
-                </li>
-                <li title="Новости">
+                </Item>
+                <Item title="Новости" active={pathname.startsWith('/feed')}>
                     <Link to="/feed">
                         <Icon icon="feed" height={height} size={null} color={color}/>
                     </Link>
-                </li>
-                <li title="Настройки">
+                </Item>
+                <Item title="Оповещения">
+                    <button style={fullSize} onClick={openNotifications}>
+                        <Icon icon="notifications" height={height} size={null} color={color}/>
+                    </button>
+                </Item>
+                <Item title="Настройки" active={pathname.startsWith('/settings')}>
                     <Link to="/settings">
                         <Icon icon="settings" height={height} size={null} color={color}/>
                     </Link>
-                </li>
-                <li title="Поиск">
+                </Item>
+                <Item title="Поиск" active={pathname.startsWith('/search')}>
                     <Link to="/search">
                         <Icon icon="search" height={height} size={null} color={color}/>
                     </Link>
-                </li>
-                <li title="Выйти" style={width}>
+                </Item>
+                <Item title="Выйти" style={width}>
                     <button onClick={logout} style={fullSize}>
                         <Icon icon="logout" height={height} size={null} color={color}/>
                     </button>
-                </li>
+                </Item>
             </List>
             <NavigationDrawer onClose={closeDrawer} visible={drawerVisible}/>
+            {notificationsOpened && <Notifications close={closeNotifications}/>}
         </Container>
     )
 }

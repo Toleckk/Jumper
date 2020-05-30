@@ -10,7 +10,10 @@ import {ME, UPDATE_PRIVATE} from "Common/apollo/entities/user"
 const Privacy = ({user}) => {
     const [updatePrivate, {loading}] = useMutation(UPDATE_PRIVATE, {refetchQueries: [{query: ME}]})
 
-    const onChange = useCallback(isPrivate => updatePrivate({variables: {isPrivate}}), [updatePrivate])
+    const onChange = useCallback(isPrivate => {
+        if (isPrivate !== user.private)
+            return updatePrivate({variables: {isPrivate}})
+    }, [updatePrivate])
 
     return (
         <>

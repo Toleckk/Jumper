@@ -114,6 +114,7 @@ Avatar.propTypes = {
     border: Type.bool,
     stacked: Type.bool,
     hover: Type.bool,
+    src: Type.string.isRequired,
 };
 
 export default Avatar;
