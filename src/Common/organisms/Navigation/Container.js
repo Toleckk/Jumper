@@ -7,7 +7,7 @@ export default styled.nav`
   
   display: flex;
   
-  max-height: 80px;
+  max-height: 75px;
   padding: 15px;
 
   overflow: hidden;
