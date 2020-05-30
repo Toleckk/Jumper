@@ -36,6 +36,7 @@ const updateQuery = (previousResult, {fetchMoreResult}) => {
         : previousResult
 }
 
+
 const SearchUsersDisplay = ({isFocused, query}) => {
     const theme = useContext(ThemeContext)
 

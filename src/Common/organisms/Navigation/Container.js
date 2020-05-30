@@ -7,34 +7,56 @@ export default styled.nav`
   
   display: flex;
   
-  max-height: 100px;
+  max-height: 80px;
+  padding: 15px;
 
   overflow: hidden;
 
   border: 1px solid transparent;
   border-radius: 15px;
-  background: transparent;
   
   transition: 350ms all linear;
+  
+  background-color: rgb(${props => props.theme.primaryDark});
+  
  
   @media (min-width: 768px) {
       &:hover {
-        background: rgba(${props => props.theme.primaryText}, 0.1);
         border-color: rgb(${props => props.theme.primary});
         box-shadow: 0 0 10px rgb(${props => props.theme.primary});
         max-height: 100vh;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(${props => props.theme.primaryText}, 0.1);
+          pointer-events: none;
+        }
       }
       
       ${props => props.active && `
-            max-height: 100vh;
-            background: rgba(${props.theme.primaryText}, 0.1);
-            border-color: rgb(${props.theme.primary});
-            box-shadow: 0 0 10px rgb(${props.theme.primary});
+        border-color: rgb(${props.theme.primary});
+        box-shadow: 0 0 10px rgb(${props.theme.primary});
+        max-height: 100vh;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(${props.theme.primaryText}, 0.1);
+          pointer-events: none;
+        }
       `};
   }
   
   @media(max-width: 768px) {
-    background: rgb(${props => props.theme.primaryDark});
     box-shadow: 0 0 10px rgb(${props => props.theme.primary});
     border: 0;
     border-radius: 0;

@@ -7,7 +7,6 @@ import {Divider} from "Common/atoms"
 import ProfileInformation from "./organisms/ProfileInformation"
 import LoginData from "./organisms/LoginData"
 import Privacy from './organisms/Privacy'
-import Navigation from "Common/organisms/Navigation"
 import {Redirect} from "react-router-dom"
 
 const Settings = () => {
@@ -32,7 +31,6 @@ const Settings = () => {
                 </Setting>
                 <Divider/>
             </SettingsList>
-            <Navigation/>
         </>
     )
 }

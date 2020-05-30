@@ -44,6 +44,7 @@ type Like {
 }
 
 type Mutation {
+    acceptSubscribe(nickname: String!): Boolean
     comment(post: String!, text: String!): Boolean
     confirmRegistration(user: UserCreatingInput!): Void
     confirmRestore(password: String!, token: String!): Void
@@ -54,6 +55,7 @@ type Mutation {
     createSession(credentials: SessionInput!): Void
     createSubscribe(subscribe: SubscribeInput): Boolean
     deleteComment(id: String!): Boolean
+    rejectSubscribe(nickname: String!): Boolean
     removeLike(like: LikeInput!): Boolean
     removePost(id: String!): Boolean
     removeSession: Void

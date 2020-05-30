@@ -31,3 +31,15 @@ export const GET_PENDING = gql`
         }
     }
 `
+
+export const ACCEPT = gql`
+    mutation AcceptSubscribe($nickname: String!) {
+        acceptSubscribe(nickname: $nickname)
+    }
+`
+
+export const REJECT = gql`
+    mutation RejectSubscribe($nickname: String!) {
+        rejectSubscribe(nickname: $nickname)
+    }
+`

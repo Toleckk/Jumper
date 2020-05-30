@@ -4,8 +4,6 @@ export default styled.ul`
   list-style: none;
   margin-left: 0;
   
-  padding: 15px;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
