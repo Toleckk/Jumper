@@ -1,23 +1,23 @@
-import React, {useContext} from "react"
+import React, {useContext} from 'react'
 import Type from 'prop-types'
-import {useMutation, useQuery} from "@apollo/react-hooks"
-import {ThemeContext} from "styled-components"
+import {useQuery} from '@apollo/react-hooks'
+import {ThemeContext} from 'styled-components'
 import Drawer from './Drawer'
-import {ThemeSwitcher} from "../../atoms"
-import {ME} from "../../apollo/entities/user"
-import {Avatar} from "User/atoms"
-import MobileThemeSwitcherContainer from "./MobileThemeSwitcherContainer"
-import {LOGOUT} from "../../apollo/entities/session"
-import Item from "./Item"
-import Title from "./Title"
-import Icon from "./Icon"
-import Nickname from "./Nickname"
-import ClosingLink from "./ClosingLink"
+import {ThemeSwitcher} from '../../atoms'
+import {ME} from '../../apollo/entities/user'
+import {Avatar} from 'User/atoms'
+import MobileThemeSwitcherContainer from './MobileThemeSwitcherContainer'
+import Item from './Item'
+import Title from './Title'
+import Icon from './Icon'
+import Nickname from './Nickname'
+import ClosingLink from './ClosingLink'
+import useLogout from '../../hooks/useLogout'
 
 
 const NavigationDrawer = ({visible, onClose}) => {
     const {data} = useQuery(ME)
-    const [logout] = useMutation(LOGOUT, {refetchQueries: [{query: ME}]})
+    const [logout] = useLogout()
     const theme = useContext(ThemeContext)
 
     const color = `rgb(${theme.primaryText})`
