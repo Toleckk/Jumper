@@ -3,22 +3,19 @@ import {useApolloClient, useMutation} from '@apollo/react-hooks'
 import {LOGOUT} from '../apollo/entities/session'
 import {ME} from '../apollo/entities/user'
 
-const useLogout = (onCompleted = null, refetchQueries = [], ...args) => {
+const EMPTY = []
+
+const useLogout = (onCompleted = null, refetchQueries = EMPTY, ...args) => {
     const client = useApolloClient()
 
-    const callback = useCallback(
-        (...args) => {
-            if (onCompleted)
-                onCompleted(...args)
+    const queries = useMemo(() => [...refetchQueries, {query: ME}], [refetchQueries])
 
-            return client.resetStore().then(() => client.clearStore()).then(() => client.cache.reset())
-        },
+    const callback = useCallback(
+        (...args) => client.clearStore().then(onCompleted && onCompleted(...args)),
         [onCompleted, client],
     )
 
-    const queries = useMemo(() => [...refetchQueries, [{query: ME}]], [refetchQueries])
-
-    return useMutation(LOGOUT, {onCompleted: callback, refetchQueries: queries, ...args})
+    return useMutation(LOGOUT, {refetchQueries: queries, onCompleted: callback, ...args, awaitRefetchQueries: true})
 }
 
 export default useLogout

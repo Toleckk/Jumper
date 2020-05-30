@@ -1,19 +1,19 @@
 import React, {useContext} from 'react'
 import {ThemeContext} from 'styled-components'
-import {Link, Redirect, useLocation} from "react-router-dom"
-import {useMutation, useQuery} from "@apollo/react-hooks"
-import {ME} from "Common/apollo/entities/user"
-import {LOGOUT} from "Common/apollo/entities/session"
-import {Avatar, Icon} from "User/atoms"
-import NavigationDrawer from "../NavigationDrawer"
-import Container from "./Container"
-import List from "./List"
-import DrawerButton from "./DrawerButton"
-import UserLink from "./UserLink"
-import Item from "./Item"
-import Notifications from "../Notifications"
-import useBooleanState from "Common/hooks/useBooleanState"
-import useOnClickOutside from "Common/hooks/useOnClickOutside"
+import {Link, Redirect, useLocation} from 'react-router-dom'
+import {useQuery} from '@apollo/react-hooks'
+import {ME} from 'Common/apollo/entities/user'
+import {Avatar, Icon} from 'User/atoms'
+import NavigationDrawer from '../NavigationDrawer'
+import Container from './Container'
+import List from './List'
+import DrawerButton from './DrawerButton'
+import UserLink from './UserLink'
+import Item from './Item'
+import Notifications from '../Notifications'
+import useBooleanState from 'Common/hooks/useBooleanState'
+import useOnClickOutside from 'Common/hooks/useOnClickOutside'
+import useLogout from '../../hooks/useLogout'
 
 const width = {width: '100%'}
 const height = '100%'
@@ -22,7 +22,7 @@ const fullSize = {width: '100%', height: '100%'}
 
 const Navigation = () => {
     const {data: {me}} = useQuery(ME)
-    const [logout] = useMutation(LOGOUT, {refetchQueries: [{query: ME}]})
+    const [logout] = useLogout()
     const {pathname} = useLocation()
 
     const [drawerVisible, openDrawer, closeDrawer] = useBooleanState(false)
