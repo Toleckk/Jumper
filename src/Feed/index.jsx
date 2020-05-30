@@ -39,7 +39,7 @@ const Feed = () => {
     return (
         <>
             <PostForm/>
-            {!me.subscribesCount && <Suggestions/>}
+            {!me.me.subscribesCount && <Suggestions/>}
             <List>
                 <InfiniteScroll
                     hasMore={data.feed.pageInfo.hasNextPage}
