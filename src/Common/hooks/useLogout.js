@@ -3,7 +3,7 @@ import {useApolloClient, useMutation} from '@apollo/react-hooks'
 import {LOGOUT} from '../apollo/entities/session'
 import {ME} from '../apollo/entities/user'
 
-const useLogout = (onCompleted = null, refetchQueries = null, ...args) => {
+const useLogout = (onCompleted = null, refetchQueries = [], ...args) => {
     const client = useApolloClient()
 
     const callback = useCallback(
