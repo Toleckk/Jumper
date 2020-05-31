@@ -51,7 +51,7 @@ const sizes = {
             shadow: '2px',
         },
         mobile: {
-            size: 'calc(min(10vh, 15vw) * 0.7)',
+            size: 'calc(15vw * 0.7)',
             borderSize: '1px',
             shadow: '1px',
         },

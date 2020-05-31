@@ -62,7 +62,7 @@ export default styled.nav`
     border-radius: 0;
     
     max-width: 100vw;
-    height: min(15vw, 10vh);
+    height: 15vw;
     
     left: 0;
     bottom: 0;

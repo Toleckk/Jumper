@@ -5,7 +5,7 @@ export default styled.button`
   height: ${props => props.height};
   width: ${props => props.width};
   
-  border-radius: calc(min(${props => props.height}, ${props => props.width}) * 0.5);
+  border-radius: calc(${props => props.height} * 0.5);
   border: 1px solid rgb(${props => props.checked ? props.theme.secondary : props.theme.primaryText});
   box-shadow: 0 0 8px rgb(${props => props.checked ? props.theme.secondary : props.theme.primaryText});
 `
