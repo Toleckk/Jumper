@@ -26,7 +26,14 @@ const Navigation = () => {
     const {pathname} = useLocation()
 
     const [drawerVisible, openDrawer, closeDrawer] = useBooleanState(false)
-    const [notificationsOpened, openNotifications, closeNotifications] = useBooleanState(false)
+    const [notificationsOpened, openNotifications, closeNotifications, invertNotifications] = useBooleanState(false)
+
+    const notificationButton = React.useRef(null)
+
+    const close = React.useCallback(event => {
+        if (event.path.every(e => e !== notificationButton.current))
+            closeNotifications()
+    }, [closeNotifications])
 
     const container = useOnClickOutside(closeNotifications)
 
@@ -52,8 +59,8 @@ const Navigation = () => {
                         <Icon icon="feed" height={height} size={null} color={color}/>
                     </Link>
                 </Item>
-                <Item title="Оповещения">
-                    <button style={fullSize} onClick={openNotifications}>
+                <Item title="Оповещения" active={notificationsOpened}>
+                    <button style={fullSize} onClick={invertNotifications} ref={notificationButton}>
                         <Icon icon="notifications" height={height} size={null} color={color}/>
                     </button>
                 </Item>
@@ -74,7 +81,7 @@ const Navigation = () => {
                 </Item>
             </List>
             <NavigationDrawer onClose={closeDrawer} visible={drawerVisible}/>
-            {notificationsOpened && <Notifications close={closeNotifications}/>}
+            {notificationsOpened && <Notifications close={close}/>}
         </Container>
     )
 }

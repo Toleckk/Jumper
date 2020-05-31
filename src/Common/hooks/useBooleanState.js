@@ -5,8 +5,9 @@ const useBooleanState = defaultState => {
 
     const setTrue = useCallback(() => setState(true), [setState])
     const setFalse = useCallback(() => setState(false), [setState])
+    const invert = useCallback(() => setState(!state), [setState, state])
 
-    return [state, setTrue, setFalse, setState]
+    return [state, setTrue, setFalse, invert, setState]
 }
 
 export default useBooleanState

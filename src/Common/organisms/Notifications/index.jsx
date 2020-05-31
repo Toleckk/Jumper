@@ -18,4 +18,4 @@ Notifications.propTypes = {
     close: Type.func.isRequired,
 }
 
-export default Notifications
+export default React.memo(Notifications)
