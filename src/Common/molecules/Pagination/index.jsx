@@ -1,9 +1,9 @@
-import React, {useEffect, useMemo, useRef, useState} from "react"
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react"
 import Type from 'prop-types'
 import useBooleanState from "../../hooks/useBooleanState"
 
 
-const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, reverse, style, loaderKey, ...props}) => {
+const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, reverse, style, loaderKey, getScrollable, ...props}) => {
     const [top, setTop] = useState(null)
     const [loading, setLoading, setUnloading] = useBooleanState(false)
 
@@ -14,26 +14,42 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
 
     const ref = useRef()
 
-    useEffect(() => {
-        const {current} = ref
+    const onScroll = useCallback(() => {
+        const target = getScrollable ? getScrollable() : ref.current
+        const element = target.documentElement || target
 
-        const onScroll = ({target}) => setTop(
+        debugger;
+        setTop(
             reverse
-                ? target.scrollTop
-                : target.scrollHeight - target.scrollTop - target.clientHeight
+                ? element.scrollTop
+                : element.scrollHeight - element.scrollTop - element.clientHeight
         )
+    }, [setTop, reverse])
 
+    useEffect(() => {
+        const current = getScrollable ? getScrollable() : ref.current
         current.addEventListener('scroll', onScroll)
         return () => current.removeEventListener('scroll', onScroll)
-    }, [reverse])
+    }, [reverse, onScroll, getScrollable])
+
+
+    useEffect(() => {
+        const interval = setInterval(onScroll, 300)
+        return () => clearInterval(interval)
+    }, [onScroll])
 
 
     useEffect(() => {
         if (top !== null && top < treshold && hasMore && !loading) {
+            debugger;
             setLoading()
-            Promise.resolve(loadMore()).finally(setUnloading)
+            Promise.resolve(loadMore()).finally(() => {
+                onScroll()
+                setUnloading()
+            })
         }
-    }, [top, hasMore, loadMore, treshold, loading, setLoading, setUnloading])
+    }, [top, hasMore, loadMore, treshold, loading, setLoading, setUnloading, onScroll])
+
 
     return (
         <>
@@ -51,6 +67,7 @@ Pagination.defaultProps = {
     reverse: false,
     style: {},
     loaderKey: 'loader',
+    getScrollable: null,
 }
 
 Pagination.propTypes = {
@@ -60,6 +77,7 @@ Pagination.propTypes = {
     reverse: Type.bool,
     style: Type.object,
     loaderKey: Type.string,
+    getScrollable: Type.func,
 }
 
 export default Pagination

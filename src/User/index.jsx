@@ -59,7 +59,8 @@ const User = () => {
                             <Pagination
                                 hasMore={data.user.posts.pageInfo.hasNextPage}
                                 loadMore={loadMore}
-                                loader={() => <Loader>Загрузка...</Loader>}
+                                Loader={() => <Loader>Загрузка...</Loader>}
+                                getScrollable={() => window.document}
                             >
                                 {!data.user.posts.edges.length
                                     ? <h1 align="center" key="nothing">Постов пока нет</h1>

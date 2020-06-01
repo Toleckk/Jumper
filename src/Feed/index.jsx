@@ -45,6 +45,7 @@ const Feed = () => {
                 loadMore={loadMore}
                 loader={() => <Loader>Загрузка...</Loader>}
                 Component={List}
+                getScrollable={() => window.document}
             >
                 {data.feed.edges.map(({node}) => <li key={node.id}><PostCard post={node} withDelete={false}/></li>)}
             </Pagination>

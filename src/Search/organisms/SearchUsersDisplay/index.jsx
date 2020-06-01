@@ -68,6 +68,7 @@ const SearchUsersDisplay = ({isFocused, query}) => {
                 hasMore={data.search.users.pageInfo.hasNextPage}
                 loader={() => <Loader>Загрузка...</Loader>}
                 Component={UsersList}
+                getScrollable={() => window.document}
             >
                 <>
                     {data.search.users.edges.map(({node, cursor}) => (

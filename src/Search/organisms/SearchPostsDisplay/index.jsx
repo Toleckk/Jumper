@@ -63,8 +63,9 @@ const SearchPostsDisplay = ({isFocused, query}) => {
             <Pagination
                 loadMore={loadMore}
                 hasMore={data.search.posts.pageInfo.hasNextPage}
-                loader={() => <Loader>Загрузка...</Loader>}
+                Loader={() => <Loader>Загрузка...</Loader>}
                 Component={PostsList}
+                getScrollable={() => window.document}
             >
                 {data.search.posts.edges.map(({node}) => <li key={node.id}><PostCard post={node} withDelete={false}/></li>)}
             </Pagination>
