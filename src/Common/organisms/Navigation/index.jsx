@@ -64,7 +64,7 @@ const Navigation = () => {
                         <Icon icon="notifications" height={height} size={null} color={color}/>
                     </button>
                 </Item>
-                <Item title="Настройки" active={pathname.startsWith('/settings')}>
+                <Item title="Настройки" active={pathname.startsWith('/settings')} hide>
                     <Link to="/settings">
                         <Icon icon="settings" height={height} size={null} color={color}/>
                     </Link>

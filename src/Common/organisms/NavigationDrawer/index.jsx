@@ -13,6 +13,8 @@ import Icon from './Icon'
 import Nickname from './Nickname'
 import ClosingLink from './ClosingLink'
 import useLogout from '../../hooks/useLogout'
+import useBooleanState from "../../hooks/useBooleanState"
+import PendingSubscribesDisplay from "../PendingSubscribesDisplay"
 
 
 const NavigationDrawer = ({visible, onClose}) => {
@@ -21,6 +23,8 @@ const NavigationDrawer = ({visible, onClose}) => {
     const theme = useContext(ThemeContext)
 
     const color = `rgb(${theme.primaryText})`
+
+    const [notificationsVisible, setNotificationsVisible, setNotificationsInvisible] = useBooleanState(false)
 
     return (
         <Drawer visible={visible} onClose={onClose} placement="right" width="80vw">
@@ -38,6 +42,12 @@ const NavigationDrawer = ({visible, onClose}) => {
                         <Icon icon="feed" size="2rem" color={color}/>
                         <Title>Новости</Title>
                     </ClosingLink>
+                </Item>
+                <Item>
+                    <button onClick={setNotificationsVisible}>
+                        <Icon icon="notifications" size="2rem" color={color}/>
+                        <Title>Оповещения</Title>
+                    </button>
                 </Item>
                 <Item>
                     <ClosingLink close={onClose} to="/settings">
@@ -61,6 +71,9 @@ const NavigationDrawer = ({visible, onClose}) => {
             <MobileThemeSwitcherContainer>
                 <ThemeSwitcher/>
             </MobileThemeSwitcherContainer>
+            <Drawer visible={notificationsVisible} onClose={setNotificationsInvisible} placement="right" width="80vw">
+                <PendingSubscribesDisplay/>
+            </Drawer>
         </Drawer>
     )
 }

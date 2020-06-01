@@ -11,7 +11,7 @@ export default styled.div`
   
   padding: 20px;
   
-  background: rgba(0, 0, 0, 0.8);
+  background: ${props => props.theme.name === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'white'};
   
   border: 1px solid rgb(${props => props.theme.secondary});
   border-radius: 10px;

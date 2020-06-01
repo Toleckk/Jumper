@@ -7,10 +7,14 @@ import {DELETE_COMMENT} from "Common/apollo/entities/comment"
 import Icon from "../../../User/atoms/Icon"
 import useIsMe from "../../../Common/hooks/useIsMe"
 import CommentDelete from "./CommentDelete"
+import {GET_POST} from "../../../Common/apollo/entities/post"
 
 const CommentCard = ({comment}) => {
     const isMe = useIsMe()
-    const [remove, {data, loading}] = useMutation(DELETE_COMMENT, {variables: {id: comment.id}})
+
+    const [remove, {data, loading}] = useMutation(DELETE_COMMENT, {variables: {id: comment.id}, refetchQueries: [
+            {query: GET_POST, variables: {id: comment.post.id}}
+        ]})
 
     return (
         data && data.deleteComment

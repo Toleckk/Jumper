@@ -14,8 +14,12 @@ const Notifications = ({close}) => {
     )
 }
 
+Notifications.defaultProps = {
+    close: () => {},
+}
+
 Notifications.propTypes = {
-    close: Type.func.isRequired,
+    close: Type.func,
 }
 
 export default React.memo(Notifications)

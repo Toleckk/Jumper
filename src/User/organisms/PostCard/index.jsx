@@ -3,17 +3,17 @@ import Type from 'prop-types'
 import {Flex, Link} from "Common/atoms"
 import {Avatar, Nickname} from "../../atoms"
 import {PostAction} from "../../molecules"
-import {ActionsContainer, AvatarContainer, Container, PostContent, PostData} from "./containers"
+import {ActionsContainer, AvatarContainer, Container, PostContent, PostData, Drawer} from "./containers"
 import DeletePost from "../../molecules/DeletePost"
 import LikeButton from "../../molecules/LikeButton"
-import useModal from "use-react-modal"
 import Comments from "Comments"
+import useBooleanState from "Common/hooks/useBooleanState"
 
 const PostCard = ({post, withDelete, withClick}) => {
     const [pending, setPending] = useState(false)
     const setIsPending = useCallback(() => setPending(true), [setPending])
 
-    const {openModal, isOpen, Modal} = useModal({background: 'rgba(0, 0, 0, 0.5)'})
+    const [visible, setVisible, setInvisible] = useBooleanState(false)
 
     return (
         <Container pending={pending} key={post.id}>
@@ -36,14 +36,20 @@ const PostCard = ({post, withDelete, withClick}) => {
             </PostContent>
             <ActionsContainer>
                 {/*<PostAction icon="view" count="150K"/>*/}
-                <PostAction icon="comment" count={post.commentsCount} onClick={withClick ? openModal : undefined}/>
+                <PostAction icon="comment" count={post.commentsCount} onClick={withClick ? setVisible : undefined}/>
                 {/*<PostAction icon="share" count="150K"/>*/}
                 <LikeButton post={post} onPending={setPending}/>
             </ActionsContainer>
-            {isOpen &&
-            <Modal>
+            <Drawer
+                placement="bottom"
+                height="auto"
+                width="auto"
+                visible={visible}
+                onClose={setInvisible}
+                maskStyle={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+            >
                 <Comments post={post}/>
-            </Modal>}
+            </Drawer>
         </Container>
     )
 }

@@ -12,6 +12,7 @@ export default styled.div`
   flex-direction: column;
   
   @media(max-width: 768px) {
-    width: 95vw;
+    width: 100vw;
+    padding: 0;
   }
 `

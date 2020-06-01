@@ -12,6 +12,12 @@ export default styled.li`
       height: 70%;
     }
     
+    ${props => props.hide && `
+        @media (max-width: 768px) {
+            display: none;
+        }
+    `}
+    
     &:hover {
       filter: drop-shadow(0px 0px 6px rgb(${props => props.theme.secondary}));
     }

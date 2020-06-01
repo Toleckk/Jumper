@@ -26,7 +26,7 @@ const updateQuery = (previousResult, {fetchMoreResult}) => {
 }
 
 const CommentsList = ({post}) => {
-    const {data, loading, fetchMore} = useQuery(COMMENTS, {variables: {post: post.id, first}})
+    const {data, loading, fetchMore} = useQuery(COMMENTS, {variables: {post: post.id, first}, fetchPolicy: "network-only"})
 
     const loadMore = useCallback(() => fetchMore({
         updateQuery,

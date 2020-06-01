@@ -2,18 +2,19 @@ import React, {useCallback, useEffect, useState} from 'react'
 import Type from 'prop-types'
 import {useMutation} from '@apollo/react-hooks'
 import {useLocation} from 'react-router-dom'
-import useModal from 'use-react-modal'
 import {DELETE_POST} from 'Common/apollo/entities/post'
 import {GET_USER} from 'Common/apollo/entities/user'
 import useIsMe from 'Common/hooks/useIsMe'
 import Icon from '../../atoms/Icon'
 import Button from './Button'
 import DeleteDialog from "../DeleteDialog"
-import {SEARCH} from "../../../Common/apollo/entities/search"
+import {SEARCH} from "Common/apollo/entities/search"
+import useBooleanState from "Common/hooks/useBooleanState"
+import Drawer from "./Drawer"
 
 const DeletePost = ({id, user, onDelete}) => {
     const isMe = useIsMe()
-    const {openModal, closeModal, isOpen, Modal} = useModal({background: 'rgba(0, 0, 0, 0.5)'})
+    const [drawerOpened, openDrawer, closeDrawer] = useBooleanState(false)
 
     const location = useLocation()
     const params = new URLSearchParams(location.search)
@@ -46,20 +47,18 @@ const DeletePost = ({id, user, onDelete}) => {
     const onDeleteClick = useCallback(() => {
         void (deletePost())
         onDelete()
-        setTimeout(closeModal, 0)
-    }, [closeModal, deletePost, onDelete])
+        setTimeout(closeDrawer, 0)
+    }, [closeDrawer, deletePost, onDelete])
 
     if (!isMe(user))
         return null
 
     return (
-        <Button onClick={openModal} disabled={loading}>
+        <Button onClick={openDrawer} disabled={loading}>
             <Icon icon="delete" size="20px"/>
-            {isOpen && (
-                <Modal>
-                    <DeleteDialog onClick={onDeleteClick}/>
-                </Modal>
-            )}
+            <Drawer visible={drawerOpened} onClose={closeDrawer} width="auto" height="auto" placement="top">
+                <DeleteDialog onClick={onDeleteClick}/>
+            </Drawer>
         </Button>
     )
 }

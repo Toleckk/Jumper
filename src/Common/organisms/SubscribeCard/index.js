@@ -6,6 +6,7 @@ import {Avatar, Icon, Nickname} from "User/atoms"
 import Container from "./Container"
 import Button from "./Button"
 import {useMutation} from "@apollo/react-hooks"
+import Pin from "./Pin"
 
 const SubscribeCard = ({subscribe}) => {
     const {subscriber: {nickname, avatar}} = subscribe
@@ -14,10 +15,10 @@ const SubscribeCard = ({subscribe}) => {
     const [reject, {loading: rejecting, data: rejected}] = useMutation(REJECT, {variables: {nickname}})
 
     if(accepted)
-        return <span>Запрос принят</span>
+        return <Pin><span>Запрос принят</span> <Icon icon="confirm" size="1rem"/></Pin>
 
     if(rejected)
-        return <span>Запрос отклонён</span>
+        return <Pin><span>Запрос отклонён</span> <Icon icon="reset" size="1rem"/></Pin>
 
     return (
         <Container>

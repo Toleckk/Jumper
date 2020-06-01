@@ -17,14 +17,12 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
     const onScroll = useCallback(() => {
         const target = getScrollable ? getScrollable() : ref.current
         const element = target.documentElement || target
-
-        debugger;
         setTop(
             reverse
                 ? element.scrollTop
                 : element.scrollHeight - element.scrollTop - element.clientHeight
         )
-    }, [setTop, reverse])
+    }, [setTop, reverse, getScrollable])
 
     useEffect(() => {
         const current = getScrollable ? getScrollable() : ref.current
@@ -41,7 +39,6 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
 
     useEffect(() => {
         if (top !== null && top < treshold && hasMore && !loading) {
-            debugger;
             setLoading()
             Promise.resolve(loadMore()).finally(() => {
                 onScroll()

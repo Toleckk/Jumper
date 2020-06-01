@@ -19,6 +19,7 @@ export const COMMENTS = gql`
                         nickname
                     }
                     post {
+                        id
                         user {
                             nickname
                         }

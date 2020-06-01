@@ -30,8 +30,7 @@
     "react-visibility-sensor": "^5.1.1",
     "styled-components": "^4.4.0",
     "use-debounced-effect-hook": "^1.1.6",
-    "use-onclickoutside": "^0.3.1",
-    "use-react-modal": "^0.0.9"
+    "use-onclickoutside": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
