@@ -13,7 +13,7 @@ const Privacy = ({user}) => {
     const onChange = useCallback(isPrivate => {
         if (isPrivate !== user.private)
             return updatePrivate({variables: {isPrivate}})
-    }, [updatePrivate])
+    }, [updatePrivate, user])
 
     return (
         <>

@@ -58,7 +58,10 @@ const ProfileInformation = ({user}) => {
                         <FormSpy subscription={{pristine: true}}>{props => (
                             (!props.pristine || avatar !== user.avatar) && <>
                                 <button type="reset"
-                                        onClick={() => (form.reset(), setAvatar(user.avatar))}
+                                        onClick={() => {
+                                            form.reset()
+                                            setAvatar(user.avatar)
+                                        }}
                                         title="Отменить изменения">
                                     <Icon icon="reset" size="40px"/>
                                 </button>

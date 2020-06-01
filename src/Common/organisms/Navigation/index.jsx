@@ -26,7 +26,7 @@ const Navigation = () => {
     const {pathname} = useLocation()
 
     const [drawerVisible, openDrawer, closeDrawer] = useBooleanState(false)
-    const [notificationsOpened, openNotifications, closeNotifications, invertNotifications] = useBooleanState(false)
+    const [notificationsOpened,, closeNotifications, invertNotifications] = useBooleanState(false)
 
     const notificationButton = React.useRef(null)
 

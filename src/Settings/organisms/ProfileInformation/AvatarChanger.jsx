@@ -1,7 +1,5 @@
 import React, {useCallback, useEffect} from 'react'
 import {useDropzone} from 'react-dropzone'
-import {useMutation} from '@apollo/react-hooks'
-import {UPLOAD} from 'Common/apollo/entities/file'
 import {Avatar, Button} from '../../atoms'
 import useHover from 'Common/hooks/useHover'
 import Icon from '../../../User/atoms/Icon'
@@ -10,7 +8,7 @@ import useUpload from '../../hooks/useUpload'
 
 const AvatarChanger = ({avatar, setAvatar}) => {
     const {execute: upload, pending: loading, value: data} = useUpload()
-    const onDrop = useCallback(files => !loading && upload(files[0]), [upload])
+    const onDrop = useCallback(files => !loading && upload(files[0]), [upload, loading])
     const {hovered, hoverProps} = useHover()
 
     const {getRootProps, getInputProps, isDragAccept} = useDropzone({

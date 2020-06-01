@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import Type from 'prop-types'
 import DatePicker, {registerLocale, setDefaultLocale} from 'react-datepicker'
 import ru from 'date-fns/locale/ru'

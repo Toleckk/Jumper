@@ -15,15 +15,17 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
     const ref = useRef()
 
     useEffect(() => {
+        const {current} = ref
+
         const onScroll = ({target}) => setTop(
             reverse
                 ? target.scrollTop
                 : target.scrollHeight - target.scrollTop - target.clientHeight
         )
 
-        ref.current.addEventListener('scroll', onScroll)
-        return () => ref.current.removeEventListener('scroll', onScroll)
-    }, [])
+        current.addEventListener('scroll', onScroll)
+        return () => current.removeEventListener('scroll', onScroll)
+    }, [reverse])
 
 
     useEffect(() => {
@@ -31,7 +33,7 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
             setLoading()
             Promise.resolve(loadMore()).finally(setUnloading)
         }
-    }, [top, hasMore, loadMore, treshold])
+    }, [top, hasMore, loadMore, treshold, loading, setLoading, setUnloading])
 
     return (
         <>

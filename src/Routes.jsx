@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react'
 import Title from 'react-document-title'
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import {NotFound} from 'Common/pages'
 import {Loader} from 'Common/molecules'
 import {MainTemplate} from 'Common/templates'

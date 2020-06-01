@@ -39,7 +39,7 @@ const DeletePost = ({id, user, onDelete}) => {
             setQueries([getUserQuery, searchQuery])
         else if (location.pathname !== '/search' && refetchQueries.some(({query}) => query === SEARCH))
             setQueries([getUserQuery])
-    }, [location, params, setQueries, refetchQueries])
+    }, [location, params, setQueries, refetchQueries, getUserQuery, searchQuery])
 
     const [deletePost, {loading}] = useMutation(DELETE_POST, {variables: {id}, refetchQueries, awaitRefetchQueries: true})
 

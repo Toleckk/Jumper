@@ -15,12 +15,12 @@ const LikeButton = ({post, onPending}) => {
             variables: {nickname: post.user.nickname},
         }],
         awaitRefetchQueries: true,
-    }), [post.id])
+    }), [post.id, post.user.nickname])
 
     const [like, {loading: liking}] = useMutation(LIKE, options)
     const [unlike, {loading: unliking}] = useMutation(UNLIKE, options)
 
-    useEffect(() => void(onPending(liking || unliking)), [liking, unliking]);
+    useEffect(() => void(onPending(liking || unliking)), [liking, unliking, onPending]);
 
     return (
         <Container active={post.likedByMe}>
