@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from "react"
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import Type from 'prop-types'
-import useBooleanState from "../../hooks/useBooleanState"
+import useBooleanState from '../../hooks/useBooleanState'
 
 
 const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, reverse, style, loaderKey, getScrollable, ...props}) => {
@@ -9,20 +9,39 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
 
     const defaultStyle = useMemo(
         () => ({display: 'flex', flexDirection: reverse ? 'column-reverse' : 'column', ...style}),
-        [reverse, style]
+        [reverse, style],
     )
 
     const ref = useRef()
 
     const onScroll = useCallback(() => {
-        const target = getScrollable ? getScrollable() : ref.current
-        const element = target.documentElement || target
-        setTop(
-            reverse
-                ? element.scrollTop
-                : element.scrollHeight - element.scrollTop - element.clientHeight
-        )
-    }, [setTop, reverse, getScrollable])
+            const target = getScrollable ? getScrollable() : ref.current
+
+            if (target === window || target === document) {
+                const scrollEl = window
+                const doc =
+                    document.documentElement || document.body.parentNode || document.body
+                const scrollTop =
+                    scrollEl.pageYOffset !== undefined
+                        ? scrollEl.pageYOffset
+                        : doc.scrollTop
+                if (reverse) {
+                    setTop(scrollTop)
+                } else {
+                    setTop(document.documentElement.scrollHeight - scrollEl.scrollY - scrollEl.innerHeight)
+                }
+            }
+
+            const element = target.documentElement || target
+            setTop(
+                reverse
+                    ? element.scrollTop
+                    : element.scrollHeight - element.scrollTop - element.clientHeight,
+            )
+        }
+        ,
+        [setTop, reverse, getScrollable],
+    )
 
     useEffect(() => {
         const current = getScrollable ? getScrollable() : ref.current
@@ -31,10 +50,10 @@ const Pagination = ({children, treshold, hasMore, loadMore, Loader, Component, r
     }, [reverse, onScroll, getScrollable])
 
 
-    useEffect(() => {
-        const interval = setInterval(onScroll, 300)
-        return () => clearInterval(interval)
-    }, [onScroll])
+    // useEffect(() => {
+    //     const interval = setInterval(onScroll, 300)
+    //     return () => clearInterval(interval)
+    // }, [onScroll])
 
 
     useEffect(() => {
