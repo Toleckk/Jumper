@@ -1,6 +1,5 @@
 import React, {useCallback} from "react"
 import {useQuery} from "@apollo/react-hooks"
-import InfiniteScroll from 'react-infinite-scroller'
 import {Loader as BigLoader} from 'Common/molecules'
 import {FEED} from "Common/apollo/entities/feed"
 import List from "./atoms/List"
@@ -10,6 +9,7 @@ import PostForm from "../User/organisms/PostForm"
 import {ME} from "../Common/apollo/entities/user"
 import {Redirect} from "react-router-dom"
 import Suggestions from "./organisms/Suggestions"
+import Pagination from "../Common/molecules/Pagination"
 
 const first = 25
 
@@ -40,15 +40,14 @@ const Feed = () => {
         <>
             <PostForm/>
             {!me.me.subscribesCount && <Suggestions/>}
-            <List>
-                <InfiniteScroll
-                    hasMore={data.feed.pageInfo.hasNextPage}
-                    loadMore={loadMore}
-                    loader={<Loader>Загрузка...</Loader>}
-                >
-                    {data.feed.edges.map(({node}) => <PostCard post={node} key={node.id} withDelete={false}/>)}
-                </InfiniteScroll>
-            </List>
+            <Pagination
+                hasMore={data.feed.pageInfo.hasNextPage}
+                loadMore={loadMore}
+                loader={() => <Loader>Загрузка...</Loader>}
+                Component={List}
+            >
+                {data.feed.edges.map(({node}) => <li key={node.id}><PostCard post={node} withDelete={false}/></li>)}
+            </Pagination>
         </>
     )
 }

@@ -1,13 +1,12 @@
 import React, {useCallback, useContext} from "react"
 import {ThemeContext} from "styled-components"
 import {useLazyQuery} from "@apollo/react-hooks"
-import InfiniteScroll from 'react-infinite-scroller'
 import {SEARCH_USERS} from "../../../Common/apollo/entities/search"
 import useDebouncedEffect from "use-debounced-effect-hook"
 import IconContainer from "../SearchDisplay/IconContainer"
 import {Icon} from "../../../User/atoms"
 import LoaderContainer from "../SearchDisplay/LoaderContainer"
-import {Loader as BigLoader} from "Common/molecules"
+import {Loader as BigLoader, Pagination} from "Common/molecules"
 import Header from "../SearchDisplay/Header"
 import UsersList from "../SearchDisplay/UsersList"
 import UserCard from "../UserCard"
@@ -64,17 +63,23 @@ const SearchUsersDisplay = ({isFocused, query}) => {
     return (
         <ResultsContainer>
             <h1>Найденные пользователи</h1>
-            <InfiniteScroll
+            <Pagination
                 loadMore={loadMore}
                 hasMore={data.search.users.pageInfo.hasNextPage}
-                loader={<Loader>Загрузка...</Loader>}
+                loader={() => <Loader>Загрузка...</Loader>}
+                Component={UsersList}
             >
-                <UsersList>
-                    {data.search.users.edges.map(({node}) => <UserCard user={node} key={node.nickname}/>)}
-                    {data.search.users.edges.length < 4 && Array(4 - data.search.users.edges.length % 4).fill(
-                        <EmptyUser/>)}
-                </UsersList>
-            </InfiniteScroll>
+                <>
+                    {data.search.users.edges.map(({node, cursor}) => (
+                        <li key={cursor}><UserCard user={node}/></li>
+                    ))}
+                    {
+                        data.search.users.edges.length % 4 && Array(4 - data.search.users.edges.length % 4)
+                            .fill(0)
+                            .map((_, i) => <li key={i}><EmptyUser/></li>)
+                    }
+                </>
+            </Pagination>
         </ResultsContainer>
     )
 }

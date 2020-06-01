@@ -1,11 +1,11 @@
 import React, {useCallback} from "react"
 import {useQuery} from "@apollo/react-hooks"
-import InfiniteScroll from "react-infinite-scroller"
+import {Loader as BigLoader, Pagination} from 'Common/molecules'
 import {GET_PENDING} from "../../apollo/entities/subscribe"
-import {Loader} from "../../molecules"
 import SubscribeCard from "../SubscribeCard"
 import Title from "./Title"
 import Container from "./Container"
+import Loader from "Comments/atoms/Loader"
 import List from "./List"
 
 const first = 10
@@ -37,19 +37,20 @@ const PendingSubscribesDisplay = () => {
     }), [fetchMore, data])
 
     if (loading)
-        return <Loader/>
+        return <BigLoader/>
 
     return (
         <Container>
             <Title>Запросы на подписку</Title>
-            <InfiniteScroll
+            <Pagination
                 loadMore={loadMore}
                 hasMore={data.getPending.pageInfo.hasNextPage}
-                loader={<Loader>Загрузка...</Loader>}
-                element={List}
+                treshold={100}
+                Loader={() => <Loader>Загрузка...</Loader>}
+                Component={List}
             >
-                {data.getPending.edges.map(e => <li><SubscribeCard subscribe={e.node} key={e.cursor}/></li>)}
-            </InfiniteScroll>
+                {data.getPending.edges.map(e => <li key={e.cursor}><SubscribeCard subscribe={e.node}/></li>)}
+            </Pagination>
         </Container>
     )
 }

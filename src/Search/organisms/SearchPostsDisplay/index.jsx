@@ -1,17 +1,16 @@
 import React, {useCallback, useContext} from "react"
 import {ThemeContext} from "styled-components"
 import {useLazyQuery} from "@apollo/react-hooks"
-import InfiniteScroll from 'react-infinite-scroller'
-import {SEARCH_POSTS} from "../../../Common/apollo/entities/search"
 import useDebouncedEffect from "use-debounced-effect-hook"
+import {SEARCH_POSTS} from "Common/apollo/entities/search"
+import {Loader as BigLoader, Pagination} from "Common/molecules"
+import Loader from "Feed/atoms/Loader"
+import {Icon} from "User/atoms"
+import {PostCard} from "User/organisms"
 import IconContainer from "../SearchDisplay/IconContainer"
-import {Icon} from "../../../User/atoms"
 import LoaderContainer from "../SearchDisplay/LoaderContainer"
-import {Loader as BigLoader} from "Common/molecules"
 import Header from "../SearchDisplay/Header"
 import ResultsContainer from "../../atoms/ResultsContainer"
-import Loader from "Feed/atoms/Loader"
-import {PostCard} from "../../../User/organisms"
 import PostsList from "../SearchDisplay/PostsList"
 
 const first = 16
@@ -61,15 +60,14 @@ const SearchPostsDisplay = ({isFocused, query}) => {
     return (
         <ResultsContainer>
             <h1>Найденные посты</h1>
-            <InfiniteScroll
+            <Pagination
                 loadMore={loadMore}
                 hasMore={data.search.posts.pageInfo.hasNextPage}
-                loader={<Loader>Загрузка...</Loader>}
+                loader={() => <Loader>Загрузка...</Loader>}
+                Component={PostsList}
             >
-                <PostsList>
-                    {data.search.posts.edges.map(({node}) => <PostCard post={node} key={node.id} withDelete={false}/>)}
-                </PostsList>
-            </InfiniteScroll>
+                {data.search.posts.edges.map(({node}) => <li key={node.id}><PostCard post={node} withDelete={false}/></li>)}
+            </Pagination>
         </ResultsContainer>
     )
 }

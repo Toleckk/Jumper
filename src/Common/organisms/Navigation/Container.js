@@ -15,7 +15,7 @@ export default styled.nav`
   border: 1px solid transparent;
   border-radius: 15px;
   
-  transition: 350ms all linear;
+  transition: 300ms all linear;
   
   background-color: rgb(${props => props.theme.primaryDark});
   
@@ -63,6 +63,8 @@ export default styled.nav`
     
     max-width: 100vw;
     height: 15vw;
+    
+    padding: 0 0 0.1rem;
     
     left: 0;
     bottom: 0;

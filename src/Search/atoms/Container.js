@@ -12,7 +12,8 @@ export default styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  
+  min-height: calc(100vh - 3rem);
   
   @media(max-width: 768px) {
     width: 95vw;

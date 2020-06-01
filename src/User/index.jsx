@@ -2,15 +2,15 @@ import React, {useCallback, useState} from 'react'
 import {useParams} from "react-router-dom"
 import {useQuery} from "@apollo/react-hooks"
 import Title from "react-document-title"
-import InfiniteScroll from 'react-infinite-scroller'
 import {GET_USER} from "Common/apollo/entities/user"
-import {Loader as BigLoader} from "Common/molecules"
+import {Pagination, Loader as BigLoader} from "Common/molecules"
 import useIsMe from "Common/hooks/useIsMe"
 import {Header, PostCard, PostForm, UserCard} from "./organisms"
 import StyledDivider from "./StyledDivider"
 import PostsContainer from "./PostsContainer"
 import Loader from "../Feed/atoms/Loader"
 import {PrivateScreen} from "./molecules"
+
 
 const first = 25
 
@@ -56,17 +56,16 @@ const User = () => {
                     data.user.private && !data.user.isReadByMe
                         ? <PrivateScreen/>
                         : (
-                            <InfiniteScroll
+                            <Pagination
                                 hasMore={data.user.posts.pageInfo.hasNextPage}
                                 loadMore={loadMore}
-                                loader={<Loader>Загрузка...</Loader>}
+                                loader={() => <Loader>Загрузка...</Loader>}
                             >
                                 {!data.user.posts.edges.length
-                                    ? <h1 align="center">Постов пока нет</h1>
-                                    : data.user.posts.edges.map(({node, cursor}) => <PostCard post={node}
-                                                                                              key={cursor}/>)
+                                    ? <h1 align="center" key="nothing">Постов пока нет</h1>
+                                    : data.user.posts.edges.map(({node, cursor}) => <PostCard post={node} key={cursor}/>)
                                 }
-                            </InfiniteScroll>
+                            </Pagination>
                         )
                 }</PostsContainer>
             </>

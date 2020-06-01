@@ -25,7 +25,7 @@ const NavigationDrawer = ({visible, onClose}) => {
     return (
         <Drawer visible={visible} onClose={onClose} placement="right" width="80vw">
             <ClosingLink close={onClose} to={`/@${data.me.nickname}`}>
-                <Avatar src={data.me.avatar} border="true"/>
+                <Avatar src={data.me.avatar} border={true}/>
             </ClosingLink>
             <ClosingLink close={onClose} to={`/@${data.me.nickname}`}>
                 <Nickname>

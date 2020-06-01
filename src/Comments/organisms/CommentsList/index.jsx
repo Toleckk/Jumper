@@ -1,11 +1,10 @@
 import React, {useCallback} from "react"
 import {useQuery} from "@apollo/react-hooks"
-import {Loader as BigLoader} from "Common/molecules"
+import {Loader as BigLoader, Pagination} from "Common/molecules"
 import {COMMENTS} from "Common/apollo/entities/comment"
 import {Tip} from '../../atoms'
 import CommentCard from "../CommentCard"
 import List from "./List"
-import Pagination from '../Pagination'
 import Loader from "Feed/atoms/Loader"
 
 const first = 15
@@ -41,11 +40,15 @@ const CommentsList = ({post}) => {
         return <Tip>Будьте первым, кто оставит комментарий</Tip>
 
     return (
-        <List>
-            <Pagination hasMore={data.comments.pageInfo.hasNextPage} loadMore={loadMore} Loader={Loader}>
-                {data.comments.edges.map(({node}) => <CommentCard key={node.id} comment={node}/>)}
-            </Pagination>
-        </List>
+        <Pagination
+            hasMore={data.comments.pageInfo.hasNextPage}
+            loadMore={loadMore}
+            Loader={() => <Loader key={0}>Загрузка...</Loader>}
+            Component={List}
+            reverse
+        >
+            {data.comments.edges.map(({node}) => <CommentCard key={node.id} comment={node}/>)}
+        </Pagination>
     )
 }
 
