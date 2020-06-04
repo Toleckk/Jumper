@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from "Common/contexts/Localization";
-import {MainContent} from "../../../../templates";
+import {MainContent} from "Landing/templates";
 import PasswordForm from "./PasswordForm";
 import {StyledSpan} from "../atoms";
 
