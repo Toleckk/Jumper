@@ -2,7 +2,7 @@ import React from 'react'
 import {MainContent} from "Landing/templates";
 import StyledSpan from "./StyledSpan"
 
-// TODO: text
+
 const Message = () => (
     <MainContent
         withLastDivider
