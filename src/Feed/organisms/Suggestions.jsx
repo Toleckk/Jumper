@@ -20,7 +20,7 @@ const Suggestions = () => {
             <h3>Осмотритесь вокруг, чтобы найти интересных пользователей</h3>
             <SuggestionsList>
                 {data.randomUsers.map(user => <UserCard user={user} key={user.nickname}/>)}
-                {Array(4 - data.randomUsers.length).fill(0).map((_, i) => <EmptyUser key={i}/>)}
+                {Array(3 - data.randomUsers.length).fill(0).map((_, i) => <EmptyUser key={i}/>)}
             </SuggestionsList>
             <span>Если ищете что-то, Вы можете воспользоваться нашим <StyledLink to="/search">поиском</StyledLink></span>
             <Divider/>
