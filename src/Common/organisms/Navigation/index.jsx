@@ -14,6 +14,7 @@ import Notifications from '../Notifications'
 import useBooleanState from 'Common/hooks/useBooleanState'
 import useOnClickOutside from 'Common/hooks/useOnClickOutside'
 import useLogout from '../../hooks/useLogout'
+import MediaQuery from "react-media"
 
 const width = {width: '100%'}
 const height = '100%'
@@ -26,7 +27,7 @@ const Navigation = () => {
     const {pathname} = useLocation()
 
     const [drawerVisible, openDrawer, closeDrawer] = useBooleanState(false)
-    const [notificationsOpened,, closeNotifications, invertNotifications] = useBooleanState(false)
+    const [notificationsOpened, , closeNotifications, invertNotifications] = useBooleanState(false)
 
     const notificationButton = React.useRef(null)
 
@@ -45,43 +46,52 @@ const Navigation = () => {
 
     return (
         <Container ref={container} active={notificationsOpened}>
-            <List>
-                <Item title={me.nickname} active={pathname.startsWith(`/@${me.nickname}`)}>
-                    <DrawerButton onClick={openDrawer}>
-                        <Avatar src={me.avatar} border size="navigation"/>
-                    </DrawerButton>
-                    <UserLink to={`/@${me.nickname}`}>
-                        <Avatar src={me.avatar} border size="navigation"/>
-                    </UserLink>
-                </Item>
-                <Item title="Новости" active={pathname.startsWith('/feed')}>
-                    <Link to="/feed">
-                        <Icon icon="feed" height={height} size={null} color={color}/>
-                    </Link>
-                </Item>
-                <Item title="Оповещения" active={notificationsOpened}>
-                    <button style={fullSize} onClick={invertNotifications} ref={notificationButton}>
-                        <Icon icon="notifications" height={height} size={null} color={color}/>
-                    </button>
-                </Item>
-                <Item title="Настройки" active={pathname.startsWith('/settings')} hide>
-                    <Link to="/settings">
-                        <Icon icon="settings" height={height} size={null} color={color}/>
-                    </Link>
-                </Item>
-                <Item title="Поиск" active={pathname.startsWith('/search')}>
-                    <Link to="/search">
-                        <Icon icon="search" height={height} size={null} color={color}/>
-                    </Link>
-                </Item>
-                <Item title="Выйти" style={width}>
-                    <button onClick={logout} style={fullSize}>
-                        <Icon icon="logout" height={height} size={null} color={color}/>
-                    </button>
-                </Item>
-            </List>
-            <NavigationDrawer onClose={closeDrawer} visible={drawerVisible}/>
-            {notificationsOpened && <Notifications close={close}/>}
+            <MediaQuery query={"(max-width: 768px)"}>{match => (
+                <>
+                    <List>
+                        <Item title={me.nickname} active={pathname.startsWith(`/@${me.nickname}`)}>{
+                            match
+                                ? (
+                                    <DrawerButton onClick={openDrawer}>
+                                        <Avatar src={me.avatar} border size="navigation"/>
+                                    </DrawerButton>
+                                )
+                                : (
+                                    <UserLink to={`/@${me.nickname}`}>
+                                        <Avatar src={me.avatar} border size="navigation"/>
+                                    </UserLink>
+                                )
+                        }</Item>
+                        <Item title="Новости" active={pathname.startsWith('/feed')}>
+                            <Link to="/feed">
+                                <Icon icon="feed" height={height} size={null} color={color}/>
+                            </Link>
+                        </Item>
+                        <Item title="Оповещения" active={notificationsOpened}>
+                            <button style={fullSize} onClick={invertNotifications} ref={notificationButton}>
+                                <Icon icon="notifications" height={height} size={null} color={color}/>
+                            </button>
+                        </Item>
+                        <Item title="Настройки" active={pathname.startsWith('/settings')} hide>
+                            <Link to="/settings">
+                                <Icon icon="settings" height={height} size={null} color={color}/>
+                            </Link>
+                        </Item>
+                        <Item title="Поиск" active={pathname.startsWith('/search')}>
+                            <Link to="/search">
+                                <Icon icon="search" height={height} size={null} color={color}/>
+                            </Link>
+                        </Item>
+                        <Item title="Выйти" style={width}>
+                            <button onClick={logout} style={fullSize}>
+                                <Icon icon="logout" height={height} size={null} color={color}/>
+                            </button>
+                        </Item>
+                    </List>
+                    <NavigationDrawer onClose={closeDrawer} visible={match && (drawerVisible || notificationsOpened)} withNotifications={notificationsOpened}/>
+                    {notificationsOpened && !match && <Notifications close={close}/>}
+                </>
+            )}</MediaQuery>
         </Container>
     )
 }

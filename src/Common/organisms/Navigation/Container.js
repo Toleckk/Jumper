@@ -19,6 +19,8 @@ export default styled.nav`
   
   background-color: rgb(${props => props.theme.primaryDark});
   
+  z-index: 5;
+  
  
   @media (min-width: 768px) {
       &:hover {

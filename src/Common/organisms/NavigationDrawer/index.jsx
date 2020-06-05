@@ -1,11 +1,11 @@
-import React, {useContext} from 'react'
+import React, {useContext, useLayoutEffect} from 'react'
 import Type from 'prop-types'
 import {useQuery} from '@apollo/react-hooks'
 import {ThemeContext} from 'styled-components'
+import {Avatar} from 'User/atoms'
 import Drawer from './Drawer'
 import {ThemeSwitcher} from '../../atoms'
 import {ME} from '../../apollo/entities/user'
-import {Avatar} from 'User/atoms'
 import MobileThemeSwitcherContainer from './MobileThemeSwitcherContainer'
 import Item from './Item'
 import Title from './Title'
@@ -17,14 +17,16 @@ import useBooleanState from "../../hooks/useBooleanState"
 import PendingSubscribesDisplay from "../PendingSubscribesDisplay"
 
 
-const NavigationDrawer = ({visible, onClose}) => {
+const NavigationDrawer = ({visible, onClose, withNotifications}) => {
     const {data} = useQuery(ME)
     const [logout] = useLogout()
     const theme = useContext(ThemeContext)
 
     const color = `rgb(${theme.primaryText})`
 
-    const [notificationsVisible, setNotificationsVisible, setNotificationsInvisible] = useBooleanState(false)
+    const [notificationsVisible, showNotifications, hideNotifications, , setNotificationsVisible] = useBooleanState(false)
+
+    useLayoutEffect(() => setNotificationsVisible(withNotifications), [withNotifications])
 
     return (
         <Drawer visible={visible} onClose={onClose} placement="right" width="80vw">
@@ -44,7 +46,7 @@ const NavigationDrawer = ({visible, onClose}) => {
                     </ClosingLink>
                 </Item>
                 <Item>
-                    <button onClick={setNotificationsVisible}>
+                    <button onClick={showNotifications}>
                         <Icon icon="notifications" size="2rem" color={color}/>
                         <Title>Оповещения</Title>
                     </button>
@@ -71,17 +73,22 @@ const NavigationDrawer = ({visible, onClose}) => {
             <MobileThemeSwitcherContainer>
                 <ThemeSwitcher/>
             </MobileThemeSwitcherContainer>
-            <Drawer visible={notificationsVisible} onClose={setNotificationsInvisible} placement="right" width="80vw">
+            <Drawer visible={notificationsVisible} onClose={hideNotifications} placement="right" width="80vw">
                 <PendingSubscribesDisplay/>
             </Drawer>
         </Drawer>
     )
 }
 
+NavigationDrawer.defaultProps = {
+    withNotifications: false,
+}
+
 
 NavigationDrawer.propTypes = {
     visible: Type.bool.isRequired,
     onClose: Type.func.isRequired,
+    withNotifications: Type.bool,
 }
 
 
