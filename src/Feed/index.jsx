@@ -2,7 +2,6 @@ import React, {useCallback} from "react"
 import {useQuery} from "@apollo/react-hooks"
 import {Loader as BigLoader} from 'Common/molecules'
 import {FEED} from "Common/apollo/entities/feed"
-import Title from 'react-document-title'
 import List from "./atoms/List"
 import PostCard from "../User/organisms/PostCard"
 import Loader from "./atoms/Loader"
@@ -38,7 +37,7 @@ const Feed = () => {
         return <Redirect to="/"/>
 
     return (
-        <Title title="Feed">
+        <>
             <PostForm/>
             {!me.me.subscribesCount && <Suggestions/>}
             <Pagination
@@ -50,7 +49,7 @@ const Feed = () => {
             >
                 {data.feed.edges.map(({node}) => <li key={node.id}><PostCard post={node} withDelete={false}/></li>)}
             </Pagination>
-        </Title>
+        </>
     )
 }
 
